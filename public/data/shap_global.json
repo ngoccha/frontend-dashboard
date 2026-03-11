@@ -1,78 +1,78 @@
 [
   {
-    "feature": "total_dur_early_pct",
-    "mean_abs_shap": 0.067945
-  },
-  {
-    "feature": "n_active_early_pct",
-    "mean_abs_shap": 0.050063
-  },
-  {
-    "feature": "events_per_session_early",
-    "mean_abs_shap": 0.039646
-  },
-  {
-    "feature": "n_sessions_early",
-    "mean_abs_shap": 0.034555
-  },
-  {
-    "feature": "action_diversity_early",
-    "mean_abs_shap": 0.034544
-  },
-  {
-    "feature": "mean_dur_early",
-    "mean_abs_shap": 0.0338
+    "feature": "attend_frac_early",
+    "mean_abs_shap": 0.828928
   },
   {
     "feature": "n_sessions_early_pct",
-    "mean_abs_shap": 0.03127
+    "mean_abs_shap": 0.711463
   },
   {
-    "feature": "n_total_events_early",
-    "mean_abs_shap": 0.029318
+    "feature": "total_dur_early_pct",
+    "mean_abs_shap": 0.416453
+  },
+  {
+    "feature": "n_active_early_pct",
+    "mean_abs_shap": 0.350932
+  },
+  {
+    "feature": "n_sessions_early",
+    "mean_abs_shap": 0.193387
   },
   {
     "feature": "total_dur_early",
-    "mean_abs_shap": 0.028475
+    "mean_abs_shap": 0.132234
   },
   {
-    "feature": "active_frac_early",
-    "mean_abs_shap": 0.025818
+    "feature": "n_total_events_early",
+    "mean_abs_shap": 0.111687
+  },
+  {
+    "feature": "mean_dur_early",
+    "mean_abs_shap": 0.046422
+  },
+  {
+    "feature": "events_per_session_early",
+    "mean_abs_shap": 0.021567
   },
   {
     "feature": "code_step_ratio_early",
-    "mean_abs_shap": 0.02095
+    "mean_abs_shap": 0.018289
   },
   {
-    "feature": "attend_frac_early",
-    "mean_abs_shap": 0.020031
+    "feature": "active_frac_early",
+    "mean_abs_shap": 0.012977
   },
   {
-    "feature": "n_codesubmit_early",
-    "mean_abs_shap": 0.016944
-  },
-  {
-    "feature": "n_code_early",
-    "mean_abs_shap": 0.016944
+    "feature": "action_diversity_early",
+    "mean_abs_shap": 0.007208
   },
   {
     "feature": "n_active_early",
-    "mean_abs_shap": 0.01022
+    "mean_abs_shap": 0.007161
   },
   {
-    "feature": "help_rate_early",
-    "mean_abs_shap": 0.004164
-  },
-  {
-    "feature": "n_help_early",
-    "mean_abs_shap": 0.004164
+    "feature": "n_code_early",
+    "mean_abs_shap": 0.005428
   },
   {
     "feature": "n_quiz_early",
-    "mean_abs_shap": 0.001515
+    "mean_abs_shap": 0.00429
+  },
+  {
+    "feature": "help_rate_early",
+    "mean_abs_shap": 0.002791
+  },
+  {
+    "feature": "n_help_early",
+    "mean_abs_shap": 0.001156
+  },
+  {
+    "feature": "n_codesubmit_early",
+    "mean_abs_shap": 0.001018
   },
   {
     "feature": "n_raisehand_early",
-    "mean_abs_shap": 0.0
+    "mean_abs_shap": 0.000381
   }
 ]

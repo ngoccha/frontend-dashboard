@@ -1,51 +1,51 @@
 [
   {
     "model": "LogReg",
-    "accuracy": 0.5769,
-    "macro_f1": 0.5193,
-    "auc": 0.7143,
-    "precision_macro": 0.5536,
-    "recall_macro": 0.5857,
-    "precision_disengaged": 0.25,
-    "recall_disengaged": 0.6,
-    "precision_high": 0.8571,
-    "recall_high": 0.5714,
+    "accuracy": 0.7518,
+    "macro_f1": 0.7446,
+    "auc": 0.8123,
+    "precision_macro": 0.7755,
+    "recall_macro": 0.7485,
+    "precision_disengaged": 0.7,
+    "recall_disengaged": 0.9,
+    "precision_high": 0.8511,
+    "recall_high": 0.597,
     "best_params": {
-      "C": 0.01
+      "C": 1
     },
-    "train_size": 51,
-    "test_size": 26
+    "train_size": 604,
+    "test_size": 137
   },
   {
     "model": "RF",
-    "accuracy": 0.6154,
-    "macro_f1": 0.5486,
-    "auc": 0.7143,
-    "precision_macro": 0.5697,
-    "recall_macro": 0.6095,
-    "precision_disengaged": 0.2727,
-    "recall_disengaged": 0.6,
-    "precision_high": 0.8667,
-    "recall_high": 0.619,
+    "accuracy": 0.7664,
+    "macro_f1": 0.7584,
+    "auc": 0.8197,
+    "precision_macro": 0.7977,
+    "recall_macro": 0.7628,
+    "precision_disengaged": 0.7065,
+    "recall_disengaged": 0.9286,
+    "precision_high": 0.8889,
+    "recall_high": 0.597,
     "best_params": {
       "max_depth": 6,
       "min_samples_leaf": 3,
-      "n_estimators": 200
+      "n_estimators": 400
     },
-    "train_size": 51,
-    "test_size": 26
+    "train_size": 604,
+    "test_size": 137
   },
   {
     "model": "XGB",
-    "accuracy": 0.1923,
-    "macro_f1": 0.1613,
-    "auc": 0.5,
-    "precision_macro": 0.0962,
-    "recall_macro": 0.5,
-    "precision_disengaged": 0.1923,
-    "recall_disengaged": 1.0,
-    "precision_high": 0.0,
-    "recall_high": 0.0,
+    "accuracy": 0.7664,
+    "macro_f1": 0.7555,
+    "auc": 0.844,
+    "precision_macro": 0.8124,
+    "recall_macro": 0.7622,
+    "precision_disengaged": 0.6979,
+    "recall_disengaged": 0.9571,
+    "precision_high": 0.9268,
+    "recall_high": 0.5672,
     "best_params": {
       "colsample_bytree": 0.8,
       "learning_rate": 0.02,
@@ -53,7 +53,7 @@
       "n_estimators": 200,
       "subsample": 0.8
     },
-    "train_size": 51,
-    "test_size": 26
+    "train_size": 604,
+    "test_size": 137
   }
 ]

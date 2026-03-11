@@ -8,16 +8,22 @@
   "cohort_rooms": 58,
   "cohort_courses": 1424,
   "tier_counts": {
-    "mid": 1347,
-    "high": 69,
-    "disengaged": 8
+    "disengaged": 378,
+    "high": 363,
+    "low": 347,
+    "moderate": 336
   },
   "n_features": 19,
-  "best_model": "LogReg",
-  "best_accuracy": 0.5769,
-  "best_f1": 0.5193,
-  "best_auc": 0.7143,
-  "train_timestamp": "2026-03-11T14:53:22",
+  "best_model": "XGB",
+  "best_accuracy": 0.7664,
+  "best_f1": 0.7555,
+  "best_auc": 0.844,
+  "train_timestamp": "2026-03-11T19:27:36",
+  "predicted_tier_counts": {
+    "disengaged": 892,
+    "high": 356,
+    "moderate": 176
+  },
   "features_used": [
     "n_sessions_early",
     "total_dur_early",
@@ -48,10 +54,20 @@
     "MIN_SESSIONS": 4,
     "MAX_SESSIONS": 15,
     "MIN_ROOM_SIZE": 10,
-    "EARLY_FRAC": 0.33,
+    "EARLY_FRAC": 0.5,
     "MIN_EARLY_SESS": 2,
-    "DIS_PCT": 0.15,
-    "HIGH_PCT": 0.7,
+    "N_TIERS": 4,
+    "TIER_NAMES": [
+      "disengaged",
+      "low",
+      "moderate",
+      "high"
+    ],
+    "SCORE_WEIGHTS": [
+      0.35,
+      0.4,
+      0.25
+    ],
     "INPATH": "/content/drive/MyDrive/cleaning_v2.csv"
   }
 }

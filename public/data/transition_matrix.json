@@ -1,53 +1,66 @@
 {
   "counts": {
     "disengaged": {
-      "0": 5,
-      "disengaged": 0,
-      "high": 0,
-      "mid": 3,
-      "All": 8
+      "disengaged": 105,
+      "high": 6,
+      "low": 257,
+      "moderate": 10,
+      "All": 378
     },
     "high": {
-      "0": 31,
-      "disengaged": 0,
-      "high": 9,
-      "mid": 29,
-      "All": 69
+      "disengaged": 28,
+      "high": 138,
+      "low": 145,
+      "moderate": 52,
+      "All": 363
     },
-    "mid": {
-      "0": 711,
-      "disengaged": 1,
-      "high": 22,
-      "mid": 613,
-      "All": 1347
+    "low": {
+      "disengaged": 64,
+      "high": 17,
+      "low": 222,
+      "moderate": 44,
+      "All": 347
+    },
+    "moderate": {
+      "disengaged": 32,
+      "high": 47,
+      "low": 181,
+      "moderate": 76,
+      "All": 336
     },
     "All": {
-      "0": 747,
-      "disengaged": 1,
-      "high": 31,
-      "mid": 645,
+      "disengaged": 229,
+      "high": 208,
+      "low": 805,
+      "moderate": 182,
       "All": 1424
     }
   },
   "percentages": {
     "disengaged": {
-      "0": 0.7000000000000001,
-      "disengaged": 0.0,
-      "high": 0.0,
-      "mid": 0.5
+      "disengaged": 45.9,
+      "high": 2.9000000000000004,
+      "low": 31.900000000000002,
+      "moderate": 5.5
     },
     "high": {
-      "0": 4.1000000000000005,
-      "disengaged": 0.0,
-      "high": 28.999999999999996,
-      "mid": 4.5
+      "disengaged": 12.2,
+      "high": 66.3,
+      "low": 18.0,
+      "moderate": 28.599999999999998
     },
-    "mid": {
-      "0": 95.19999999999999,
-      "disengaged": 100.0,
-      "high": 71.0,
-      "mid": 95.0
+    "low": {
+      "disengaged": 27.900000000000002,
+      "high": 8.200000000000001,
+      "low": 27.6,
+      "moderate": 24.2
+    },
+    "moderate": {
+      "disengaged": 14.000000000000002,
+      "high": 22.6,
+      "low": 22.5,
+      "moderate": 41.8
     }
   },
-  "label_stability": 0.4368
+  "stability": 0.3799
 }
