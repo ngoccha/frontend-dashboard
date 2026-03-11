@@ -26,13 +26,15 @@ import type {
 
 const TIER_COLORS: Record<string, string> = {
   high: "text-emerald-400",
-  mid: "text-amber-400",
+  moderate: "text-amber-400",
+  low: "text-yellow-400",
   disengaged: "text-red-400",
 }
 
 const TIER_BG: Record<string, string> = {
   high: "bg-emerald-500/15 border-emerald-500/30",
-  mid: "bg-amber-500/15 border-amber-500/30",
+  moderate: "bg-amber-500/15 border-amber-500/30",
+  low: "bg-yellow-500/15 border-yellow-500/30",
   disengaged: "bg-red-500/15 border-red-500/30",
 }
 
@@ -218,8 +220,17 @@ export function XaiInsights() {
                 </div>
 
                 <div className="text-xs text-muted-foreground mb-3 space-y-0.5">
-                  <p>True: <span className="capitalize">{student.true_tier}</span></p>
-                  <p>P(high) = {(student.p_high * 100).toFixed(1)}% · P(disengaged) = {(student.p_disengaged * 100).toFixed(1)}%</p>
+                  <p>
+                    True:{" "}
+                    <span className="capitalize">
+                      {student.true_tier ?? "unknown"}
+                    </span>
+                  </p>
+                  <p>
+                    P(high) = {Number((student.p_high ?? 0) * 100).toFixed(1)}% ·
+                    P(disengaged) ={" "}
+                    {Number((student.p_disengaged ?? 0) * 100).toFixed(1)}%
+                  </p>
                 </div>
 
                 {/* Top 3 Features */}
@@ -230,7 +241,8 @@ export function XaiInsights() {
                       <div key={f.feature} className="flex items-center justify-between text-xs">
                         <span className="text-muted-foreground truncate mr-2">{f.feature}</span>
                         <span className={`font-mono shrink-0 ${f.shap_value > 0 ? "text-emerald-400" : "text-red-400"}`}>
-                          {f.shap_value > 0 ? "+" : ""}{f.shap_value.toFixed(4)}
+                          {f.shap_value > 0 ? "+" : ""}
+                          {Number(f.shap_value ?? 0).toFixed(4)}
                         </span>
                       </div>
                     ))}
@@ -238,11 +250,11 @@ export function XaiInsights() {
                 </div>
 
                 {/* Reasons */}
-                {student.reasons.length > 0 && (
+                {(student.reasons ?? []).length > 0 && (
                   <div className="mb-3">
                     <p className="text-xs font-medium text-foreground mb-1">Reasons</p>
                     <ul className="space-y-0.5">
-                      {student.reasons.slice(0, 3).map((r, i) => (
+                      {(student.reasons ?? []).slice(0, 3).map((r, i) => (
                         <li key={i} className="text-xs text-muted-foreground leading-snug">
                           • {r}
                         </li>
@@ -252,11 +264,11 @@ export function XaiInsights() {
                 )}
 
                 {/* Suggestions */}
-                {student.suggestions.length > 0 && (
+                {(student.suggestions ?? []).length > 0 && (
                   <div>
                     <p className="text-xs font-medium text-foreground mb-1">Suggestions</p>
                     <ul className="space-y-0.5">
-                      {student.suggestions.slice(0, 2).map((s, i) => (
+                      {(student.suggestions ?? []).slice(0, 2).map((s, i) => (
                         <li key={i} className="text-xs text-muted-foreground/80 italic leading-snug">
                           → {s}
                         </li>

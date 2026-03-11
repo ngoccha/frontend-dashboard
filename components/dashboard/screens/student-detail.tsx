@@ -228,20 +228,27 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
                 <span className="text-muted-foreground">Room:</span>
                 <span className="text-foreground">{currentShap.room_id}</span>
               </div>
-              {currentStudentRecord && (
-                <>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Clock className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Sessions (early):</span>
-                    <span className="text-foreground">{currentStudentRecord.n_sessions_early}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <BarChart3 className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">True tier:</span>
-                    <TierBadge tier={capitalizeTier(currentShap.true_tier)} size="sm" />
-                  </div>
-                </>
-              )}
+                  {currentStudentRecord && (
+                    <>
+                      <div className="flex items-center gap-2 text-sm">
+                        <Clock className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-muted-foreground">Sessions (early):</span>
+                        <span className="text-foreground">
+                          {currentStudentRecord.n_sessions_early}
+                        </span>
+                      </div>
+                      {currentStudentRecord.label_full && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <BarChart3 className="w-4 h-4 text-muted-foreground" />
+                          <span className="text-muted-foreground">True tier:</span>
+                          <TierBadge
+                            tier={capitalizeTier(currentStudentRecord.label_full)}
+                            size="sm"
+                          />
+                        </div>
+                      )}
+                    </>
+                  )}
             </div>
 
             <div className="pt-4 border-t border-border">
@@ -258,7 +265,7 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
                 <div className="flex items-center justify-between text-sm mb-2">
                   <span className="text-tier-high">P(High)</span>
                   <span className="font-medium text-tier-high">
-                    {(currentShap.p_high * 100).toFixed(1)}%
+                    {Number((currentShap.p_high ?? 0) * 100).toFixed(1)}%
                   </span>
                 </div>
                 <Progress value={currentShap.p_high * 100} className="h-2" />
@@ -267,7 +274,7 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
                 <div className="flex items-center justify-between text-sm mb-2">
                   <span className="text-tier-disengaged">P(Disengaged)</span>
                   <span className="font-medium text-tier-disengaged">
-                    {(currentShap.p_disengaged * 100).toFixed(1)}%
+                    {Number((currentShap.p_disengaged ?? 0) * 100).toFixed(1)}%
                   </span>
                 </div>
                 <Progress value={currentShap.p_disengaged * 100} className="h-2" />
@@ -376,9 +383,9 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
                   Why this engagement tier?
                 </h4>
               </div>
-              {currentShap.reasons.length > 0 ? (
+              {(currentShap.reasons ?? []).length > 0 ? (
                 <ul className="space-y-3">
-                  {currentShap.reasons.map((reason, index) => (
+                  {(currentShap.reasons ?? []).map((reason, index) => (
                     <li key={index} className="flex items-start gap-2">
                       {reason.includes("increases") || reason.includes("↑") ? (
                         <TrendingUp className="w-4 h-4 text-tier-disengaged mt-0.5 shrink-0" />
@@ -407,7 +414,7 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
                       <div className="flex items-center gap-2">
                         <span className="text-foreground font-mono">
                           {f.feature_value >= 0 ? "+" : ""}
-                          {f.feature_value.toFixed(3)}
+                          {Number(f.feature_value ?? 0).toFixed(3)}
                         </span>
                         <span
                           className={
@@ -417,7 +424,7 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
                           }
                         >
                           ({f.shap_value >= 0 ? "+" : ""}
-                          {f.shap_value.toFixed(4)})
+                          {Number(f.shap_value ?? 0).toFixed(4)})
                         </span>
                       </div>
                     </div>
@@ -433,9 +440,9 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
                   Suggestions
                 </h4>
               </div>
-              {currentShap.suggestions.length > 0 ? (
+              {(currentShap.suggestions ?? []).length > 0 ? (
                 <ul className="space-y-3">
-                  {currentShap.suggestions.map((suggestion, index) => (
+                  {(currentShap.suggestions ?? []).map((suggestion, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
                         <span className="text-xs font-medium text-primary">

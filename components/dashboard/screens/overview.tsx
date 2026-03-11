@@ -160,7 +160,7 @@ export function Overview() {
     ? students.filter((s) => s.has_prediction).length
     : 0
 
-  const labelStability = transition ? transition.label_stability : 0
+  const labelStability = transition ? transition.stability : 0
 
   const topRooms = rooms
     ? [...rooms].sort((a, b) => b.n_students - a.n_students).slice(0, 10)
@@ -271,7 +271,7 @@ export function Overview() {
               </p>
               <div className="mt-2 space-y-0.5 text-xs text-muted-foreground">
                 <p>{overview?.best_model} model</p>
-                <p>AUC {overview?.best_auc.toFixed(3)}</p>
+                <p>AUC {Number(overview?.best_auc ?? 0).toFixed(3)}</p>
               </div>
             </div>
           </div>
@@ -286,16 +286,17 @@ export function Overview() {
           <>
             <KpiCard
               title="Middle Tiers Dominance"
-              value={`${tierData
-                .filter((t) => t.key !== "high" && t.key !== "disengaged")
-                .reduce((sum, t) => sum + t.pct, 0)
-                .toFixed(1)}%`}
+              value={`${Number(
+                tierData
+                  .filter((t) => t.key !== "high" && t.key !== "disengaged")
+                  .reduce((sum, t) => sum + (t.pct ?? 0), 0),
+              ).toFixed(1)}%`}
               subtitle="Model's main job: separating extremes from the middle tiers"
               icon={Layers}
             />
             <KpiCard
               title="Label Stability"
-              value={`${(labelStability * 100).toFixed(1)}%`}
+              value={`${Number(labelStability * 100).toFixed(1)}%`}
               subtitle="Keep same tier between early → full period"
               icon={Shuffle}
             />
@@ -307,7 +308,7 @@ export function Overview() {
             />
             <KpiCard
               title="Model AUC"
-              value={(overview?.best_auc ?? 0).toFixed(2)}
+              value={Number(overview?.best_auc ?? 0).toFixed(2)}
               subtitle={`${overview?.best_model} — moderate discriminative power`}
               icon={Brain}
             />
@@ -342,7 +343,7 @@ export function Overview() {
                     color: "oklch(0.15 0.02 250)",
                   }}
                 >
-                  {t.label} {t.pct.toFixed(1)}%
+                  {t.label} {Number(t.pct ?? 0).toFixed(1)}%
                 </div>
               ))}
             </div>

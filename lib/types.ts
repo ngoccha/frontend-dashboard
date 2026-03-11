@@ -111,16 +111,18 @@ export interface ShapLocalExplanation {
   room_id: string
   student_name: string
   predicted_tier: string
-  true_tier: string
+  // optional true label field; in current JSON we only have label_full at student-level
+  true_tier?: string
   p_high: number
   p_disengaged: number
   top_features: {
     feature: string
     shap_value: number
     feature_value: number
+    raw_value?: number
   }[]
-  reasons: string[]
-  suggestions: string[]
+  reasons?: string[]
+  suggestions?: string[]
 }
 
 export type FeatureDescriptions = Record<string, string>
@@ -135,5 +137,5 @@ export interface ThresholdPoint {
 export interface TransitionMatrix {
   counts: Record<string, Record<string, number>>
   percentages: Record<string, Record<string, number>>
-  label_stability: number
+  stability: number
 }

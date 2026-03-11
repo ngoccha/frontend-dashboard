@@ -362,7 +362,9 @@ export function ClassEngagement() {
         />
         <KpiCard
           title="High Engagement"
-          value={`${tierData.find((t) => t.key === "high")?.pct ?? "0"}%`}
+          value={`${Number(
+            tierData.find((t) => t.key === "high")?.pct ?? 0,
+          ).toFixed(1)}%`}
           subtitle={`${
             (tierCounts as Record<string, number | undefined>).high ?? 0
           } of ${totalEnrollments.toLocaleString()} enrollments`}
