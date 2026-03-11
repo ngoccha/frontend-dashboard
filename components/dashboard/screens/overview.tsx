@@ -286,11 +286,14 @@ export function Overview() {
           <>
             <KpiCard
               title="Middle Tiers Dominance"
-              value={`${Number(
-                tierData
+              value={`${(() => {
+                const totalMiddle = tierData
                   .filter((t) => t.key !== "high" && t.key !== "disengaged")
-                  .reduce((sum, t) => sum + (t.pct ?? 0), 0),
-              ).toFixed(1)}%`}
+                  .reduce((sum, t) => sum + (t.pct ?? 0), 0)
+                return Number.isFinite(totalMiddle)
+                  ? Number(totalMiddle).toFixed(1)
+                  : "0.0"
+              })()}%`}
               subtitle="Model's main job: separating extremes from the middle tiers"
               icon={Layers}
             />
@@ -454,7 +457,7 @@ export function Overview() {
                       {room.n_students}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {room.n_sessions_avg.toFixed(1)} avg sessions
+                      {Number(room.n_sessions_avg ?? 0).toFixed(1)} avg sessions
                     </p>
                     <div className="flex gap-1 mt-2 flex-wrap">
                       {high > 0 && <TierBadge tier="High" size="sm" />}
