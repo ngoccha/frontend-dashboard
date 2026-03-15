@@ -4,26 +4,33 @@
   "total_rooms_raw": 197,
   "date_min": "2024-12-20 14:45:59.236000+07:00",
   "date_max": "2026-01-07 14:32:12.167000+07:00",
-  "cohort_students": 951,
-  "cohort_rooms": 58,
-  "cohort_courses": 1424,
+  "cohort_students": 376,
+  "cohort_rooms": 22,
+  "cohort_courses": 613,
   "tier_counts": {
-    "disengaged": 378,
-    "high": 363,
-    "low": 347,
-    "moderate": 336
+    "disengaged": 163,
+    "high": 156,
+    "low": 152,
+    "moderate": 142
   },
-  "n_features": 19,
-  "best_model": "XGB",
-  "best_accuracy": 0.7664,
-  "best_f1": 0.7555,
-  "best_auc": 0.844,
-  "train_timestamp": "2026-03-11T19:27:36",
+  "best_model_binary": "RF",
+  "best_auc_binary": 0.8815,
+  "best_f1_binary": 0.7725,
+  "best_model_mc": "LogReg_MC",
+  "best_auc_ovr_mc": 0.7072,
+  "best_auc_bin_mc": 0.8744,
+  "best_f1_mc": 0.4372,
+  "train_timestamp": "2026-03-15T18:04:18",
   "predicted_tier_counts": {
-    "disengaged": 892,
-    "high": 356,
-    "moderate": 176
+    "disengaged": 211,
+    "high": 178,
+    "moderate": 121,
+    "low": 103
   },
+  "best_model": "RF",
+  "best_accuracy": 0.7759,
+  "best_f1": 0.7725,
+  "best_auc": 0.8815,
   "features_used": [
     "n_sessions_early",
     "total_dur_early",
@@ -35,15 +42,12 @@
     "n_codesubmit_early",
     "n_quiz_early",
     "n_raisehand_early",
+    "n_aitutorchat_early",
+    "n_step_early",
     "n_sessions_early_pct",
     "n_active_early_pct",
     "total_dur_early_pct",
-    "attend_frac_early",
-    "code_step_ratio_early",
-    "active_frac_early",
-    "help_rate_early",
-    "events_per_session_early",
-    "action_diversity_early"
+    "engagement_score_early"
   ],
   "config": {
     "START_HOUR": 7,
@@ -51,8 +55,10 @@
     "SESSION_GAP_MIN": 60,
     "MIN_STUDENTS_PER_RSESS": 3,
     "MIN_EVENTS_PER_RSESS": 5,
-    "MIN_SESSIONS": 4,
-    "MAX_SESSIONS": 15,
+    "MIN_SESSION_DUR_MIN": 2,
+    "MIN_ROOM_SESSIONS": 8,
+    "MAX_ROOM_SESSIONS": 20,
+    "MIN_SESSIONS": 3,
     "MIN_ROOM_SIZE": 10,
     "EARLY_FRAC": 0.5,
     "MIN_EARLY_SESS": 2,
@@ -68,6 +74,6 @@
       0.4,
       0.25
     ],
-    "INPATH": "/content/drive/MyDrive/cleaning_v2.csv"
+    "INPATH": "cleaning_v2.csv"
   }
 }

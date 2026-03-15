@@ -1,252 +1,112 @@
 [
   {
-    "room_id": "2UfirR",
-    "n_students": 56,
-    "tier_counts": {
-      "moderate": 14,
-      "low": 14,
-      "disengaged": 14,
-      "high": 14
-    },
-    "predicted_tier_counts": {
-      "disengaged": 50,
-      "high": 5,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "2efeeH",
-    "n_students": 12,
-    "tier_counts": {
-      "moderate": 3,
-      "disengaged": 3,
-      "low": 3,
-      "high": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 8,
-      "high": 4
-    }
-  },
-  {
     "room_id": "2wpTye",
-    "n_students": 21,
+    "n_students": 23,
     "tier_counts": {
-      "disengaged": 6,
+      "disengaged": 7,
+      "high": 6,
       "low": 5,
-      "high": 5,
       "moderate": 5
     },
     "predicted_tier_counts": {
-      "disengaged": 10,
-      "high": 7,
-      "moderate": 4
+      "disengaged": 11,
+      "moderate": 6,
+      "high": 5,
+      "low": 1
     }
   },
   {
     "room_id": "414QeC",
-    "n_students": 22,
+    "n_students": 24,
     "tier_counts": {
       "high": 6,
       "disengaged": 6,
-      "moderate": 5,
-      "low": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 14,
-      "high": 8
-    }
-  },
-  {
-    "room_id": "41UYEv",
-    "n_students": 13,
-    "tier_counts": {
-      "disengaged": 4,
-      "moderate": 3,
-      "low": 3,
-      "high": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 9,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "45XzqN",
-    "n_students": 12,
-    "tier_counts": {
-      "disengaged": 3,
-      "high": 3,
-      "low": 3,
-      "moderate": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 7,
-      "high": 3,
-      "moderate": 2
-    }
-  },
-  {
-    "room_id": "49Dfs4",
-    "n_students": 16,
-    "tier_counts": {
-      "disengaged": 4,
-      "moderate": 4,
-      "low": 4,
-      "high": 4
-    },
-    "predicted_tier_counts": {
-      "disengaged": 12,
-      "moderate": 3,
-      "high": 1
-    }
-  },
-  {
-    "room_id": "4YtuXh",
-    "n_students": 13,
-    "tier_counts": {
-      "disengaged": 4,
-      "moderate": 3,
-      "low": 3,
-      "high": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 12,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "4gaVNw",
-    "n_students": 26,
-    "tier_counts": {
-      "disengaged": 7,
-      "high": 7,
-      "low": 6,
-      "moderate": 6
-    },
-    "predicted_tier_counts": {
-      "high": 11,
-      "disengaged": 10,
-      "moderate": 5
-    }
-  },
-  {
-    "room_id": "5fR1uZ",
-    "n_students": 26,
-    "tier_counts": {
-      "high": 7,
-      "disengaged": 7,
-      "low": 6,
-      "moderate": 6
-    },
-    "predicted_tier_counts": {
-      "disengaged": 14,
-      "high": 10,
-      "moderate": 2
-    }
-  },
-  {
-    "room_id": "6FYLTw",
-    "n_students": 17,
-    "tier_counts": {
-      "disengaged": 5,
-      "low": 4,
-      "high": 4,
-      "moderate": 4
-    },
-    "predicted_tier_counts": {
-      "disengaged": 16,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "6Pwgss",
-    "n_students": 23,
-    "tier_counts": {
-      "high": 6,
-      "low": 6,
-      "disengaged": 6,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 9,
-      "high": 8,
-      "moderate": 6
-    }
-  },
-  {
-    "room_id": "7Igy2h",
-    "n_students": 13,
-    "tier_counts": {
-      "disengaged": 4,
-      "high": 3,
-      "moderate": 3,
-      "low": 3
-    },
-    "predicted_tier_counts": {
-      "high": 6,
-      "disengaged": 6,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "7WWd3Y",
-    "n_students": 21,
-    "tier_counts": {
-      "disengaged": 6,
-      "moderate": 5,
-      "low": 5,
-      "high": 5
-    },
-    "predicted_tier_counts": {
-      "high": 8,
-      "disengaged": 8,
-      "moderate": 5
-    }
-  },
-  {
-    "room_id": "8QBzCp",
-    "n_students": 25,
-    "tier_counts": {
-      "disengaged": 7,
-      "high": 6,
       "moderate": 6,
       "low": 6
     },
     "predicted_tier_counts": {
-      "moderate": 10,
-      "high": 8,
-      "disengaged": 7
+      "low": 11,
+      "high": 6,
+      "moderate": 4,
+      "disengaged": 3
+    }
+  },
+  {
+    "room_id": "45XzqN",
+    "n_students": 15,
+    "tier_counts": {
+      "low": 4,
+      "disengaged": 4,
+      "high": 4,
+      "moderate": 3
+    },
+    "predicted_tier_counts": {
+      "disengaged": 7,
+      "high": 5,
+      "low": 3
+    }
+  },
+  {
+    "room_id": "49Dfs4",
+    "n_students": 19,
+    "tier_counts": {
+      "disengaged": 5,
+      "low": 5,
+      "high": 5,
+      "moderate": 4
+    },
+    "predicted_tier_counts": {
+      "disengaged": 8,
+      "moderate": 6,
+      "low": 4,
+      "high": 1
+    }
+  },
+  {
+    "room_id": "7Igy2h",
+    "n_students": 17,
+    "tier_counts": {
+      "disengaged": 5,
+      "high": 4,
+      "low": 4,
+      "moderate": 4
+    },
+    "predicted_tier_counts": {
+      "disengaged": 8,
+      "high": 5,
+      "low": 4
+    }
+  },
+  {
+    "room_id": "8QBzCp",
+    "n_students": 49,
+    "tier_counts": {
+      "disengaged": 13,
+      "low": 12,
+      "high": 12,
+      "moderate": 12
+    },
+    "predicted_tier_counts": {
+      "disengaged": 17,
+      "high": 15,
+      "low": 10,
+      "moderate": 7
     }
   },
   {
     "room_id": "A1Fbqn",
-    "n_students": 11,
+    "n_students": 14,
     "tier_counts": {
-      "high": 3,
-      "low": 3,
-      "disengaged": 3,
-      "moderate": 2
+      "disengaged": 4,
+      "high": 4,
+      "moderate": 3,
+      "low": 3
     },
     "predicted_tier_counts": {
       "disengaged": 5,
       "high": 4,
-      "moderate": 2
-    }
-  },
-  {
-    "room_id": "A9Yic2",
-    "n_students": 30,
-    "tier_counts": {
-      "high": 8,
-      "disengaged": 8,
-      "low": 7,
-      "moderate": 7
-    },
-    "predicted_tier_counts": {
-      "disengaged": 19,
-      "high": 8,
-      "moderate": 3
+      "moderate": 3,
+      "low": 2
     }
   },
   {
@@ -259,426 +119,157 @@
       "moderate": 5
     },
     "predicted_tier_counts": {
-      "disengaged": 9,
-      "high": 7,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "AubkS5",
-    "n_students": 22,
-    "tier_counts": {
-      "high": 6,
-      "disengaged": 6,
-      "moderate": 5,
-      "low": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 14,
-      "high": 5,
-      "moderate": 3
-    }
-  },
-  {
-    "room_id": "BfXi2E",
-    "n_students": 12,
-    "tier_counts": {
-      "high": 3,
-      "disengaged": 3,
-      "low": 3,
-      "moderate": 3
-    },
-    "predicted_tier_counts": {
+      "high": 8,
       "disengaged": 5,
-      "moderate": 4,
-      "high": 3
-    }
-  },
-  {
-    "room_id": "Cg9m2X",
-    "n_students": 14,
-    "tier_counts": {
-      "disengaged": 4,
-      "high": 4,
-      "moderate": 3,
-      "low": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 12,
-      "moderate": 1,
-      "high": 1
-    }
-  },
-  {
-    "room_id": "CjdMTD",
-    "n_students": 15,
-    "tier_counts": {
-      "high": 4,
-      "disengaged": 4,
       "low": 4,
       "moderate": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 14,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "DoTlOk",
-    "n_students": 22,
-    "tier_counts": {
-      "high": 6,
-      "disengaged": 6,
-      "low": 5,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 9,
-      "high": 9,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "IgUGHH",
-    "n_students": 26,
-    "tier_counts": {
-      "disengaged": 7,
-      "high": 7,
-      "moderate": 6,
-      "low": 6
-    },
-    "predicted_tier_counts": {
-      "disengaged": 23,
-      "high": 3
-    }
-  },
-  {
-    "room_id": "JEkPXU",
-    "n_students": 22,
-    "tier_counts": {
-      "disengaged": 6,
-      "high": 6,
-      "low": 5,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 16,
-      "high": 4,
-      "moderate": 2
     }
   },
   {
     "room_id": "JxKtNV",
-    "n_students": 10,
+    "n_students": 13,
     "tier_counts": {
-      "disengaged": 3,
+      "disengaged": 4,
+      "low": 3,
       "high": 3,
-      "low": 2,
-      "moderate": 2
+      "moderate": 3
     },
     "predicted_tier_counts": {
-      "disengaged": 6,
+      "disengaged": 8,
       "high": 3,
-      "moderate": 1
+      "moderate": 1,
+      "low": 1
     }
   },
   {
-    "room_id": "KHDL_CQ_225_08",
-    "n_students": 12,
+    "room_id": "KHDL_CQ_225_02",
+    "n_students": 20,
     "tier_counts": {
-      "disengaged": 3,
-      "low": 3,
-      "moderate": 3,
-      "high": 3
+      "moderate": 5,
+      "low": 5,
+      "disengaged": 5,
+      "high": 5
     },
     "predicted_tier_counts": {
-      "disengaged": 9,
+      "disengaged": 10,
+      "low": 7,
       "high": 3
     }
   },
   {
     "room_id": "KP2Mjm",
-    "n_students": 18,
+    "n_students": 21,
     "tier_counts": {
-      "disengaged": 5,
+      "disengaged": 6,
       "low": 5,
-      "high": 5,
-      "moderate": 3
+      "moderate": 5,
+      "high": 5
     },
     "predicted_tier_counts": {
-      "disengaged": 11,
-      "high": 5,
+      "disengaged": 8,
+      "high": 8,
+      "low": 3,
       "moderate": 2
     }
   },
   {
     "room_id": "LASjJe",
-    "n_students": 26,
+    "n_students": 39,
     "tier_counts": {
-      "high": 7,
-      "disengaged": 7,
-      "low": 6,
-      "moderate": 6
+      "high": 10,
+      "disengaged": 10,
+      "low": 10,
+      "moderate": 9
     },
     "predicted_tier_counts": {
-      "disengaged": 12,
-      "moderate": 8,
-      "high": 6
-    }
-  },
-  {
-    "room_id": "Ldovzo",
-    "n_students": 16,
-    "tier_counts": {
-      "moderate": 5,
-      "low": 4,
-      "disengaged": 4,
-      "high": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 8,
-      "high": 5,
-      "moderate": 3
-    }
-  },
-  {
-    "room_id": "Le2MmM",
-    "n_students": 22,
-    "tier_counts": {
-      "disengaged": 6,
-      "high": 6,
-      "low": 5,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 17,
-      "moderate": 3,
-      "high": 2
+      "high": 12,
+      "low": 9,
+      "disengaged": 9,
+      "moderate": 9
     }
   },
   {
     "room_id": "Mp4tdy",
     "n_students": 51,
     "tier_counts": {
+      "low": 14,
       "disengaged": 13,
       "high": 13,
-      "low": 13,
-      "moderate": 12
+      "moderate": 11
     },
     "predicted_tier_counts": {
-      "disengaged": 21,
-      "moderate": 16,
-      "high": 14
+      "disengaged": 17,
+      "high": 14,
+      "moderate": 14,
+      "low": 6
     }
   },
   {
     "room_id": "NFzXSI",
-    "n_students": 13,
+    "n_students": 14,
     "tier_counts": {
+      "high": 4,
       "disengaged": 4,
-      "high": 3,
       "low": 3,
       "moderate": 3
     },
     "predicted_tier_counts": {
-      "disengaged": 11,
+      "disengaged": 7,
+      "moderate": 3,
+      "low": 2,
       "high": 2
     }
   },
   {
-    "room_id": "PZ35JQ",
-    "n_students": 20,
+    "room_id": "cG43T1",
+    "n_students": 10,
     "tier_counts": {
-      "moderate": 5,
-      "high": 5,
-      "disengaged": 5,
-      "low": 5
-    },
-    "predicted_tier_counts": {
-      "high": 9,
-      "disengaged": 8,
-      "moderate": 3
-    }
-  },
-  {
-    "room_id": "QLGK35",
-    "n_students": 11,
-    "tier_counts": {
+      "high": 3,
       "disengaged": 3,
-      "low": 3,
-      "high": 3,
+      "low": 2,
       "moderate": 2
     },
     "predicted_tier_counts": {
-      "disengaged": 10,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "RRG3Jh",
-    "n_students": 28,
-    "tier_counts": {
-      "low": 7,
-      "moderate": 7,
-      "high": 7,
-      "disengaged": 7
-    },
-    "predicted_tier_counts": {
-      "disengaged": 14,
-      "high": 10,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "TYpykB",
-    "n_students": 27,
-    "tier_counts": {
-      "high": 7,
-      "low": 7,
-      "disengaged": 7,
-      "moderate": 6
-    },
-    "predicted_tier_counts": {
-      "disengaged": 26,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "U3sqcq",
-    "n_students": 15,
-    "tier_counts": {
       "disengaged": 4,
-      "high": 4,
-      "low": 4,
-      "moderate": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 9,
-      "high": 5,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "ZR5GJ6",
-    "n_students": 23,
-    "tier_counts": {
-      "low": 6,
-      "disengaged": 6,
-      "high": 6,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 11,
-      "high": 7,
-      "moderate": 5
-    }
-  },
-  {
-    "room_id": "ZrIavJ",
-    "n_students": 17,
-    "tier_counts": {
-      "disengaged": 5,
-      "low": 4,
-      "high": 4,
-      "moderate": 4
-    },
-    "predicted_tier_counts": {
-      "disengaged": 13,
       "high": 3,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "ZsHmDc",
-    "n_students": 52,
-    "tier_counts": {
-      "low": 13,
-      "disengaged": 13,
-      "moderate": 13,
-      "high": 13
-    },
-    "predicted_tier_counts": {
-      "disengaged": 47,
-      "high": 3,
-      "moderate": 2
-    }
-  },
-  {
-    "room_id": "cHHaLE",
-    "n_students": 28,
-    "tier_counts": {
-      "low": 7,
-      "moderate": 7,
-      "disengaged": 7,
-      "high": 7
-    },
-    "predicted_tier_counts": {
-      "disengaged": 23,
-      "high": 3,
-      "moderate": 2
-    }
-  },
-  {
-    "room_id": "fVx47e",
-    "n_students": 39,
-    "tier_counts": {
-      "high": 10,
-      "low": 10,
-      "disengaged": 10,
-      "moderate": 9
-    },
-    "predicted_tier_counts": {
-      "disengaged": 25,
-      "high": 11,
-      "moderate": 3
-    }
-  },
-  {
-    "room_id": "fd9s28",
-    "n_students": 17,
-    "tier_counts": {
-      "disengaged": 5,
-      "low": 4,
-      "moderate": 4,
-      "high": 4
-    },
-    "predicted_tier_counts": {
-      "disengaged": 14,
-      "high": 3
+      "moderate": 2,
+      "low": 1
     }
   },
   {
     "room_id": "iWIr3z",
-    "n_students": 34,
+    "n_students": 35,
     "tier_counts": {
+      "low": 9,
       "disengaged": 9,
       "high": 9,
-      "low": 8,
       "moderate": 8
     },
     "predicted_tier_counts": {
-      "disengaged": 18,
-      "high": 9,
+      "high": 11,
+      "disengaged": 10,
+      "low": 7,
       "moderate": 7
     }
   },
   {
-    "room_id": "jOkz1q",
-    "n_students": 38,
+    "room_id": "myeJCp",
+    "n_students": 30,
     "tier_counts": {
-      "high": 10,
-      "disengaged": 10,
-      "moderate": 9,
-      "low": 9
+      "high": 8,
+      "disengaged": 8,
+      "low": 7,
+      "moderate": 7
     },
     "predicted_tier_counts": {
-      "disengaged": 25,
-      "high": 8,
-      "moderate": 5
+      "high": 11,
+      "disengaged": 11,
+      "low": 4,
+      "moderate": 4
     }
   },
   {
-    "room_id": "kf2NmM",
+    "room_id": "pU0xvo",
     "n_students": 39,
     "tier_counts": {
       "low": 10,
@@ -687,173 +278,74 @@
       "moderate": 9
     },
     "predicted_tier_counts": {
-      "disengaged": 30,
-      "moderate": 5,
-      "high": 4
-    }
-  },
-  {
-    "room_id": "myeJCp",
-    "n_students": 29,
-    "tier_counts": {
-      "disengaged": 8,
-      "low": 7,
-      "high": 7,
-      "moderate": 7
-    },
-    "predicted_tier_counts": {
-      "disengaged": 15,
+      "moderate": 14,
       "high": 10,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "oNwkHP",
-    "n_students": 13,
-    "tier_counts": {
-      "disengaged": 4,
-      "low": 3,
-      "moderate": 3,
-      "high": 3
-    },
-    "predicted_tier_counts": {
       "disengaged": 9,
-      "high": 3,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "pU0xvo",
-    "n_students": 37,
-    "tier_counts": {
-      "disengaged": 10,
-      "moderate": 9,
-      "high": 9,
-      "low": 9
-    },
-    "predicted_tier_counts": {
-      "disengaged": 17,
-      "high": 16,
-      "moderate": 4
+      "low": 6
     }
   },
   {
     "room_id": "pnEnLc",
-    "n_students": 20,
+    "n_students": 19,
     "tier_counts": {
-      "moderate": 5,
       "high": 5,
+      "disengaged": 5,
       "low": 5,
-      "disengaged": 5
+      "moderate": 4
     },
     "predicted_tier_counts": {
       "high": 9,
-      "disengaged": 9,
-      "moderate": 2
+      "disengaged": 7,
+      "moderate": 2,
+      "low": 1
     }
   },
   {
     "room_id": "qUzgza",
-    "n_students": 34,
+    "n_students": 39,
     "tier_counts": {
-      "high": 9,
-      "disengaged": 9,
-      "low": 8,
-      "moderate": 8
-    },
-    "predicted_tier_counts": {
-      "high": 18,
-      "disengaged": 16
-    }
-  },
-  {
-    "room_id": "tQaXjT",
-    "n_students": 16,
-    "tier_counts": {
-      "moderate": 4,
-      "disengaged": 4,
-      "low": 4,
-      "high": 4
-    },
-    "predicted_tier_counts": {
-      "disengaged": 7,
-      "high": 5,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "uDhLQT",
-    "n_students": 68,
-    "tier_counts": {
-      "high": 17,
-      "disengaged": 17,
-      "low": 17,
-      "moderate": 17
-    },
-    "predicted_tier_counts": {
-      "disengaged": 58,
-      "high": 6,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "uhKG4o",
-    "n_students": 46,
-    "tier_counts": {
-      "disengaged": 12,
-      "high": 12,
-      "low": 11,
-      "moderate": 11
-    },
-    "predicted_tier_counts": {
-      "high": 25,
-      "disengaged": 17,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "umeeIo",
-    "n_students": 22,
-    "tier_counts": {
-      "disengaged": 6,
-      "high": 6,
-      "low": 5,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
       "high": 10,
-      "disengaged": 8,
-      "moderate": 4
-    }
-  },
-  {
-    "room_id": "viUAMw",
-    "n_students": 32,
-    "tier_counts": {
-      "high": 8,
-      "low": 8,
-      "disengaged": 8,
-      "moderate": 8
+      "low": 10,
+      "disengaged": 10,
+      "moderate": 9
     },
     "predicted_tier_counts": {
       "disengaged": 17,
       "high": 11,
-      "moderate": 4
+      "moderate": 7,
+      "low": 4
     }
   },
   {
-    "room_id": "yw6EcK",
-    "n_students": 41,
+    "room_id": "tQaXjT",
+    "n_students": 21,
     "tier_counts": {
-      "disengaged": 11,
-      "low": 10,
-      "high": 10,
-      "moderate": 10
+      "disengaged": 6,
+      "moderate": 5,
+      "low": 5,
+      "high": 5
     },
     "predicted_tier_counts": {
-      "disengaged": 33,
-      "high": 5,
-      "moderate": 3
+      "high": 8,
+      "moderate": 6,
+      "disengaged": 4,
+      "low": 3
+    }
+  },
+  {
+    "room_id": "uhKG4o",
+    "n_students": 81,
+    "tier_counts": {
+      "disengaged": 21,
+      "low": 20,
+      "high": 20,
+      "moderate": 20
+    },
+    "predicted_tier_counts": {
+      "disengaged": 26,
+      "high": 24,
+      "moderate": 21,
+      "low": 10
     }
   }
 ]
