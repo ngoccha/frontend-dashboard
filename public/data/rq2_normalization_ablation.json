@@ -1,0 +1,30 @@
+{
+  "binary": [
+    {
+      "feature_set": "With normalization (full)",
+      "n_features": 22,
+      "auc_binary": 0.897,
+      "macro_f1_binary": 0.7909
+    },
+    {
+      "feature_set": "Without normalization (raw)",
+      "n_features": 18,
+      "auc_binary": 0.8661,
+      "macro_f1_binary": 0.8242
+    }
+  ],
+  "multiclass": [
+    {
+      "feature_set": "With normalization (full)",
+      "n_features": 22,
+      "auc_ovr": 0.6998,
+      "macro_f1_mc": 0.4184
+    },
+    {
+      "feature_set": "Without normalization (raw)",
+      "n_features": 18,
+      "auc_ovr": 0.6723,
+      "macro_f1_mc": 0.3403
+    }
+  ]
+}

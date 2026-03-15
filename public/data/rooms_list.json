@@ -11,8 +11,8 @@
     "predicted_tier_counts": {
       "disengaged": 11,
       "moderate": 6,
-      "high": 5,
-      "low": 1
+      "high": 4,
+      "low": 2
     }
   },
   {
@@ -25,10 +25,10 @@
       "low": 6
     },
     "predicted_tier_counts": {
-      "low": 11,
-      "high": 6,
-      "moderate": 4,
-      "disengaged": 3
+      "low": 12,
+      "high": 7,
+      "moderate": 3,
+      "disengaged": 2
     }
   },
   {
@@ -56,10 +56,10 @@
       "moderate": 4
     },
     "predicted_tier_counts": {
-      "disengaged": 8,
-      "moderate": 6,
-      "low": 4,
-      "high": 1
+      "disengaged": 12,
+      "moderate": 5,
+      "high": 1,
+      "low": 1
     }
   },
   {
@@ -87,10 +87,10 @@
       "moderate": 12
     },
     "predicted_tier_counts": {
-      "disengaged": 17,
-      "high": 15,
-      "low": 10,
-      "moderate": 7
+      "disengaged": 20,
+      "high": 13,
+      "moderate": 10,
+      "low": 6
     }
   },
   {
@@ -103,10 +103,10 @@
       "low": 3
     },
     "predicted_tier_counts": {
-      "disengaged": 5,
+      "disengaged": 6,
       "high": 4,
       "moderate": 3,
-      "low": 2
+      "low": 1
     }
   },
   {
@@ -120,9 +120,9 @@
     },
     "predicted_tier_counts": {
       "high": 8,
+      "low": 6,
       "disengaged": 5,
-      "low": 4,
-      "moderate": 3
+      "moderate": 1
     }
   },
   {
@@ -151,9 +151,10 @@
       "high": 5
     },
     "predicted_tier_counts": {
-      "disengaged": 10,
-      "low": 7,
-      "high": 3
+      "disengaged": 9,
+      "low": 6,
+      "high": 4,
+      "moderate": 1
     }
   },
   {
@@ -182,10 +183,10 @@
       "moderate": 9
     },
     "predicted_tier_counts": {
-      "high": 12,
-      "low": 9,
-      "disengaged": 9,
-      "moderate": 9
+      "high": 13,
+      "low": 10,
+      "disengaged": 8,
+      "moderate": 8
     }
   },
   {
@@ -198,10 +199,10 @@
       "moderate": 11
     },
     "predicted_tier_counts": {
-      "disengaged": 17,
-      "high": 14,
-      "moderate": 14,
-      "low": 6
+      "high": 16,
+      "disengaged": 14,
+      "low": 11,
+      "moderate": 10
     }
   },
   {
@@ -214,10 +215,9 @@
       "moderate": 3
     },
     "predicted_tier_counts": {
-      "disengaged": 7,
-      "moderate": 3,
-      "low": 2,
-      "high": 2
+      "disengaged": 8,
+      "moderate": 5,
+      "low": 1
     }
   },
   {
@@ -248,8 +248,8 @@
     "predicted_tier_counts": {
       "high": 11,
       "disengaged": 10,
-      "low": 7,
-      "moderate": 7
+      "low": 9,
+      "moderate": 5
     }
   },
   {
@@ -278,10 +278,10 @@
       "moderate": 9
     },
     "predicted_tier_counts": {
-      "moderate": 14,
-      "high": 10,
-      "disengaged": 9,
-      "low": 6
+      "high": 15,
+      "moderate": 12,
+      "disengaged": 11,
+      "low": 1
     }
   },
   {
@@ -311,8 +311,8 @@
     },
     "predicted_tier_counts": {
       "disengaged": 17,
-      "high": 11,
-      "moderate": 7,
+      "high": 10,
+      "moderate": 8,
       "low": 4
     }
   },
@@ -326,10 +326,10 @@
       "high": 5
     },
     "predicted_tier_counts": {
-      "high": 8,
-      "moderate": 6,
-      "disengaged": 4,
-      "low": 3
+      "high": 9,
+      "low": 7,
+      "moderate": 3,
+      "disengaged": 2
     }
   },
   {
@@ -342,10 +342,10 @@
       "moderate": 20
     },
     "predicted_tier_counts": {
-      "disengaged": 26,
-      "high": 24,
-      "moderate": 21,
-      "low": 10
+      "disengaged": 28,
+      "high": 25,
+      "moderate": 16,
+      "low": 12
     }
   }
 ]

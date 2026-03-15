@@ -14,23 +14,23 @@
     "moderate": 142
   },
   "best_model_binary": "RF",
-  "best_auc_binary": 0.8815,
+  "best_auc_binary": 0.8982,
   "best_f1_binary": 0.7725,
   "best_model_mc": "LogReg_MC",
-  "best_auc_ovr_mc": 0.7072,
-  "best_auc_bin_mc": 0.8744,
-  "best_f1_mc": 0.4372,
-  "train_timestamp": "2026-03-15T18:04:18",
+  "best_auc_ovr_mc": 0.7143,
+  "best_auc_bin_mc": 0.8815,
+  "best_f1_mc": 0.432,
+  "train_timestamp": "2026-03-15T18:53:24",
   "predicted_tier_counts": {
-    "disengaged": 211,
-    "high": 178,
-    "moderate": 121,
-    "low": 103
+    "disengaged": 216,
+    "high": 184,
+    "moderate": 107,
+    "low": 106
   },
   "best_model": "RF",
   "best_accuracy": 0.7759,
   "best_f1": 0.7725,
-  "best_auc": 0.8815,
+  "best_auc": 0.8982,
   "features_used": [
     "n_sessions_early",
     "total_dur_early",
@@ -47,7 +47,13 @@
     "n_sessions_early_pct",
     "n_active_early_pct",
     "total_dur_early_pct",
-    "engagement_score_early"
+    "engagement_score_early",
+    "action_diversity_early",
+    "attend_frac_early",
+    "code_step_ratio_early",
+    "active_frac_early",
+    "help_rate_early",
+    "events_per_session_early"
   ],
   "config": {
     "START_HOUR": 7,
