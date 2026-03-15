@@ -20,7 +20,7 @@
   "best_auc_ovr_mc": 0.7143,
   "best_auc_bin_mc": 0.8815,
   "best_f1_mc": 0.432,
-  "train_timestamp": "2026-03-15T18:53:24",
+  "train_timestamp": "2026-03-15T19:17:18",
   "predicted_tier_counts": {
     "disengaged": 216,
     "high": 184,
