@@ -1,142 +1,162 @@
 [
   {
     "feature": "attend_frac_early",
-    "mean_abs_shap": 1.807251,
-    "mean_shap_high": 0.04145
+    "mean_abs_shap": 0.059341,
+    "mean_shap_high": -0.00061
   },
   {
     "feature": "n_active_early_pct",
-    "mean_abs_shap": 1.334997,
-    "mean_shap_high": -0.00819
-  },
-  {
-    "feature": "n_sessions_early_pct",
-    "mean_abs_shap": 1.269803,
-    "mean_shap_high": -0.11252
-  },
-  {
-    "feature": "n_sessions_early",
-    "mean_abs_shap": 1.00476,
-    "mean_shap_high": -0.04734
-  },
-  {
-    "feature": "mean_dur_early",
-    "mean_abs_shap": 0.881779,
-    "mean_shap_high": 0.06923
-  },
-  {
-    "feature": "total_dur_early_pct",
-    "mean_abs_shap": 0.525131,
-    "mean_shap_high": -0.05416
-  },
-  {
-    "feature": "n_code_early",
-    "mean_abs_shap": 0.503684,
-    "mean_shap_high": 0.04562
-  },
-  {
-    "feature": "total_dur_early",
-    "mean_abs_shap": 0.272439,
-    "mean_shap_high": 0.00038
-  },
-  {
-    "feature": "n_codesubmit_early",
-    "mean_abs_shap": 0.269316,
-    "mean_shap_high": -0.0423
-  },
-  {
-    "feature": "n_quiz_early",
-    "mean_abs_shap": 0.250819,
-    "mean_shap_high": 0.0503
-  },
-  {
-    "feature": "action_diversity_early",
-    "mean_abs_shap": 0.208805,
-    "mean_shap_high": 0.00768
-  },
-  {
-    "feature": "n_active_early",
-    "mean_abs_shap": 0.175723,
-    "mean_shap_high": -0.03373
-  },
-  {
-    "feature": "active_frac_early",
-    "mean_abs_shap": 0.153092,
-    "mean_shap_high": -0.02861
-  },
-  {
-    "feature": "sess_consistency",
-    "mean_abs_shap": 0.122649,
-    "mean_shap_high": -0.01422
-  },
-  {
-    "feature": "n_step_early",
-    "mean_abs_shap": 0.115299,
-    "mean_shap_high": 0.00045
-  },
-  {
-    "feature": "room_type_bin",
-    "mean_abs_shap": 0.071333,
-    "mean_shap_high": -0.01229
-  },
-  {
-    "feature": "first_sess_events",
-    "mean_abs_shap": 0.070091,
-    "mean_shap_high": -0.00514
+    "mean_abs_shap": 0.049009,
+    "mean_shap_high": -0.00299
   },
   {
     "feature": "events_per_session_early",
-    "mean_abs_shap": 0.055425,
-    "mean_shap_high": -0.00094
+    "mean_abs_shap": 0.012116,
+    "mean_shap_high": 0.0007
+  },
+  {
+    "feature": "passive_ratio_early",
+    "mean_abs_shap": 0.010791,
+    "mean_shap_high": -0.00058
+  },
+  {
+    "feature": "n_active_early",
+    "mean_abs_shap": 0.009678,
+    "mean_shap_high": 0.00013
+  },
+  {
+    "feature": "active_frac_early",
+    "mean_abs_shap": 0.009168,
+    "mean_shap_high": -7e-05
+  },
+  {
+    "feature": "submission_intensity_early",
+    "mean_abs_shap": 0.008764,
+    "mean_shap_high": -0.00084
+  },
+  {
+    "feature": "mean_dur_early",
+    "mean_abs_shap": 0.00859,
+    "mean_shap_high": -0.00024
   },
   {
     "feature": "n_total_events_early",
-    "mean_abs_shap": 0.053134,
-    "mean_shap_high": -0.0002
+    "mean_abs_shap": 0.007171,
+    "mean_shap_high": -0.00037
   },
   {
-    "feature": "n_aitutorchat_early",
-    "mean_abs_shap": 0.05155,
-    "mean_shap_high": 0.00861
-  },
-  {
-    "feature": "code_step_ratio_early",
-    "mean_abs_shap": 0.048364,
-    "mean_shap_high": 0.00105
+    "feature": "n_codesubmit_early",
+    "mean_abs_shap": 0.007074,
+    "mean_shap_high": -0.00011
   },
   {
     "feature": "dur_std_early",
-    "mean_abs_shap": 0.029305,
-    "mean_shap_high": -0.00425
+    "mean_abs_shap": 0.006746,
+    "mean_shap_high": -0.00054
   },
   {
-    "feature": "last_sess_events",
-    "mean_abs_shap": 0.02385,
-    "mean_shap_high": -0.00018
+    "feature": "n_code_early",
+    "mean_abs_shap": 0.006616,
+    "mean_shap_high": -3e-05
   },
   {
-    "feature": "help_trend_early",
-    "mean_abs_shap": 0.019254,
-    "mean_shap_high": 0.00702
+    "feature": "total_dur_early",
+    "mean_abs_shap": 0.006532,
+    "mean_shap_high": -0.00036
   },
   {
-    "feature": "n_help_early",
-    "mean_abs_shap": 0.01316,
-    "mean_shap_high": 0.00265
+    "feature": "n_step_early",
+    "mean_abs_shap": 0.005506,
+    "mean_shap_high": -0.00057
   },
   {
-    "feature": "n_raisehand_early",
-    "mean_abs_shap": 0.011112,
-    "mean_shap_high": 0.00504
+    "feature": "code_step_ratio_early",
+    "mean_abs_shap": 0.00514,
+    "mean_shap_high": -0.00056
   },
   {
     "feature": "events_trend_early",
-    "mean_abs_shap": 0.004891,
-    "mean_shap_high": 0.00065
+    "mean_abs_shap": 0.004456,
+    "mean_shap_high": -0.00013
+  },
+  {
+    "feature": "total_dur_early_pct",
+    "mean_abs_shap": 0.004346,
+    "mean_shap_high": -0.00041
+  },
+  {
+    "feature": "sess_consistency",
+    "mean_abs_shap": 0.004325,
+    "mean_shap_high": -5e-05
+  },
+  {
+    "feature": "n_sessions_early_pct",
+    "mean_abs_shap": 0.004282,
+    "mean_shap_high": -0.00018
+  },
+  {
+    "feature": "last_sess_events",
+    "mean_abs_shap": 0.004006,
+    "mean_shap_high": -0.00023
+  },
+  {
+    "feature": "first_sess_events",
+    "mean_abs_shap": 0.003938,
+    "mean_shap_high": -0.00061
+  },
+  {
+    "feature": "n_quiz_early",
+    "mean_abs_shap": 0.003444,
+    "mean_shap_high": -0.00032
+  },
+  {
+    "feature": "active_trend_early",
+    "mean_abs_shap": 0.003443,
+    "mean_shap_high": -0.00033
+  },
+  {
+    "feature": "active_session_rate_early",
+    "mean_abs_shap": 0.003237,
+    "mean_shap_high": 0.00046
+  },
+  {
+    "feature": "action_diversity_early",
+    "mean_abs_shap": 0.002797,
+    "mean_shap_high": 0.00034
+  },
+  {
+    "feature": "n_sessions_early",
+    "mean_abs_shap": 0.002722,
+    "mean_shap_high": -0.00032
+  },
+  {
+    "feature": "n_help_early",
+    "mean_abs_shap": 0.00116,
+    "mean_shap_high": 6e-05
   },
   {
     "feature": "help_rate_early",
-    "mean_abs_shap": 0.004377,
-    "mean_shap_high": -0.00127
+    "mean_abs_shap": 0.000892,
+    "mean_shap_high": 8e-05
+  },
+  {
+    "feature": "help_trend_early",
+    "mean_abs_shap": 0.000623,
+    "mean_shap_high": -2e-05
+  },
+  {
+    "feature": "n_aitutorchat_early",
+    "mean_abs_shap": 0.000603,
+    "mean_shap_high": -1e-05
+  },
+  {
+    "feature": "room_type_bin",
+    "mean_abs_shap": 0.000257,
+    "mean_shap_high": -6e-05
+  },
+  {
+    "feature": "n_raisehand_early",
+    "mean_abs_shap": 0.000194,
+    "mean_shap_high": 1e-05
   }
 ]

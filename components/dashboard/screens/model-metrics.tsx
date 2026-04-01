@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Slider } from "@/components/ui/slider"
 import {
   Select,
   SelectContent,
@@ -18,6 +19,7 @@ import {
   Info,
   Target,
   TrendingUp,
+  ArrowRight,
 } from "lucide-react"
 import {
   LineChart,
@@ -32,6 +34,9 @@ import {
   Legend,
   ResponsiveContainer,
   ReferenceLine,
+  Sankey,
+  Rectangle,
+  Layer,
 } from "recharts"
 import {
   fetchModelComparison,
@@ -39,13 +44,18 @@ import {
   fetchRocData,
   fetchOverview,
   fetchAblation,
+  fetchTransitionMatrix,
+  fetchThresholdAnalysis,
 } from "@/lib/fetch-data"
+import { TIER_COLORS } from "@/lib/utils"
 import type {
   ModelMetric,
   ConfusionMatrices,
   RocData,
   OverviewData,
   AblationData,
+  TransitionMatrix,
+  ThresholdPoint,
 } from "@/lib/types"
 
 const MODEL_COLORS: Record<string, string> = {
@@ -109,7 +119,10 @@ export function ModelMetrics() {
   const [rocData, setRocData] = useState<RocData | null>(null)
   const [overview, setOverview] = useState<OverviewData | null>(null)
   const [ablation, setAblation] = useState<AblationData | null>(null)
+  const [transitionMatrix, setTransitionMatrix] = useState<TransitionMatrix | null>(null)
+  const [thresholdData, setThresholdData] = useState<ThresholdPoint[] | null>(null)
   const [selectedMatrix, setSelectedMatrix] = useState<string>("")
+  const [selectedThreshold, setSelectedThreshold] = useState<number>(0.5)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -119,14 +132,18 @@ export function ModelMetrics() {
       fetchRocData(),
       fetchOverview(),
       fetchAblation(),
+      fetchTransitionMatrix(),
+      fetchThresholdAnalysis(),
     ])
-      .then(([modelsData, matricesData, rocDataResult, overviewData, ablationData]) => {
+      .then(([modelsData, matricesData, rocDataResult, overviewData, ablationData, transitionData, thresholdDataResult]) => {
         setModels(modelsData)
         setMatrices(matricesData)
         setRocData(rocDataResult)
         setOverview(overviewData)
         setAblation(ablationData)
-        setSelectedMatrix(overviewData.best_model)
+        setTransitionMatrix(transitionData)
+        setThresholdData(thresholdDataResult)
+        setSelectedMatrix(overviewData.best_model_mc || overviewData.best_model || Object.keys(matricesData)[0])
       })
       .catch((e) => {
         console.error(e)
@@ -153,7 +170,7 @@ export function ModelMetrics() {
     )
   }
 
-  const bestModel = overview.best_model
+  const bestModel = overview.best_model_mc || overview.best_model || models[0]?.model
   const bestModelData = models.find((m) => m.model === bestModel) ?? models[0]
   const trainSize = bestModelData?.train_size ?? 0
   const testSize = bestModelData?.test_size ?? 0
@@ -186,13 +203,13 @@ export function ModelMetrics() {
   const tierMetrics = [
     {
       tier: "High" as const,
-      precision: bestModelData.precision_high,
-      recall: bestModelData.recall_high,
+      precision: bestModelData?.precision_high ?? 0,
+      recall: bestModelData?.recall_high ?? 0,
     },
     {
       tier: "Disengaged" as const,
-      precision: bestModelData.precision_disengaged,
-      recall: bestModelData.recall_disengaged,
+      precision: bestModelData?.precision_disengaged ?? 0,
+      recall: bestModelData?.recall_disengaged ?? 0,
     },
   ]
 
@@ -315,83 +332,222 @@ export function ModelMetrics() {
         <h3 className="text-lg font-semibold text-foreground mb-4">
           Model Comparison
         </h3>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border">
-                {[
-                  "Model",
-                  "Status",
-                  "Accuracy",
-                  "Macro F1",
-                  "AUC",
-                  "Precision",
-                  "Recall",
-                  "Train / Test",
-                ].map((h) => (
-                  <th
-                    key={h}
-                    className="text-left py-3 px-4 text-sm font-medium text-muted-foreground"
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {models.map((m) => {
-                const status = getModelStatus(m.model, bestModel, m.accuracy)
-                const isBest = m.model === bestModel
-                const isFailed = status.variant === "failed"
-                return (
-                  <tr
-                    key={m.model}
-                    className={`border-b border-border/50 ${
-                      isBest
-                        ? "bg-primary/5 font-semibold"
-                        : isFailed
-                          ? "bg-destructive/5"
+        
+        {/* Binary Models Section */}
+        <div className="mb-6">
+          <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+            <Badge variant="outline" className="bg-blue-500/10 text-blue-600 border-blue-500">Binary Classification</Badge>
+            <span className="text-xs text-muted-foreground font-normal">Disengaged vs High</span>
+          </h4>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-border">
+                  {[
+                    "Model",
+                    "Status",
+                    "Accuracy",
+                    "Macro F1",
+                    "AUC",
+                    "Precision",
+                    "Recall",
+                    "Train / Test",
+                  ].map((h) => (
+                    <th
+                      key={h}
+                      className="text-left py-3 px-4 text-sm font-medium text-muted-foreground"
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {models.filter(m => m.type === 'binary').map((m) => {
+                  const isBest = m.model === overview.best_model_binary
+                  return (
+                    <tr
+                      key={m.model}
+                      className={`border-b border-border/50 ${
+                        isBest
+                          ? "bg-primary/5 font-semibold"
                           : "hover:bg-muted/30"
-                    }`}
-                  >
-                    <td className="py-3 px-4 text-sm text-foreground">
-                      <div>
+                      }`}
+                    >
+                      <td className="py-3 px-4 text-sm text-foreground">
                         {formatModelName(m.model)}
-                        {isFailed && (
-                          <p className="text-xs font-normal text-destructive mt-0.5">
-                            Predicts all as disengaged
-                          </p>
-                        )}
-                      </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <StatusBadge status={status} />
-                    </td>
-                    <td className="py-3 px-4 text-sm text-foreground">
-                      {Number((m.accuracy ?? 0) * 100).toFixed(1)}%
-                    </td>
-                    <td className="py-3 px-4 text-sm text-foreground">
-                      {Number(m.macro_f1 ?? 0).toFixed(3)}
-                    </td>
-                    <td className="py-3 px-4 text-sm text-foreground">
-                      {Number(m.auc ?? 0).toFixed(3)}
-                    </td>
-                    <td className="py-3 px-4 text-sm text-foreground">
-                      {Number(m.precision_macro ?? 0).toFixed(3)}
-                    </td>
-                    <td className="py-3 px-4 text-sm text-foreground">
-                      {Number(m.recall_macro ?? 0).toFixed(3)}
-                    </td>
-                    <td className="py-3 px-4 text-sm text-muted-foreground">
-                      {m.train_size} / {m.test_size}
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+                      </td>
+                      <td className="py-3 px-4">
+                        {isBest && <StatusBadge status={{ label: "Best", variant: "best" }} />}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number((m.accuracy ?? 0) * 100).toFixed(1)}%
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number(m.macro_f1 ?? 0).toFixed(3)}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number(m.auc ?? 0).toFixed(3)}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number(m.precision_macro ?? 0).toFixed(3)}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number(m.recall_macro ?? 0).toFixed(3)}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-muted-foreground">
+                        {m.train_size} / {m.test_size}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Multiclass Models Section */}
+        <div>
+          <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+            <Badge variant="outline" className="bg-purple-500/10 text-purple-600 border-purple-500">4-Tier Classification</Badge>
+            <span className="text-xs text-muted-foreground font-normal">Disengaged / Low / Moderate / High</span>
+          </h4>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-border">
+                  {[
+                    "Model",
+                    "Status",
+                    "Accuracy",
+                    "Macro F1",
+                    "QWK",
+                    "OvR-AUC",
+                    "Train / Test",
+                  ].map((h) => (
+                    <th
+                      key={h}
+                      className="text-left py-3 px-4 text-sm font-medium text-muted-foreground"
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {models.filter(m => m.type === 'multiclass').map((m) => {
+                  const isBest = m.model === overview.best_model_mc
+                  return (
+                    <tr
+                      key={m.model}
+                      className={`border-b border-border/50 ${
+                        isBest
+                          ? "bg-primary/5 font-semibold"
+                          : "hover:bg-muted/30"
+                      }`}
+                    >
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {formatModelName(m.model)}
+                      </td>
+                      <td className="py-3 px-4">
+                        {isBest && <StatusBadge status={{ label: "Best", variant: "best" }} />}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number((m.accuracy ?? 0) * 100).toFixed(1)}%
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number(m.macro_f1 ?? 0).toFixed(3)}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number(m.qwk ?? 0).toFixed(3)}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-foreground">
+                        {Number(m.auc ?? 0).toFixed(3)}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-muted-foreground">
+                        {m.train_size} / {m.test_size}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </Card>
+
+      {/* Ordinal Regression Models */}
+      {overview.ordinal_models && (
+        <Card className="p-5">
+          <div className="flex items-center gap-2 mb-4">
+            <h3 className="text-lg font-semibold text-foreground">
+              Ordinal Regression Models
+            </h3>
+            <Badge variant="outline" className="text-xs bg-purple-500/10 text-purple-600 border-purple-500">
+              Respects Tier Ordering
+            </Badge>
+          </div>
+          <div className="flex items-start gap-3 mb-4">
+            <Info className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
+            <p className="text-xs text-muted-foreground">
+              Ordinal regression models respect the natural ordering of engagement tiers (disengaged &lt; low &lt; moderate &lt; high).
+              They excel at adjacent accuracy (predictions within 1 tier) but may have lower exact classification accuracy.
+            </p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-border">
+                  {[
+                    "Model",
+                    "QWK",
+                    "MAE",
+                    "Macro F1",
+                    "Adjacent Acc",
+                  ].map((h) => (
+                    <th
+                      key={h}
+                      className="text-left py-3 px-4 text-sm font-medium text-muted-foreground"
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {overview.ordinal_models && Object.entries(overview.ordinal_models).map(([name, metrics]) => (
+                  <tr
+                    key={name}
+                    className="border-b border-border/50 hover:bg-muted/30"
+                  >
+                    <td className="py-3 px-4 text-sm text-foreground font-medium">
+                      {name}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground">
+                      {metrics?.qwk?.toFixed(3) ?? "N/A"}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground">
+                      {metrics?.mae?.toFixed(3) ?? "N/A"}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground">
+                      {metrics?.f1?.toFixed(3) ?? "N/A"}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground">
+                      {metrics?.adj_acc ? `${Number(metrics.adj_acc * 100).toFixed(1)}%` : "N/A"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/30">
+            <p className="text-xs text-amber-600">
+              <strong>Note:</strong> While ordinal models achieve high adjacent accuracy (&gt;86%), 
+              the standard RF_MC model (QWK={overview.best_qwk_mc?.toFixed(3)}) still performs better for exact tier classification.
+            </p>
+          </div>
+        </Card>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Confusion Matrix */}
@@ -506,12 +662,12 @@ export function ModelMetrics() {
                   borderRadius: "8px",
                   fontSize: "12px",
                 }}
-                formatter={(value: number, name: string) => [
-                  Number(value ?? 0).toFixed(3),
+                  formatter={(value: number | undefined, name: string) => [
+                  value != null ? Number(value).toFixed(3) : "N/A",
                   name,
                 ]}
-                labelFormatter={(label: number) =>
-                  `FPR: ${Number(label ?? 0).toFixed(3)}`
+                  labelFormatter={(label: number | undefined) =>
+                  label != null ? `FPR: ${Number(label).toFixed(3)}` : "FPR: N/A"
                 }
               />
               <Legend
@@ -527,23 +683,26 @@ export function ModelMetrics() {
                 strokeDasharray="6 4"
                 strokeOpacity={0.5}
               />
-              {Object.entries(rocData).map(([modelKey, curve]) => (
-                <Line
-                  key={modelKey}
-                  data={curve.fpr.map((f, i) => ({
-                    x: f,
-                    y: curve.tpr[i],
-                  }))}
-                  dataKey="y"
-                  name={`${formatModelName(modelKey)} (AUC=${Number(
-                    curve.auc ?? 0,
-                  ).toFixed(3)})`}
-                  stroke={MODEL_COLORS[modelKey] ?? "#888"}
-                  strokeWidth={2}
-                  dot={false}
-                  isAnimationActive={false}
-                />
-              ))}
+              {Object.entries(rocData).map(([modelKey, curve]) => {
+                if (!curve?.fpr || !curve?.tpr || !Array.isArray(curve.fpr) || !Array.isArray(curve.tpr)) {
+                  return null
+                }
+                return (
+                  <Line
+                    key={modelKey}
+                    data={curve.fpr.map((f, i) => ({
+                      x: f ?? 0,
+                      y: curve.tpr[i] ?? 0,
+                    }))}
+                    dataKey="y"
+                    name={`${formatModelName(modelKey)} (AUC=${curve.auc != null ? Number(curve.auc).toFixed(3) : "N/A"})`}
+                    stroke={MODEL_COLORS[modelKey] ?? "#888"}
+                    strokeWidth={2}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                )
+              })}
             </LineChart>
           </ResponsiveContainer>
         </Card>
@@ -563,7 +722,7 @@ export function ModelMetrics() {
             <BarChart
               data={Object.entries(ablation).map(([name, stats]) => ({
                 name,
-                auc: Number(stats.auc.toFixed(4)),
+                auc: stats?.auc != null ? Number(stats.auc.toFixed(4)) : 0,
               }))}
               margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
             >
@@ -581,7 +740,7 @@ export function ModelMetrics() {
                 tick={{ fill: "hsl(var(--muted-foreground))" }}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(val) => Number(val).toFixed(2)}
+                tickFormatter={(val) => val != null ? Number(val).toFixed(2) : "0"}
               />
               <Tooltip
                 cursor={{ fill: "hsl(var(--muted)/0.3)" }}
@@ -639,10 +798,12 @@ export function ModelMetrics() {
               {tierMetrics.map((metric) => {
                 const precPct = Number((metric.precision ?? 0) * 100).toFixed(1)
                 const recPct = Number((metric.recall ?? 0) * 100).toFixed(1)
+                const precision = metric.precision ?? 0
+                const recall = metric.recall ?? 0
                 const interpretation =
-                  metric.tier === "Disengaged" && metric.precision < 0.3
+                  metric.tier === "Disengaged" && precision < 0.3
                     ? `Precision is only ${precPct}% — model flags many false positives for this tier`
-                    : metric.tier === "High" && metric.recall < 0.6
+                    : metric.tier === "High" && recall < 0.6
                       ? `Recall is ${recPct}% — model misses some high-engagement students`
                       : null
                 return (
@@ -683,6 +844,202 @@ export function ModelMetrics() {
         </div>
       </Card>
 
+      {/* Transition Matrix Visualization & Threshold Analysis */}
+      <div className="grid grid-cols-2 gap-6">
+        {/* Transition Matrix Flow */}
+        {transitionMatrix && (
+          <Card className="p-5">
+            <h3 className="text-lg font-semibold text-foreground mb-1">
+              Early → Final Tier Transitions
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              How student tiers change from early prediction to final label
+            </p>
+            
+            {/* Stability indicator */}
+            <div className="flex items-center gap-2 mb-4 p-3 rounded-lg bg-muted/50">
+              <Target className="w-4 h-4 text-primary" />
+              <span className="text-sm">
+                <span className="font-semibold text-foreground">
+                  {((transitionMatrix.stability ?? 0) * 100).toFixed(1)}%
+                </span>
+                <span className="text-muted-foreground ml-1">stability (students staying in same tier)</span>
+              </span>
+            </div>
+
+            {/* Transition flow visualization */}
+            <div className="space-y-3">
+              {["disengaged", "low", "moderate", "high"].map((fromTier) => {
+                const row = transitionMatrix.counts[fromTier]
+                if (!row) return null
+                const total = row.All || Object.values(row).reduce((a, b) => a + (typeof b === 'number' ? b : 0), 0)
+                
+                return (
+                  <div key={fromTier} className="space-y-1">
+                    <div className="flex items-center gap-2 text-xs">
+                      <span 
+                        className="w-20 font-medium capitalize"
+                        style={{ color: TIER_COLORS[fromTier] }}
+                      >
+                        {fromTier}
+                      </span>
+                      <span className="text-muted-foreground">({total})</span>
+                      <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                    </div>
+                    <div className="flex h-6 rounded overflow-hidden">
+                      {["disengaged", "low", "moderate", "high"].map((toTier) => {
+                        const count = row[toTier] || 0
+                        const pct = total > 0 ? (count / total) * 100 : 0
+                        if (pct < 1) return null
+                        return (
+                          <div
+                            key={toTier}
+                            className="h-full flex items-center justify-center text-[10px] font-medium transition-all hover:opacity-80"
+                            style={{
+                              width: `${pct}%`,
+                              backgroundColor: TIER_COLORS[toTier],
+                              color: toTier === fromTier ? "#000" : "#fff",
+                              borderRight: "1px solid rgba(0,0,0,0.1)",
+                            }}
+                            title={`${fromTier} → ${toTier}: ${count} (${pct != null ? pct.toFixed(1) : "0"}%)`}
+                          >
+                            {pct >= 10 && pct != null && `${pct.toFixed(0)}%`}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Legend */}
+            <div className="flex gap-4 mt-4 pt-3 border-t border-border">
+              {["disengaged", "low", "moderate", "high"].map((tier) => (
+                <div key={tier} className="flex items-center gap-1.5 text-xs">
+                  <div 
+                    className="w-3 h-3 rounded-sm"
+                    style={{ backgroundColor: TIER_COLORS[tier] }}
+                  />
+                  <span className="capitalize text-muted-foreground">{tier}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
+
+        {/* Threshold Analysis */}
+        {thresholdData && thresholdData.length > 0 && (
+          <Card className="p-5">
+            <h3 className="text-lg font-semibold text-foreground mb-1">
+              Threshold Analysis
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Adjust classification threshold to balance precision/recall
+            </p>
+
+            {/* Threshold Slider */}
+            <div className="mb-4 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-medium">Threshold</span>
+                <span className="text-sm font-mono text-primary">{selectedThreshold.toFixed(2)}</span>
+              </div>
+              <Slider
+                value={[selectedThreshold]}
+                onValueChange={([v]) => setSelectedThreshold(v)}
+                min={0}
+                max={1}
+                step={0.05}
+                className="w-full"
+              />
+              
+              {/* Current threshold metrics */}
+              {thresholdData && thresholdData.length > 0 && (() => {
+                const closest = thresholdData.reduce((prev, curr) =>
+                  Math.abs(curr.threshold - selectedThreshold) < Math.abs(prev.threshold - selectedThreshold) ? curr : prev
+                )
+                return (
+                  <div className="grid grid-cols-3 gap-3 mt-3 text-center">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Precision</p>
+                      <p className="text-lg font-bold text-foreground">{((closest?.precision ?? 0) * 100).toFixed(1)}%</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Recall</p>
+                      <p className="text-lg font-bold text-foreground">{((closest?.recall ?? 0) * 100).toFixed(1)}%</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">F1 Score</p>
+                      <p className="text-lg font-bold text-primary">{((closest?.f1 ?? 0) * 100).toFixed(1)}%</p>
+                    </div>
+                  </div>
+                )
+              })()}
+            </div>
+
+            {/* P/R Curve */}
+            <div className="h-48">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={thresholdData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.3 0.02 250)" />
+                  <XAxis 
+                    dataKey="threshold" 
+                    stroke="oklch(0.5 0.02 250)" 
+                    fontSize={10}
+                    label={{ value: "Threshold", position: "bottom", offset: -5, style: { fill: "oklch(0.5 0.02 250)", fontSize: 10 } }}
+                  />
+                  <YAxis 
+                    stroke="oklch(0.5 0.02 250)" 
+                    fontSize={10}
+                    domain={[0, 1]}
+                  />
+                  <Tooltip 
+                    contentStyle={{ 
+                      backgroundColor: "oklch(0.18 0.02 250)", 
+                      border: "1px solid oklch(0.3 0.02 250)",
+                      borderRadius: "8px",
+                      fontSize: "12px"
+                    }}
+                    formatter={(value: number | undefined) => value != null ? `${(value * 100).toFixed(1)}%` : "N/A"}
+                  />
+                  <Legend />
+                  <ReferenceLine 
+                    x={selectedThreshold} 
+                    stroke="oklch(0.7 0.2 280)" 
+                    strokeDasharray="5 5" 
+                    label={{ value: "Selected", fill: "oklch(0.7 0.2 280)", fontSize: 10 }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="precision" 
+                    name="Precision"
+                    stroke={TIER_COLORS.high} 
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="recall" 
+                    name="Recall"
+                    stroke={TIER_COLORS.moderate} 
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="f1" 
+                    name="F1"
+                    stroke="oklch(0.7 0.2 280)" 
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </Card>
+        )}
+      </div>
+
       {/* Best Params per Model */}
       <Card className="p-5">
         <h3 className="text-lg font-semibold text-foreground mb-1">
@@ -719,8 +1076,8 @@ export function ModelMetrics() {
                       </dt>
                       <dd className="font-mono font-medium text-foreground">
                         {typeof value === "number" && value % 1 !== 0
-                          ? Number(value).toFixed(4)
-                          : String(value)}
+                          ? value.toFixed(4)
+                          : String(value ?? "")}
                       </dd>
                     </div>
                   ))}

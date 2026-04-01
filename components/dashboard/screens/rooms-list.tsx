@@ -4,32 +4,14 @@ import { useState, useEffect, useMemo } from "react"
 import { Card } from "@/components/ui/card"
 import { TierBadge, type TierLevel } from "@/components/dashboard/tier-badge"
 import { Skeleton } from "@/components/ui/skeleton"
-import { AlertCircle, ChevronDown, ChevronRight, Search, Users, X } from "lucide-react"
+import { AlertCircle, ChevronDown, ChevronRight, Search, Users, X, BarChart3 } from "lucide-react"
 import { fetchRooms, fetchStudents } from "@/lib/fetch-data"
+import { TIER_COLORS, TIER_ORDER, isSpam } from "@/lib/utils"
 import type { RoomInfo, StudentRecord } from "@/lib/types"
-
-const TIER_COLORS: Record<string, string> = {
-  high: "oklch(0.7 0.18 145)",
-  moderate: "oklch(0.8 0.16 85)",
-  low: "oklch(0.78 0.12 70)",
-  disengaged: "oklch(0.65 0.18 25)",
-}
-
-const TIER_ORDER = ["disengaged", "low", "moderate", "high"]
 
 const ROOM_TYPE_STYLE: Record<string, string> = {
   weekly: "bg-blue-500/15 text-blue-400 border border-blue-500/30",
   selfpaced: "bg-purple-500/15 text-purple-400 border border-purple-500/30",
-}
-
-function isSpam(s: StudentRecord): boolean {
-  if (s.is_spam !== undefined) return s.is_spam === 1
-  const epm = s.events_per_min_early
-  if (epm !== undefined) return epm > 8
-  const dur = s.total_dur_early ?? 0
-  const events = typeof s.n_active_early === "number" ? s.n_active_early : 0
-  if (dur <= 0 || events <= 0) return false
-  return events / dur > 8
 }
 
 function TierBar({ counts, total }: { counts: Partial<Record<string, number>>; total: number }) {
@@ -48,6 +30,56 @@ function TierBar({ counts, total }: { counts: Partial<Record<string, number>>; t
           />
         )
       })}
+    </div>
+  )
+}
+
+/* Predicted vs Actual comparison bar */
+function ComparisonBar({ 
+  actual, 
+  predicted, 
+  total 
+}: { 
+  actual: Partial<Record<string, number>>
+  predicted: Partial<Record<string, number>>
+  total: number 
+}) {
+  if (total === 0) return null
+  
+  return (
+    <div className="space-y-1">
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] text-muted-foreground w-14">Actual</span>
+        <div className="flex-1 h-1.5 rounded-full overflow-hidden flex bg-secondary/50">
+          {TIER_ORDER.map((key) => {
+            const count = actual[key] ?? 0
+            const pct = (count / total) * 100
+            if (pct === 0) return null
+            return (
+              <div
+                key={key}
+                style={{ width: `${pct}%`, backgroundColor: TIER_COLORS[key] }}
+              />
+            )
+          })}
+        </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] text-muted-foreground w-14">Predicted</span>
+        <div className="flex-1 h-1.5 rounded-full overflow-hidden flex bg-secondary/50">
+          {TIER_ORDER.map((key) => {
+            const count = predicted[key] ?? 0
+            const pct = (count / total) * 100
+            if (pct === 0) return null
+            return (
+              <div
+                key={key}
+                style={{ width: `${pct}%`, backgroundColor: TIER_COLORS[key], opacity: 0.7 }}
+              />
+            )
+          })}
+        </div>
+      </div>
     </div>
   )
 }
@@ -85,15 +117,18 @@ function RoomRow({
   room,
   students,
   query,
+  showComparison,
 }: {
   room: RoomInfo
   students: StudentRecord[]
   query: string
+  showComparison: boolean
 }) {
   const [expanded, setExpanded] = useState(false)
   const isSelfPaced = room.room_type === "selfpaced"
 
   const tierCounts = room.tier_counts ?? {}
+  const predCounts = (room as any).pred_counts ?? {}
   const total = TIER_ORDER.reduce((s, k) => s + ((tierCounts as Record<string, number>)[k] ?? 0), 0)
 
   const roomStudents = useMemo(
@@ -140,16 +175,26 @@ function RoomRow({
           )}
         </td>
         <td className="py-3 px-4 text-sm text-foreground">{room.n_students}</td>
-        <td className="py-3 px-4 w-40">
-          <TierBar counts={tierCounts as Record<string, number>} total={total} />
-          <p className="text-[10px] text-muted-foreground mt-1">
-            {TIER_ORDER.map((k) => {
-              const c = (tierCounts as Record<string, number>)[k] ?? 0
-              return c > 0 ? `${k[0].toUpperCase()}:${c}` : null
-            })
-              .filter(Boolean)
-              .join("  ")}
-          </p>
+        <td className="py-3 px-4 w-48">
+          {showComparison ? (
+            <ComparisonBar 
+              actual={tierCounts as Record<string, number>} 
+              predicted={predCounts as Record<string, number>}
+              total={total}
+            />
+          ) : (
+            <>
+              <TierBar counts={tierCounts as Record<string, number>} total={total} />
+              <p className="text-[10px] text-muted-foreground mt-1">
+                {TIER_ORDER.map((k) => {
+                  const c = (tierCounts as Record<string, number>)[k] ?? 0
+                  return c > 0 ? `${k[0].toUpperCase()}:${c}` : null
+                })
+                  .filter(Boolean)
+                  .join("  ")}
+              </p>
+            </>
+          )}
         </td>
         <td className="py-3 px-4 text-sm text-foreground">
           {Number(room.n_sessions_avg ?? 0).toFixed(1)}
@@ -219,6 +264,7 @@ export function RoomsList() {
   const [loading, setLoading] = useState(true)
   const [query, setQuery] = useState("")
   const [typeFilter, setTypeFilter] = useState<"All" | "weekly" | "selfpaced">("All")
+  const [showComparison, setShowComparison] = useState(false)
 
   useEffect(() => {
     Promise.all([fetchRooms(), fetchStudents()])
@@ -312,6 +358,19 @@ export function RoomsList() {
           ))}
         </div>
 
+        {/* Comparison toggle */}
+        <button
+          onClick={() => setShowComparison((v) => !v)}
+          className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
+            showComparison
+              ? "bg-primary/20 text-primary border-primary/40"
+              : "text-muted-foreground border-border hover:bg-muted/50"
+          }`}
+        >
+          <BarChart3 className="w-3.5 h-3.5" />
+          {showComparison ? "Actual vs Predicted" : "Show Comparison"}
+        </button>
+
         <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
           <Users className="w-4 h-4" />
           <span>{filteredRooms.length} room{filteredRooms.length !== 1 ? "s" : ""}</span>
@@ -346,6 +405,7 @@ export function RoomsList() {
                     room={room}
                     students={students}
                     query={query}
+                    showComparison={showComparison}
                   />
                 ))
               )}

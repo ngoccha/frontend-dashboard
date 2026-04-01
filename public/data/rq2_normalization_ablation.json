@@ -1,18 +1,20 @@
 {
-  "1. Counts Only": {
-    "auc": 0.8586,
-    "std": 0.0459
-  },
-  "2. + Ratios": {
-    "auc": 0.8727,
-    "std": 0.0316
-  },
-  "3. + Temporal": {
-    "auc": 0.8721,
-    "std": 0.0311
-  },
-  "4. + Normalized (ALL)": {
-    "auc": 0.9249,
-    "std": 0.0187
-  }
+  "binary": [
+    {
+      "feature_set": "With normalization (full)",
+      "n_features": 32,
+      "auc_held": 0.9007,
+      "macro_f1_held": 0.8115,
+      "cv_auc_mean": 0.8534,
+      "cv_auc_std": 0.054
+    },
+    {
+      "feature_set": "Without normalization (raw)",
+      "n_features": 17,
+      "auc_held": 0.8006,
+      "macro_f1_held": 0.7089,
+      "cv_auc_mean": 0.7546,
+      "cv_auc_std": 0.0541
+    }
+  ]
 }

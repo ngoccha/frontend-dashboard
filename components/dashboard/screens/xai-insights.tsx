@@ -18,23 +18,18 @@ import {
   fetchFeatureDescriptions,
   fetchShapLocal,
 } from "@/lib/fetch-data"
+import { TIER_TEXT_COLORS, TIER_BG_COLORS } from "@/lib/utils"
 import type {
   ShapFeature,
   FeatureDescriptions,
   ShapLocalExplanation,
 } from "@/lib/types"
 
-const TIER_COLORS: Record<string, string> = {
-  high: "text-emerald-400",
-  moderate: "text-amber-400",
-  low: "text-yellow-400",
-  disengaged: "text-red-400",
-}
-
+// Enhanced tier backgrounds with border colors
 const TIER_BG: Record<string, string> = {
-  high: "bg-emerald-500/15 border-emerald-500/30",
-  moderate: "bg-amber-500/15 border-amber-500/30",
-  low: "bg-yellow-500/15 border-yellow-500/30",
+  high: "bg-green-500/15 border-green-500/30",
+  moderate: "bg-yellow-500/15 border-yellow-500/30",
+  low: "bg-orange-500/15 border-orange-500/30",
   disengaged: "bg-red-500/15 border-red-500/30",
 }
 
@@ -216,7 +211,7 @@ export function XaiInsights() {
                     {student.student_name}
                   </h4>
                   <span
-                    className={`text-xs font-medium capitalize ${TIER_COLORS[student.predicted_tier] ?? "text-muted-foreground"}`}
+                    className={`text-xs font-medium capitalize ${TIER_TEXT_COLORS[student.predicted_tier] ?? "text-muted-foreground"}`}
                   >
                     {student.predicted_tier}
                   </span>

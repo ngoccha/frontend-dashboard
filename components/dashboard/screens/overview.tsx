@@ -42,15 +42,8 @@ import {
   fetchTransitionMatrix,
   fetchStudents,
 } from "@/lib/fetch-data"
-import { hasPrediction } from "@/lib/utils"
+import { hasPrediction, TIER_COLORS } from "@/lib/utils"
 import type { OverviewData, RoomInfo, TransitionMatrix, StudentRecord } from "@/lib/types"
-
-const TIER_COLORS: Record<string, string> = {
-  high: "oklch(0.7 0.18 145)",
-  moderate: "oklch(0.8 0.16 85)",
-  low: "oklch(0.78 0.12 70)",
-  disengaged: "oklch(0.65 0.18 25)",
-}
 
 /* ── Skeleton placeholders ─────────────────────────────── */
 
@@ -161,7 +154,7 @@ export function Overview() {
       : ["disengaged", "low", "moderate", "high"]) ?? []
 
   const totalTierLabels =
-    Object.values(tierCounts).reduce((sum, v) => sum + (v ?? 0), 0) ?? 0
+    Object.values(tierCounts).reduce((sum, v) => (sum ?? 0) + (v ?? 0), 0) ?? 0
 
   const tierData =
     overview && totalTierLabels > 0
@@ -264,32 +257,37 @@ export function Overview() {
             icon={BookOpen}
           />
           <KpiCard
-            title="AI Engine"
-            value={overview?.best_model ?? "N/A"}
-            subtitle="Current architecture"
+            title="Best Binary Model"
+            value={overview?.best_model_binary ?? "N/A"}
+            subtitle={`AUC: ${overview?.best_auc_binary?.toFixed(3) ?? "N/A"}`}
             icon={Brain}
           />
         </div>
       )}
 
       {/* ────────── 2. KEY INSIGHT CARDS ────────── */}
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-6 gap-4">
         {loading ? (
-          Array.from({ length: 5 }).map((_, i) => <KpiSkeleton key={i} />)
+          Array.from({ length: 6 }).map((_, i) => <KpiSkeleton key={i} />)
         ) : (
           <>
             <KpiCard
-              title="Middle Tiers"
-              value={`${(() => {
-                const totalMiddle = tierData
-                  .filter((t) => t.key !== "high" && t.key !== "disengaged")
-                  .reduce((sum, t) => sum + (t.pct ?? 0), 0)
-                return Number.isFinite(totalMiddle)
-                  ? Number(totalMiddle).toFixed(1)
-                  : "0.0"
-              })()}%`}
-              subtitle="Separating extremes from middle tiers"
-              icon={Layers}
+              title="Best MC Model"
+              value={overview?.best_model_mc ?? "N/A"}
+              subtitle={`QWK: ${overview?.best_qwk_mc?.toFixed(3) ?? "N/A"}`}
+              icon={Brain}
+            />
+            <KpiCard
+              title="MC OvR-AUC"
+              value={overview?.best_auc_ovr_mc?.toFixed(3) ?? "N/A"}
+              subtitle="Multiclass One-vs-Rest AUC"
+              icon={Target}
+            />
+            <KpiCard
+              title="Spam Filtered"
+              value={overview?.n_spam_students ?? 0}
+              subtitle={`${((overview?.n_spam_students ?? 0) / ((overview?.cohort_students ?? 0) + (overview?.n_spam_students ?? 0)) * 100).toFixed(1)}% of raw data`}
+              icon={Filter}
             />
             <KpiCard
               title="Label Stability"
@@ -303,18 +301,12 @@ export function Overview() {
               subtitle={selectedRoomId === "All" ? `Of ${overview?.cohort_students ?? 0} students` : `Of ${selectedRoomData?.n_students ?? 0} students`}
               icon={Target}
             />
-            <KpiCard
-              title="Model Accuracy"
-              value={`${Number((overview?.metrics?.accuracy ?? 0) * 100).toFixed(1)}%`}
-              subtitle="Two-Stage Hierarchical Model"
-              icon={Brain}
-            />
-            <div title="Quadratic Weighted Kappa - Chỉ số đánh giá độ tin cậy phân loại cấp bậc">
+            <div title="Best Ordinal Model - LogisticAT QWK">
               <KpiCard
-                title="QWK Score"
-                value={Number(overview?.metrics?.qwk ?? 0).toFixed(4)}
-                subtitle="Agreement with actual tiers"
-                icon={Brain}
+                title="Best Ordinal"
+                value={overview?.ordinal_models?.LogisticAT ? `${overview.ordinal_models.LogisticAT.qwk.toFixed(3)}` : "N/A"}
+                subtitle="LogisticAT (Adjacent Acc: 86%)"
+                icon={Layers}
               />
             </div>
           </>

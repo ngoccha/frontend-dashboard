@@ -15,7 +15,12 @@ export interface OverviewData {
   tier_counts: TierCounts
   predicted_tier_counts?: TierCounts
   n_features?: number
-  best_model: string
+  best_model?: string // Legacy field
+  best_model_binary?: string
+  best_auc_binary?: number
+  best_model_mc?: string
+  best_auc_ovr_mc?: number
+  best_qwk_mc?: number
   best_accuracy?: number
   best_f1?: number
   best_auc?: number
@@ -24,9 +29,32 @@ export interface OverviewData {
     macro_f1: number
     qwk: number
   }
+  ordinal_models?: {
+    LogisticAT?: {
+      qwk: number
+      mae: number
+      f1: number
+      adj_acc: number
+    }
+    LogisticIT?: {
+      qwk: number
+      mae: number
+      f1: number
+      adj_acc: number
+    }
+    OrdinalRidge?: {
+      qwk: number
+      mae: number
+      f1: number
+      adj_acc: number
+    }
+  }
+  best_ordinal?: string
   train_timestamp: string
   features_used: string[]
-  config: Record<string, number | string>
+  config: Record<string, number | string | string[]>
+  session_method?: string
+  room_type_feature?: boolean
 }
 
 export interface RoomInfo {
@@ -130,7 +158,9 @@ export interface ShapFeature {
 export interface ShapLocalExplanation {
   student_id: string
   student_display_id?: string
+  course_id?: string
   room_id: string
+  room_type?: "weekly" | "selfpaced"
   student_name: string
   predicted_tier: string
   // optional true label field; in current JSON we only have label_full at student-level

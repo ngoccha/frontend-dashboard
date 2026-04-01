@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { KpiCard } from "@/components/dashboard/kpi-card"
 import { TierBadge } from "@/components/dashboard/tier-badge"
 import { Skeleton } from "@/components/ui/skeleton"
-import { AlertTriangle, Users, BookOpen, Clock, Lightbulb, AlertCircle } from "lucide-react"
+import { AlertTriangle, Users, BookOpen, Clock, Lightbulb, AlertCircle, Download, ExternalLink } from "lucide-react"
 import {
   Select,
   SelectContent,
@@ -15,25 +15,33 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { fetchStudents } from "@/lib/fetch-data"
+import { isSpam, downloadCSV } from "@/lib/utils"
+import { useDashboard } from "@/lib/dashboard-context"
 import type { StudentRecord } from "@/lib/types"
 
-function isSpam(s: StudentRecord): boolean {
-  if (s.is_spam !== undefined) return s.is_spam === 1
-  const epm = s.events_per_min_early
-  if (epm !== undefined) return epm > 8
-  const dur = s.total_dur_early ?? 0
-  const events = typeof s.n_active_early === "number" ? s.n_active_early : 0
-  if (dur <= 0 || events <= 0) return false
-  return events / dur > 8
-}
-
 export function AtRiskStudents() {
+  const { navigateTo, filters, setFilters } = useDashboard()
   const [students, setStudents] = useState<StudentRecord[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedCourse, setSelectedCourse] = useState<string>("All Courses")
   const [courses, setCourses] = useState<string[]>(["All Courses"])
-  const [hideSpam, setHideSpam] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
+  
+  // Use context filters for persistence across screens
+  const selectedCourse = filters.selectedCourseId === "All" ? "All Courses" : filters.selectedCourseId
+  const hideSpam = filters.hideSpam
+  const searchQuery = filters.searchQuery
+  
+  // Update context when filters change
+  const setSelectedCourse = (value: string) => setFilters({ selectedCourseId: value === "All Courses" ? "All" : value })
+  const setHideSpam = (value: boolean) => setFilters({ hideSpam: value })
+  const setSearchQuery = (value: string) => setFilters({ searchQuery: value })
+
+  const handleStudentClick = (student: StudentRecord) => {
+    navigateTo({
+      screen: "student-detail",
+      studentId: student.student_id,
+      courseId: student.course_id || student.room_id,
+    })
+  }
 
   useEffect(() => {
     fetchStudents()
@@ -109,8 +117,8 @@ export function AtRiskStudents() {
             Monitor and intervene with students predicted as Disengaged or Low
           </p>
         </div>
-        <Select value={selectedCourse} onValueChange={setSelectedCourse}>
-          <SelectTrigger className="w-[200px]">
+        <Select value={selectedCourse} onValueChange={setSelectedCourse} aria-label="Filter by course">
+          <SelectTrigger className="w-[200px]" aria-label="Select course filter">
             <SelectValue placeholder="All Courses" />
           </SelectTrigger>
           <SelectContent>
@@ -168,11 +176,14 @@ export function AtRiskStudents() {
               placeholder="Search student ID, name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search students by ID or name"
               className="w-full pl-9 pr-4 py-1.5 text-sm bg-secondary/50 border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
             />
           </div>
           <button
-            onClick={() => setHideSpam((v) => !v)}
+            onClick={() => setHideSpam(!hideSpam)}
+            aria-label={hideSpam ? "Show high-rate students" : "Hide high-rate students"}
+            aria-pressed={hideSpam}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
               hideSpam
                 ? "bg-amber-500/20 text-amber-400 border-amber-500/40"
@@ -181,6 +192,14 @@ export function AtRiskStudents() {
           >
             <AlertCircle className="w-3.5 h-3.5" />
             {hideSpam ? "Showing filtered" : "Hide high-rate students"}
+          </button>
+          <button
+            onClick={() => downloadCSV(filteredStudents as unknown as Record<string, unknown>[], `at_risk_students_${selectedCourse}_${new Date().toISOString().split('T')[0]}.csv`)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:bg-muted/50 transition-colors"
+            aria-label="Export to CSV"
+          >
+            <Download className="w-3.5 h-3.5" />
+            Export CSV
           </button>
         </div>
 
@@ -195,10 +214,25 @@ export function AtRiskStudents() {
                   Course ID
                 </th>
                 <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                  Room Type
+                </th>
+                <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                   Predicted Tier
                 </th>
                 <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                  P(Disengaged)
+                </th>
+                <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                  P(High)
+                </th>
+                <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                   Risk Level
+                </th>
+                <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                  Sessions
+                </th>
+                <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                  Attend %
                 </th>
                 <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                   Key Warning Signs
@@ -220,21 +254,44 @@ export function AtRiskStudents() {
                 return (
                   <tr
                     key={`${student.student_display_id ?? student.student_id}-${student.course_id || student.room_id}`}
-                    className="border-b border-border/50 hover:bg-muted/30 transition-colors"
+                    className="border-b border-border/50 hover:bg-muted/30 transition-colors cursor-pointer group"
+                    onClick={() => handleStudentClick(student)}
                   >
                     <td className="py-3 px-4">
-                      <div className="font-medium text-foreground">
-                        {student.student_display_id ?? student.student_name}
-                      </div>
-                      <div className="text-xs text-muted-foreground font-mono">
-                        {student.student_id}
+                      <div className="flex items-center gap-2">
+                        <div>
+                          <div className="font-medium text-foreground group-hover:text-primary transition-colors">
+                            {student.student_display_id ?? student.student_name}
+                          </div>
+                          <div className="text-xs text-muted-foreground font-mono">
+                            {student.student_id}
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                       </div>
                     </td>
                     <td className="py-3 px-4 text-sm text-muted-foreground font-mono">
                       {student.course_id || student.room_id}
                     </td>
                     <td className="py-3 px-4">
+                      {student.room_type && (
+                        <Badge variant="outline" className={`text-xs ${
+                          student.room_type === "weekly"
+                            ? "bg-blue-500/10 text-blue-600 border-blue-500/30"
+                            : "bg-purple-500/10 text-purple-600 border-purple-500/30"
+                        }`}>
+                          {student.room_type === "weekly" ? "Weekly" : "Self-paced"}
+                        </Badge>
+                      )}
+                    </td>
+                    <td className="py-3 px-4">
                       <TierBadge tier={isDisengaged ? "Disengaged" : "Low"} />
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground font-medium">
+                      {student.p_disengaged != null ? `${(student.p_disengaged * 100).toFixed(1)}%` : "N/A"}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground font-medium">
+                      {student.p_high != null ? `${(student.p_high * 100).toFixed(1)}%` : "N/A"}
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
@@ -247,6 +304,12 @@ export function AtRiskStudents() {
                           {isDisengaged ? "Critical" : "Warning"}
                         </span>
                       </div>
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground">
+                      {student.n_sessions_early ?? 0}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-foreground">
+                      {student.attend_frac_early != null ? `${(student.attend_frac_early * 100).toFixed(1)}%` : "N/A"}
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex gap-2 flex-wrap">
@@ -279,7 +342,7 @@ export function AtRiskStudents() {
               })}
               {filteredStudents.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="text-center py-8 text-muted-foreground">
+                  <td colSpan={11} className="text-center py-8 text-muted-foreground">
                     No at-risk students found for this selection.
                   </td>
                 </tr>

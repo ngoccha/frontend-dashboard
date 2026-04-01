@@ -1,17 +1,19 @@
 {
   "config": {
+    "INPATH": "events_cleaned_v3.csv",
+    "OUT_DIR": "dashboard_data",
     "START_HOUR": 7,
     "END_HOUR": 22,
     "SESSION_GAP_MIN": 60,
     "MIN_STUDENTS_PER_RSESS": 3,
     "MIN_EVENTS_PER_RSESS": 5,
     "MIN_SESSION_DUR_MIN": 2,
-    "MIN_ROOM_SESSIONS": 8,
-    "MAX_ROOM_SESSIONS": 30,
+    "WEEKLY_GAP_DAYS": 3,
     "INTER_COURSE_GAP_DAYS": 21,
     "MIN_SESSIONS": 3,
-    "MIN_ROOM_SIZE": 8,
-    "EARLY_FRAC": 0.5,
+    "MIN_ACTIVE_DAYS_SP": 5,
+    "MIN_ROOM_SIZE": 10,
+    "EARLY_FRAC": 0.4,
     "MIN_EARLY_SESS": 2,
     "N_TIERS": 4,
     "TIER_NAMES": [
@@ -24,18 +26,54 @@
       0.35,
       0.4,
       0.25
-    ],
-    "INPATH": "events_cleaned_v3.csv",
-    "OUT_DIR": "dashboard_data"
+    ]
   },
-  "train_timestamp": "2026-03-21T13:37:21",
-  "cohort_students": 1398,
-  "cohort_courses": 37,
+  "train_timestamp": "2026-04-02T00:19:22",
+  "total_events_raw": 1092492,
+  "total_students_raw": 4786,
+  "total_rooms_raw": 184,
+  "cohort_students": 1332,
+  "cohort_courses": 32,
+  "cohort_weekly_students": 93,
+  "cohort_sp_students": 1290,
   "tier_counts": {
-    "disengaged": 383,
-    "high": 375,
-    "low": 365,
-    "moderate": 361
+    "disengaged": 357,
+    "moderate": 349,
+    "high": 346,
+    "low": 331
+  },
+  "n_spam_students": 68,
+  "ordinal_models": {
+    "LogisticAT": {
+      "qwk": 0.459,
+      "mae": 0.7889,
+      "f1": 0.3523,
+      "adj_acc": 0.8611
+    },
+    "LogisticIT": {
+      "qwk": 0.4177,
+      "mae": 0.9333,
+      "f1": 0.3443,
+      "adj_acc": 0.7306
+    },
+    "OrdinalRidge": {
+      "qwk": 0.3493,
+      "mae": 0.8361,
+      "f1": 0.2263,
+      "adj_acc": 0.8889
+    }
+  },
+  "best_ordinal": "LogisticAT",
+  "best_model_binary": "RF",
+  "best_auc_binary": 0.8979,
+  "best_model_mc": "RF_MC",
+  "best_auc_ovr_mc": 0.7099,
+  "best_qwk_mc": 0.4932,
+  "predicted_tier_counts": {
+    "disengaged": 432,
+    "high": 340,
+    "moderate": 313,
+    "low": 298
   },
   "features_used": [
     "n_sessions_early",
@@ -59,13 +97,18 @@
     "active_frac_early",
     "help_rate_early",
     "events_per_session_early",
+    "dur_std_early",
     "events_trend_early",
-    "sess_consistency"
+    "help_trend_early",
+    "first_sess_events",
+    "last_sess_events",
+    "sess_consistency",
+    "room_type_bin",
+    "active_session_rate_early",
+    "submission_intensity_early",
+    "passive_ratio_early",
+    "active_trend_early"
   ],
-  "best_model": "Two-Stage Hierarchical (RF + LogReg)",
-  "metrics": {
-    "accuracy": 0.4006,
-    "macro_f1": 0.4105,
-    "qwk": 0.4654
-  }
+  "session_method": "weekly=gap-60min, selfpaced=calendar-day",
+  "room_type_feature": "room_type_bin (weekly=1, selfpaced=0)"
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import type { ScreenName } from "@/lib/dashboard-context"
 import {
   LayoutDashboard,
   Users,
@@ -13,8 +14,8 @@ import {
 } from "lucide-react"
 
 interface SidebarProps {
-  activeItem: string
-  onItemChange: (item: string) => void
+  activeItem: ScreenName
+  onItemChange: (item: ScreenName) => void
 }
 
 const menuItems = [
@@ -52,7 +53,7 @@ export function Sidebar({ activeItem, onItemChange }: SidebarProps) {
             return (
               <li key={item.id}>
                 <button
-                  onClick={() => onItemChange(item.id)}
+                  onClick={() => onItemChange(item.id as ScreenName)}
                   className={cn(
                     "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                     isActive

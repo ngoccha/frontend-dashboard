@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/command"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { useDashboard } from "@/lib/dashboard-context"
 import {
   Check,
   ChevronsUpDown,
@@ -79,6 +80,9 @@ interface StudentDetailProps {
 }
 
 export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) {
+  // Use context for navigation from other screens (e.g., at-risk-students)
+  const { selectedStudentId: contextStudentId, setSelectedStudentId } = useDashboard()
+  
   const [shapData, setShapData] = useState<ShapLocalExplanation[] | null>(null)
   const [sessionsData, setSessionsData] = useState<StudentSessionsDetail | null>(null)
   const [studentsData, setStudentsData] = useState<StudentRecord[] | null>(null)
@@ -90,6 +94,9 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
   const [openRoom, setOpenRoom] = useState(false)
   const [openStudent, setOpenStudent] = useState(false)
 
+  // Determine which studentId to use: prop takes priority, then context
+  const effectiveStudentId = propStudentId ?? contextStudentId
+
   useEffect(() => {
     setLoading(true)
     Promise.all([fetchShapLocal(), fetchStudentSessions(), fetchStudents()])
@@ -98,8 +105,8 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
         setSessionsData(sessions)
         setStudentsData(students)
 
-        if (propStudentId) {
-          const match = shap.find((s) => s.student_id === propStudentId)
+        if (effectiveStudentId) {
+          const match = shap.find((s) => s.student_id === effectiveStudentId)
           if (match) {
             setSelectedKey(`${match.student_id}|${match.room_id}`)
           } else if (shap.length > 0) {
@@ -110,7 +117,15 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
         }
       })
       .finally(() => setLoading(false))
-  }, [propStudentId])
+  }, [effectiveStudentId])
+  
+  // Clear context studentId when component unmounts or user selects different student
+  useEffect(() => {
+    return () => {
+      // Clear context when leaving the page
+      setSelectedStudentId(null)
+    }
+  }, [])
 
   const availableRooms = useMemo(() => {
     if (!shapData) return []

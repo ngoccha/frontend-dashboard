@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Users, Home, Target, BrainCircuit, AlertCircle } from "lucide-react"
+import { Users, Home, Target, BrainCircuit, AlertCircle, Download } from "lucide-react"
 import {
   XAxis,
   YAxis,
@@ -25,15 +25,9 @@ import {
   Legend,
 } from "recharts"
 import { fetchOverview, fetchSessionActivity, fetchStudents, fetchRooms } from "@/lib/fetch-data"
-import { hasPrediction } from "@/lib/utils"
+import { hasPrediction, TIER_COLORS, isSpam, downloadCSV } from "@/lib/utils"
+import { useDashboard } from "@/lib/dashboard-context"
 import type { OverviewData, SessionActivityByTier, StudentRecord, RoomInfo } from "@/lib/types"
-
-const TIER_COLORS: Record<string, string> = {
-  high: "oklch(0.7 0.18 145)",
-  moderate: "oklch(0.8 0.16 85)",
-  low: "oklch(0.78 0.12 70)",
-  disengaged: "oklch(0.65 0.18 25)",
-}
 
 const TIER_LABEL: Record<string, TierLevel> = {
   high: "High",
@@ -50,17 +44,6 @@ const TIER_ROW_BG: Record<string, string> = {
 }
 
 const PAGE_SIZE = 50
-
-function isSpam(s: StudentRecord): boolean {
-  if (s.is_spam !== undefined) return s.is_spam === 1
-  // Fallback: derive from event rate if pipeline flag not present
-  const dur = s.total_dur_early ?? 0
-  const epm = s.events_per_min_early
-  if (epm !== undefined) return epm > 8
-  const events = typeof s.n_active_early === "number" ? s.n_active_early : 0
-  if (dur <= 0 || events <= 0) return false
-  return events / dur > 8
-}
 
 type ActivityMetric = "avg_events" | "avg_dur_min"
 
@@ -176,11 +159,13 @@ function StudentTable({
   showPredictionCols,
   hideSpam,
   searchQuery,
+  onExport,
 }: {
   students: StudentRecord[]
   showPredictionCols: boolean
   hideSpam: boolean
   searchQuery: string
+  onExport?: (data: StudentRecord[]) => void
 }) {
   const [page, setPage] = useState(0)
 
@@ -217,7 +202,19 @@ function StudentTable({
             </span>
           )}
         </span>
-        <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+        <div className="flex items-center gap-2">
+          {onExport && (
+            <button
+              onClick={() => onExport(displayed)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:bg-muted/50 transition-colors"
+              aria-label="Export to CSV"
+            >
+              <Download className="w-3.5 h-3.5" />
+              Export CSV
+            </button>
+          )}
+          <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+        </div>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -233,6 +230,9 @@ function StudentTable({
                 <>
                   <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                     Predicted Tier
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                    Engagement Score
                   </th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                     P(Disengaged)
@@ -262,6 +262,7 @@ function StudentTable({
               const tierDisplay =
                 TIER_LABEL[tierKey] ??
                 ((tierKey.charAt(0).toUpperCase() + tierKey.slice(1)) as TierLevel)
+              const engScore = (s as any).engagement_score_early ?? (s as any).engagement_score
               return (
                 <tr
                   key={`${s.student_id}-${s.course_id}`}
@@ -277,6 +278,22 @@ function StudentTable({
                     <>
                       <td className="py-3 px-4">
                         <TierBadge tier={tierDisplay} />
+                      </td>
+                      <td className="py-3 px-4 text-sm">
+                        {engScore != null ? (
+                          <div className="flex items-center gap-2">
+                            <div className="w-16 h-2 bg-muted rounded-full overflow-hidden">
+                              <div 
+                                className="h-full rounded-full transition-all"
+                                style={{ 
+                                  width: `${(engScore * 100)}%`,
+                                  backgroundColor: engScore >= 0.6 ? TIER_COLORS.high : engScore >= 0.4 ? TIER_COLORS.moderate : engScore >= 0.2 ? TIER_COLORS.low : TIER_COLORS.disengaged
+                                }}
+                              />
+                            </div>
+                            <span className="text-foreground font-mono text-xs">{(engScore * 100).toFixed(0)}%</span>
+                          </div>
+                        ) : "—"}
                       </td>
                       <td className="py-3 px-4 text-sm text-foreground">
                         {s.p_disengaged != null ? `${(s.p_disengaged * 100).toFixed(1)}%` : "—"}
@@ -324,15 +341,26 @@ function StudentTable({
 type RoomTypeFilter = "All" | "weekly" | "selfpaced"
 
 export function ClassEngagement() {
+  // Use global filters from context for persistence across screens
+  const { filters, setFilters } = useDashboard()
+  
   const [overview, setOverview] = useState<OverviewData | null>(null)
   const [activity, setActivity] = useState<SessionActivityByTier | null>(null)
   const [students, setStudents] = useState<StudentRecord[]>([])
   const [loading, setLoading] = useState(true)
   const [activityMetric, setActivityMetric] = useState<ActivityMetric>("avg_events")
-  const [selectedCourseId, setSelectedCourseId] = useState<string>("All")
-  const [roomTypeFilter, setRoomTypeFilter] = useState<RoomTypeFilter>("All")
-  const [hideSpam, setHideSpam] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
+  
+  // Use context filters with local fallback
+  const selectedCourseId = filters.selectedCourseId
+  const roomTypeFilter = filters.roomTypeFilter as RoomTypeFilter
+  const hideSpam = filters.hideSpam
+  const searchQuery = filters.searchQuery
+  
+  // Update context when filters change
+  const setSelectedCourseId = (value: string) => setFilters({ selectedCourseId: value })
+  const setRoomTypeFilter = (value: RoomTypeFilter) => setFilters({ roomTypeFilter: value })
+  const setHideSpam = (value: boolean) => setFilters({ hideSpam: value })
+  const setSearchQuery = (value: string) => setFilters({ searchQuery: value })
 
   useEffect(() => {
     Promise.all([fetchOverview(), fetchSessionActivity(), fetchStudents()])
@@ -437,11 +465,13 @@ export function ClassEngagement() {
         {!loading && (
           <div className="flex items-center gap-3">
             {/* Room type toggle */}
-            <div className="flex rounded-lg border border-border overflow-hidden text-xs">
+            <div className="flex rounded-lg border border-border overflow-hidden text-xs" role="group" aria-label="Room type filter">
               {(["All", "weekly", "selfpaced"] as RoomTypeFilter[]).map((t) => (
                 <button
                   key={t}
                   onClick={() => setRoomTypeFilter(t)}
+                  aria-pressed={roomTypeFilter === t}
+                  aria-label={`Filter by ${t === "All" ? "all room types" : t === "weekly" ? "weekly rooms" : "self-paced rooms"}`}
                   className={`px-3 py-1.5 transition-colors ${
                     roomTypeFilter === t
                       ? "bg-primary text-primary-foreground"
@@ -453,8 +483,8 @@ export function ClassEngagement() {
               ))}
             </div>
             {courseIds.length > 0 && (
-              <Select value={selectedCourseId} onValueChange={setSelectedCourseId}>
-                <SelectTrigger className="w-[200px]">
+              <Select value={selectedCourseId} onValueChange={setSelectedCourseId} aria-label="Filter by course">
+                <SelectTrigger className="w-[200px]" aria-label="Select course filter">
                   <SelectValue placeholder="All Courses" />
                 </SelectTrigger>
                 <SelectContent>
@@ -658,11 +688,14 @@ export function ClassEngagement() {
                 placeholder="Search student ID or name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Search students by ID or name"
                 className="w-full pl-9 pr-4 py-1.5 text-sm bg-secondary/50 border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
             </div>
             <button
-              onClick={() => setHideSpam((v) => !v)}
+              onClick={() => setHideSpam(!hideSpam)}
+              aria-label={hideSpam ? "Show high-rate students" : "Hide high-rate students"}
+              aria-pressed={hideSpam}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                 hideSpam
                   ? "bg-amber-500/20 text-amber-400 border-amber-500/40"
@@ -675,11 +708,23 @@ export function ClassEngagement() {
           </div>
 
           <TabsContent value="predicted">
-            <StudentTable students={predictedStudents} showPredictionCols hideSpam={hideSpam} searchQuery={searchQuery} />
+            <StudentTable 
+              students={predictedStudents} 
+              showPredictionCols 
+              hideSpam={hideSpam} 
+              searchQuery={searchQuery}
+              onExport={(data) => downloadCSV(data as unknown as Record<string, unknown>[], `students_predicted_${selectedCourseId}_${new Date().toISOString().split('T')[0]}.csv`)}
+            />
           </TabsContent>
 
           <TabsContent value="all">
-            <StudentTable students={filteredStudents} showPredictionCols={false} hideSpam={hideSpam} searchQuery={searchQuery} />
+            <StudentTable 
+              students={filteredStudents} 
+              showPredictionCols={false} 
+              hideSpam={hideSpam} 
+              searchQuery={searchQuery}
+              onExport={(data) => downloadCSV(data as unknown as Record<string, unknown>[], `students_all_${selectedCourseId}_${new Date().toISOString().split('T')[0]}.csv`)}
+            />
           </TabsContent>
         </Tabs>
       </Card>
