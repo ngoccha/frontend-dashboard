@@ -90,12 +90,15 @@ export function XaiInsights() {
       <div className="grid grid-cols-2 gap-6">
         {/* Feature Importance Chart */}
         <Card className="p-5">
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-1">
             <Brain className="w-5 h-5 text-primary" />
             <h3 className="text-lg font-semibold text-foreground">
-              Feature Importance (SHAP Values)
+              Key Risk Factors (Disengaged vs High)
             </h3>
           </div>
+          <p className="text-sm text-muted-foreground mb-4">
+            The chart shows the impact of behaviors in the first 5 sessions on the risk of dropping out of the course.
+          </p>
           {isLoading ? (
             <div className="space-y-3 h-80 flex flex-col justify-center">
               {Array.from({ length: 8 }).map((_, i) => (
@@ -205,7 +208,7 @@ export function XaiInsights() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {sampleStudents.map((student) => (
               <div
-                key={student.student_id}
+                key={`${student.student_display_id ?? student.student_id}-${student.room_id}`}
                 className={`p-4 rounded-lg border ${TIER_BG[student.predicted_tier] ?? "bg-secondary/30 border-border/50"}`}
               >
                 <div className="flex items-center justify-between mb-2">

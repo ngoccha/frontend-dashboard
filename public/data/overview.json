@@ -1,36 +1,42 @@
 {
-  "total_events_raw": 1172423,
-  "total_students_raw": 4784,
-  "total_rooms_raw": 197,
-  "date_min": "2024-12-20 14:45:59.236000+07:00",
-  "date_max": "2026-01-07 14:32:12.167000+07:00",
-  "cohort_students": 376,
-  "cohort_rooms": 22,
-  "cohort_courses": 613,
+  "config": {
+    "START_HOUR": 7,
+    "END_HOUR": 22,
+    "SESSION_GAP_MIN": 60,
+    "MIN_STUDENTS_PER_RSESS": 3,
+    "MIN_EVENTS_PER_RSESS": 5,
+    "MIN_SESSION_DUR_MIN": 2,
+    "MIN_ROOM_SESSIONS": 8,
+    "MAX_ROOM_SESSIONS": 30,
+    "INTER_COURSE_GAP_DAYS": 21,
+    "MIN_SESSIONS": 3,
+    "MIN_ROOM_SIZE": 8,
+    "EARLY_FRAC": 0.5,
+    "MIN_EARLY_SESS": 2,
+    "N_TIERS": 4,
+    "TIER_NAMES": [
+      "disengaged",
+      "low",
+      "moderate",
+      "high"
+    ],
+    "SCORE_WEIGHTS": [
+      0.35,
+      0.4,
+      0.25
+    ],
+    "INPATH": "events_cleaned_v3.csv",
+    "OUT_DIR": "dashboard_data"
+  },
+  "train_timestamp": "2026-03-21T13:37:21",
+  "cohort_students": 1398,
+  "cohort_courses": 37,
   "tier_counts": {
-    "disengaged": 163,
-    "high": 156,
-    "low": 152,
-    "moderate": 142
+    "disengaged": 383,
+    "high": 375,
+    "low": 365,
+    "moderate": 361
   },
-  "best_model_binary": "RF",
-  "best_auc_binary": 0.8982,
-  "best_f1_binary": 0.7725,
-  "best_model_mc": "LogReg_MC",
-  "best_auc_ovr_mc": 0.7143,
-  "best_auc_bin_mc": 0.8815,
-  "best_f1_mc": 0.432,
-  "train_timestamp": "2026-03-15T19:17:18",
-  "predicted_tier_counts": {
-    "disengaged": 216,
-    "high": 184,
-    "moderate": 107,
-    "low": 106
-  },
-  "best_model": "RF",
-  "best_accuracy": 0.7759,
-  "best_f1": 0.7725,
-  "best_auc": 0.8982,
   "features_used": [
     "n_sessions_early",
     "total_dur_early",
@@ -47,39 +53,19 @@
     "n_sessions_early_pct",
     "n_active_early_pct",
     "total_dur_early_pct",
-    "engagement_score_early",
     "action_diversity_early",
     "attend_frac_early",
     "code_step_ratio_early",
     "active_frac_early",
     "help_rate_early",
-    "events_per_session_early"
+    "events_per_session_early",
+    "events_trend_early",
+    "sess_consistency"
   ],
-  "config": {
-    "START_HOUR": 7,
-    "END_HOUR": 22,
-    "SESSION_GAP_MIN": 60,
-    "MIN_STUDENTS_PER_RSESS": 3,
-    "MIN_EVENTS_PER_RSESS": 5,
-    "MIN_SESSION_DUR_MIN": 2,
-    "MIN_ROOM_SESSIONS": 8,
-    "MAX_ROOM_SESSIONS": 20,
-    "MIN_SESSIONS": 3,
-    "MIN_ROOM_SIZE": 10,
-    "EARLY_FRAC": 0.5,
-    "MIN_EARLY_SESS": 2,
-    "N_TIERS": 4,
-    "TIER_NAMES": [
-      "disengaged",
-      "low",
-      "moderate",
-      "high"
-    ],
-    "SCORE_WEIGHTS": [
-      0.35,
-      0.4,
-      0.25
-    ],
-    "INPATH": "cleaning_v2.csv"
+  "best_model": "Two-Stage Hierarchical (RF + LogReg)",
+  "metrics": {
+    "accuracy": 0.4006,
+    "macro_f1": 0.4105,
+    "qwk": 0.4654
   }
 }

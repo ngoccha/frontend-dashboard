@@ -6,7 +6,14 @@ import { KpiCard } from "@/components/dashboard/kpi-card"
 import { TierBadge, type TierLevel } from "@/components/dashboard/tier-badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Users, Home, Target, BrainCircuit } from "lucide-react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Users, Home, Target, BrainCircuit, AlertCircle } from "lucide-react"
 import {
   XAxis,
   YAxis,
@@ -17,9 +24,9 @@ import {
   Line,
   Legend,
 } from "recharts"
-import { fetchOverview, fetchSessionActivity, fetchStudents } from "@/lib/fetch-data"
+import { fetchOverview, fetchSessionActivity, fetchStudents, fetchRooms } from "@/lib/fetch-data"
 import { hasPrediction } from "@/lib/utils"
-import type { OverviewData, SessionActivityByTier, StudentRecord } from "@/lib/types"
+import type { OverviewData, SessionActivityByTier, StudentRecord, RoomInfo } from "@/lib/types"
 
 const TIER_COLORS: Record<string, string> = {
   high: "oklch(0.7 0.18 145)",
@@ -43,6 +50,17 @@ const TIER_ROW_BG: Record<string, string> = {
 }
 
 const PAGE_SIZE = 50
+
+function isSpam(s: StudentRecord): boolean {
+  if (s.is_spam !== undefined) return s.is_spam === 1
+  // Fallback: derive from event rate if pipeline flag not present
+  const dur = s.total_dur_early ?? 0
+  const epm = s.events_per_min_early
+  if (epm !== undefined) return epm > 8
+  const events = typeof s.n_active_early === "number" ? s.n_active_early : 0
+  if (dur <= 0 || events <= 0) return false
+  return events / dur > 8
+}
 
 type ActivityMetric = "avg_events" | "avg_dur_min"
 
@@ -148,26 +166,56 @@ function Pagination({
   )
 }
 
+const ROOM_TYPE_BADGE: Record<string, { label: string; className: string }> = {
+  weekly: { label: "Weekly", className: "bg-blue-500/15 text-blue-400 border border-blue-500/30" },
+  selfpaced: { label: "Self-paced", className: "bg-purple-500/15 text-purple-400 border border-purple-500/30" },
+}
+
 function StudentTable({
   students,
   showPredictionCols,
+  hideSpam,
+  searchQuery,
 }: {
   students: StudentRecord[]
   showPredictionCols: boolean
+  hideSpam: boolean
+  searchQuery: string
 }) {
   const [page, setPage] = useState(0)
-  const totalPages = Math.ceil(students.length / PAGE_SIZE)
-  const paged = students.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+
+  const displayed = useMemo(() => {
+    let result = students
+    if (hideSpam) result = result.filter((s) => !isSpam(s))
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase()
+      result = result.filter(
+        (s) =>
+          s.student_id.toLowerCase().includes(q) ||
+          (s.student_display_id ?? "").toLowerCase().includes(q) ||
+          s.student_name.toLowerCase().includes(q),
+      )
+    }
+    return result
+  }, [students, hideSpam, searchQuery])
+
+  const totalPages = Math.ceil(displayed.length / PAGE_SIZE)
+  const paged = displayed.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
 
   useEffect(() => {
     setPage(0)
-  }, [students])
+  }, [students, hideSpam, searchQuery])
 
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
         <span className="text-sm text-muted-foreground">
-          {students.length.toLocaleString()} student{students.length !== 1 ? "s" : ""}
+          {displayed.length.toLocaleString()} student{displayed.length !== 1 ? "s" : ""}
+          {hideSpam && students.filter(isSpam).length > 0 && (
+            <span className="ml-2 text-amber-400">
+              ({students.filter(isSpam).length} high-rate hidden)
+            </span>
+          )}
         </span>
         <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
       </div>
@@ -195,33 +243,35 @@ function StudentTable({
                 </>
               )}
               <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                Room Type
+              </th>
+              <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                 Sessions Early
               </th>
               <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
-                Duration (min)
+                Active Clicks
               </th>
               <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
-                CodeSubmit
-              </th>
-              <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
-                Quiz
+                Flags
               </th>
             </tr>
           </thead>
           <tbody>
             {paged.map((s) => {
-              const tierKey = s.predicted_tier.toLowerCase()
+              const tierKey = s.predicted_tier?.toLowerCase() || 'disengaged'
               const tierDisplay =
                 TIER_LABEL[tierKey] ??
                 ((tierKey.charAt(0).toUpperCase() + tierKey.slice(1)) as TierLevel)
               return (
                 <tr
-                  key={`${s.student_id}-${s.room_id}`}
+                  key={`${s.student_id}-${s.course_id}`}
                   className={`border-b border-border/50 transition-colors hover:bg-muted/30 ${
                     showPredictionCols ? (TIER_ROW_BG[tierKey] ?? "") : ""
                   }`}
                 >
-                  <td className="py-3 px-4 text-sm font-mono text-foreground">{s.student_id}</td>
+                  <td className="py-3 px-4 text-sm font-mono text-foreground">
+                    {s.student_display_id ?? s.student_id}
+                  </td>
                   <td className="py-3 px-4 text-sm text-foreground">{s.student_name}</td>
                   {showPredictionCols && (
                     <>
@@ -236,12 +286,26 @@ function StudentTable({
                       </td>
                     </>
                   )}
-                  <td className="py-3 px-4 text-sm text-foreground">{s.n_sessions_early}</td>
-                  <td className="py-3 px-4 text-sm text-foreground">
-                    {Math.round(s.total_dur_early)}
+                  <td className="py-3 px-4">
+                    {s.room_type ? (
+                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${ROOM_TYPE_BADGE[s.room_type]?.className ?? ""}`}>
+                        {ROOM_TYPE_BADGE[s.room_type]?.label ?? s.room_type}
+                      </span>
+                    ) : (
+                      <span className="text-muted-foreground text-sm">—</span>
+                    )}
                   </td>
-                  <td className="py-3 px-4 text-sm text-foreground">{s.n_codesubmit_early}</td>
-                  <td className="py-3 px-4 text-sm text-foreground">{s.n_quiz_early}</td>
+                  <td className="py-3 px-4 text-sm text-foreground">{s.n_sessions_early ?? 0}</td>
+                  <td className="py-3 px-4 text-sm text-foreground">
+                    {s.n_active_early ?? "—"}
+                  </td>
+                  <td className="py-3 px-4">
+                    {isSpam(s) && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full font-medium bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                        High event rate
+                      </span>
+                    )}
+                  </td>
                 </tr>
               )
             })}
@@ -257,12 +321,18 @@ function StudentTable({
   )
 }
 
+type RoomTypeFilter = "All" | "weekly" | "selfpaced"
+
 export function ClassEngagement() {
   const [overview, setOverview] = useState<OverviewData | null>(null)
   const [activity, setActivity] = useState<SessionActivityByTier | null>(null)
   const [students, setStudents] = useState<StudentRecord[]>([])
   const [loading, setLoading] = useState(true)
   const [activityMetric, setActivityMetric] = useState<ActivityMetric>("avg_events")
+  const [selectedCourseId, setSelectedCourseId] = useState<string>("All")
+  const [roomTypeFilter, setRoomTypeFilter] = useState<RoomTypeFilter>("All")
+  const [hideSpam, setHideSpam] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
     Promise.all([fetchOverview(), fetchSessionActivity(), fetchStudents()])
@@ -274,17 +344,40 @@ export function ClassEngagement() {
       .finally(() => setLoading(false))
   }, [])
 
+  const courseIds = useMemo(() => {
+    if (!students) return []
+    const courses = new Set(students.map(s => s.course_id || s.room_id))
+    return Array.from(courses).sort()
+  }, [students])
+
+  const filteredStudents = useMemo(() => {
+    return students.filter((s) => {
+      const matchCourse = selectedCourseId === "All" || (s.course_id || s.room_id) === selectedCourseId
+      const matchType = roomTypeFilter === "All" || s.room_type === roomTypeFilter
+      return matchCourse && matchType
+    })
+  }, [students, selectedCourseId, roomTypeFilter])
+
   const activityBySession = useMemo(
     () => (activity ? buildActivityChart(activity, activityMetric) : []),
     [activity, activityMetric],
   )
 
   const predictedStudents = useMemo(
-    () => students.filter((s) => hasPrediction(s)),
-    [students],
+    () => filteredStudents.filter((s) => hasPrediction(s)),
+    [filteredStudents],
   )
 
-  const tierCounts = overview?.tier_counts ?? {}
+  const tierCounts = useMemo(() => {
+    if (selectedCourseId === "All") return overview?.tier_counts ?? {}
+    const counts: Record<string, number> = {}
+    filteredStudents.forEach(s => {
+      const tier = s.predicted_tier?.toLowerCase()
+      if (tier) counts[tier] = (counts[tier] || 0) + 1
+    })
+    return counts
+  }, [selectedCourseId, overview, filteredStudents])
+
   const tierOrder =
     (Array.isArray(overview?.config?.TIER_NAMES)
       ? (overview?.config?.TIER_NAMES as string[])
@@ -334,25 +427,68 @@ export function ClassEngagement() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-foreground">Class Engagement</h2>
-        <p className="text-muted-foreground">
-          Monitor student engagement tiers and early activity patterns
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-foreground">Class Engagement</h2>
+          <p className="text-muted-foreground">
+            Monitor student engagement tiers and early activity patterns
+          </p>
+        </div>
+        {!loading && (
+          <div className="flex items-center gap-3">
+            {/* Room type toggle */}
+            <div className="flex rounded-lg border border-border overflow-hidden text-xs">
+              {(["All", "weekly", "selfpaced"] as RoomTypeFilter[]).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setRoomTypeFilter(t)}
+                  className={`px-3 py-1.5 transition-colors ${
+                    roomTypeFilter === t
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {t === "All" ? "All Types" : t === "weekly" ? "Weekly" : "Self-paced"}
+                </button>
+              ))}
+            </div>
+            {courseIds.length > 0 && (
+              <Select value={selectedCourseId} onValueChange={setSelectedCourseId}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="All Courses" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="All">All Courses</SelectItem>
+                  {courseIds.map((c) => (
+                    <SelectItem key={c} value={c}>
+                      {c}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+        )}
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-5 gap-4">
         <KpiCard
           title="Students"
-          value={overview?.cohort_students.toLocaleString() ?? "—"}
-          subtitle="Cohort total"
+          value={filteredStudents.length.toLocaleString()}
+          subtitle={roomTypeFilter === "All" ? "Cohort total" : `${roomTypeFilter === "weekly" ? "Weekly" : "Self-paced"} rooms`}
           icon={Users}
         />
         <KpiCard
-          title="Rooms"
-          value={overview?.cohort_rooms ?? "—"}
-          subtitle={`${overview?.cohort_courses.toLocaleString() ?? "—"} courses`}
+          title="Weekly Rooms"
+          value={overview?.cohort_weekly_students?.toLocaleString() ?? "—"}
+          subtitle="Students in weekly courses"
+          icon={Home}
+        />
+        <KpiCard
+          title="Self-paced Rooms"
+          value={overview?.cohort_sp_students?.toLocaleString() ?? "—"}
+          subtitle="Students in self-paced courses"
           icon={Home}
         />
         <KpiCard
@@ -487,27 +623,63 @@ export function ClassEngagement() {
         </Card>
       </div>
 
+      {/* Self-paced warning */}
+      {roomTypeFilter === "selfpaced" && (
+        <div className="flex items-start gap-2 p-3 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+          <p>
+            <span className="font-semibold">Self-paced rooms are shared across multiple classes.</span>{" "}
+            A student may appear to have few sessions not because they are absent, but because only a subset of the room timeline belongs to their class. Attendance and session count features should be interpreted with caution for self-paced rooms.
+          </p>
+        </div>
+      )}
+
       {/* Student Tables — tabbed predicted vs all */}
       <Card className="p-5">
         <Tabs defaultValue="predicted">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-3">
             <h3 className="text-lg font-semibold text-foreground">Students</h3>
             <TabsList>
               <TabsTrigger value="predicted">
                 With Predictions ({predictedStudents.length})
               </TabsTrigger>
               <TabsTrigger value="all">
-                All Students ({students.length.toLocaleString()})
+                All Students ({filteredStudents.length.toLocaleString()})
               </TabsTrigger>
             </TabsList>
           </div>
 
+          {/* Search + spam toggle */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="relative flex-1 max-w-sm">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><circle cx={11} cy={11} r={8}/><path d="m21 21-4.35-4.35"/></svg>
+              <input
+                type="text"
+                placeholder="Search student ID or name..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-9 pr-4 py-1.5 text-sm bg-secondary/50 border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+            <button
+              onClick={() => setHideSpam((v) => !v)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                hideSpam
+                  ? "bg-amber-500/20 text-amber-400 border-amber-500/40"
+                  : "text-muted-foreground border-border hover:bg-muted/50"
+              }`}
+            >
+              <AlertCircle className="w-3.5 h-3.5" />
+              {hideSpam ? "Showing filtered" : "Hide high-rate students"}
+            </button>
+          </div>
+
           <TabsContent value="predicted">
-            <StudentTable students={predictedStudents} showPredictionCols />
+            <StudentTable students={predictedStudents} showPredictionCols hideSpam={hideSpam} searchQuery={searchQuery} />
           </TabsContent>
 
           <TabsContent value="all">
-            <StudentTable students={students} showPredictionCols={false} />
+            <StudentTable students={filteredStudents} showPredictionCols={false} hideSpam={hideSpam} searchQuery={searchQuery} />
           </TabsContent>
         </Tabs>
       </Card>

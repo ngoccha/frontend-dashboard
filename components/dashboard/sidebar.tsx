@@ -9,6 +9,7 @@ import {
   Brain,
   AlertTriangle,
   GraduationCap,
+  DoorOpen,
 } from "lucide-react"
 
 interface SidebarProps {
@@ -18,6 +19,7 @@ interface SidebarProps {
 
 const menuItems = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },
+  { id: "rooms", label: "Rooms", icon: DoorOpen },
   { id: "class-engagement", label: "Class Engagement", icon: Users },
   { id: "student-detail", label: "Student Detail", icon: UserCircle },
   { id: "model-metrics", label: "Model & Metrics", icon: BarChart3 },
@@ -35,7 +37,7 @@ export function Sidebar({ activeItem, onItemChange }: SidebarProps) {
             <GraduationCap className="w-6 h-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="font-semibold text-sidebar-foreground text-sm">VNCodeLab</h1>
+            <h1 className="font-semibold text-sidebar-foreground text-sm">SmartDoc</h1>
             <p className="text-xs text-muted-foreground">Engagement</p>
           </div>
         </div>

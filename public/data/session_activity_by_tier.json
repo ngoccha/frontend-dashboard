@@ -1,459 +1,4371 @@
 {
-  "disengaged": [
-    {
-      "session_idx": 1,
-      "avg_events": 7.8,
-      "avg_dur_min": 3.86,
-      "n_students": 74
-    },
-    {
-      "session_idx": 2,
-      "avg_events": 7.6,
-      "avg_dur_min": 4.77,
-      "n_students": 65
-    },
-    {
-      "session_idx": 3,
-      "avg_events": 5.78,
-      "avg_dur_min": 2.77,
-      "n_students": 68
-    },
-    {
-      "session_idx": 4,
-      "avg_events": 5.77,
-      "avg_dur_min": 0.8,
-      "n_students": 42
-    },
-    {
-      "session_idx": 5,
-      "avg_events": 7.3,
-      "avg_dur_min": 2.73,
-      "n_students": 62
-    },
-    {
-      "session_idx": 6,
-      "avg_events": 9.64,
-      "avg_dur_min": 7.48,
-      "n_students": 57
-    },
-    {
-      "session_idx": 7,
-      "avg_events": 4.55,
-      "avg_dur_min": 3.68,
-      "n_students": 66
-    },
-    {
-      "session_idx": 8,
-      "avg_events": 5.4,
-      "avg_dur_min": 1.93,
-      "n_students": 63
-    },
-    {
-      "session_idx": 9,
-      "avg_events": 8.13,
-      "avg_dur_min": 3.37,
-      "n_students": 44
-    },
-    {
-      "session_idx": 10,
-      "avg_events": 6.44,
-      "avg_dur_min": 1.87,
-      "n_students": 38
-    },
-    {
-      "session_idx": 11,
-      "avg_events": 6.03,
-      "avg_dur_min": 3.7,
-      "n_students": 38
-    },
-    {
-      "session_idx": 12,
-      "avg_events": 4.17,
-      "avg_dur_min": 0.55,
-      "n_students": 30
-    },
-    {
-      "session_idx": 13,
-      "avg_events": 4.1,
-      "avg_dur_min": 0.6,
-      "n_students": 19
-    },
-    {
-      "session_idx": 14,
-      "avg_events": 7.67,
-      "avg_dur_min": 0.69,
-      "n_students": 18
-    },
-    {
-      "session_idx": 15,
-      "avg_events": 7.69,
-      "avg_dur_min": 0.24,
-      "n_students": 13
-    },
-    {
-      "session_idx": 16,
-      "avg_events": 4.29,
-      "avg_dur_min": 0.36,
-      "n_students": 7
-    },
-    {
-      "session_idx": 17,
-      "avg_events": 4.57,
-      "avg_dur_min": 1.0,
-      "n_students": 7
-    },
-    {
-      "session_idx": 18,
-      "avg_events": 1.43,
-      "avg_dur_min": 0.24,
-      "n_students": 7
-    }
-  ],
-  "high": [
-    {
-      "session_idx": 1,
-      "avg_events": 11.31,
-      "avg_dur_min": 8.61,
-      "n_students": 88
-    },
-    {
-      "session_idx": 2,
-      "avg_events": 12.77,
-      "avg_dur_min": 6.95,
-      "n_students": 90
-    },
-    {
-      "session_idx": 3,
-      "avg_events": 7.87,
-      "avg_dur_min": 4.92,
-      "n_students": 95
-    },
-    {
-      "session_idx": 4,
-      "avg_events": 7.56,
-      "avg_dur_min": 2.22,
-      "n_students": 86
-    },
-    {
-      "session_idx": 5,
-      "avg_events": 13.79,
-      "avg_dur_min": 7.17,
-      "n_students": 98
-    },
-    {
-      "session_idx": 6,
-      "avg_events": 11.92,
-      "avg_dur_min": 9.22,
-      "n_students": 94
-    },
-    {
-      "session_idx": 7,
-      "avg_events": 6.84,
-      "avg_dur_min": 4.36,
-      "n_students": 99
-    },
-    {
-      "session_idx": 8,
-      "avg_events": 7.71,
-      "avg_dur_min": 4.21,
-      "n_students": 98
-    },
-    {
-      "session_idx": 9,
-      "avg_events": 10.35,
-      "avg_dur_min": 8.41,
-      "n_students": 75
-    },
-    {
-      "session_idx": 10,
-      "avg_events": 8.64,
-      "avg_dur_min": 4.02,
-      "n_students": 87
-    },
-    {
-      "session_idx": 11,
-      "avg_events": 14.01,
-      "avg_dur_min": 8.54,
-      "n_students": 77
-    },
-    {
-      "session_idx": 12,
-      "avg_events": 7.0,
-      "avg_dur_min": 2.41,
-      "n_students": 60
-    },
-    {
-      "session_idx": 13,
-      "avg_events": 6.31,
-      "avg_dur_min": 2.06,
-      "n_students": 55
-    },
-    {
-      "session_idx": 14,
-      "avg_events": 7.0,
-      "avg_dur_min": 2.75,
-      "n_students": 49
-    },
-    {
-      "session_idx": 15,
-      "avg_events": 8.19,
-      "avg_dur_min": 3.32,
-      "n_students": 31
-    },
-    {
-      "session_idx": 16,
-      "avg_events": 8.33,
-      "avg_dur_min": 2.32,
-      "n_students": 15
-    },
-    {
-      "session_idx": 17,
-      "avg_events": 6.0,
-      "avg_dur_min": 1.0,
-      "n_students": 14
-    },
-    {
-      "session_idx": 18,
-      "avg_events": 3.57,
-      "avg_dur_min": 1.09,
-      "n_students": 14
-    },
-    {
-      "session_idx": 19,
-      "avg_events": 15.43,
-      "avg_dur_min": 4.42,
-      "n_students": 7
-    }
-  ],
   "low": [
     {
       "session_idx": 1,
-      "avg_events": 9.04,
-      "avg_dur_min": 6.38,
-      "n_students": 76
+      "avg_events": 35.52,
+      "avg_dur_min": 99.03,
+      "n_students": 304
     },
     {
       "session_idx": 2,
-      "avg_events": 8.47,
-      "avg_dur_min": 6.33,
-      "n_students": 81
+      "avg_events": 31.38,
+      "avg_dur_min": 81.0,
+      "n_students": 72
     },
     {
       "session_idx": 3,
-      "avg_events": 7.92,
-      "avg_dur_min": 4.01,
-      "n_students": 62
+      "avg_events": 34.44,
+      "avg_dur_min": 95.33,
+      "n_students": 87
     },
     {
       "session_idx": 4,
-      "avg_events": 6.27,
-      "avg_dur_min": 1.45,
-      "n_students": 71
+      "avg_events": 40.07,
+      "avg_dur_min": 96.59,
+      "n_students": 73
     },
     {
       "session_idx": 5,
-      "avg_events": 12.97,
-      "avg_dur_min": 5.56,
-      "n_students": 89
+      "avg_events": 52.88,
+      "avg_dur_min": 122.01,
+      "n_students": 98
     },
     {
       "session_idx": 6,
-      "avg_events": 11.3,
-      "avg_dur_min": 9.82,
-      "n_students": 77
+      "avg_events": 33.85,
+      "avg_dur_min": 85.5,
+      "n_students": 85
     },
     {
       "session_idx": 7,
-      "avg_events": 8.08,
-      "avg_dur_min": 4.66,
-      "n_students": 69
+      "avg_events": 50.69,
+      "avg_dur_min": 129.73,
+      "n_students": 65
     },
     {
       "session_idx": 8,
-      "avg_events": 8.24,
-      "avg_dur_min": 2.3,
-      "n_students": 64
+      "avg_events": 44.83,
+      "avg_dur_min": 133.78,
+      "n_students": 117
     },
     {
       "session_idx": 9,
-      "avg_events": 7.05,
-      "avg_dur_min": 4.47,
-      "n_students": 54
+      "avg_events": 33.74,
+      "avg_dur_min": 93.78,
+      "n_students": 78
     },
     {
       "session_idx": 10,
-      "avg_events": 8.35,
-      "avg_dur_min": 2.75,
-      "n_students": 44
+      "avg_events": 30.43,
+      "avg_dur_min": 91.32,
+      "n_students": 56
     },
     {
       "session_idx": 11,
-      "avg_events": 12.11,
-      "avg_dur_min": 5.7,
-      "n_students": 63
+      "avg_events": 40.39,
+      "avg_dur_min": 127.11,
+      "n_students": 142
     },
     {
       "session_idx": 12,
-      "avg_events": 6.27,
-      "avg_dur_min": 1.45,
-      "n_students": 45
+      "avg_events": 42.89,
+      "avg_dur_min": 99.23,
+      "n_students": 119
     },
     {
       "session_idx": 13,
-      "avg_events": 6.07,
-      "avg_dur_min": 2.49,
-      "n_students": 28
+      "avg_events": 36.21,
+      "avg_dur_min": 102.01,
+      "n_students": 77
     },
     {
       "session_idx": 14,
-      "avg_events": 5.71,
-      "avg_dur_min": 1.89,
-      "n_students": 34
+      "avg_events": 25.22,
+      "avg_dur_min": 89.34,
+      "n_students": 94
     },
     {
       "session_idx": 15,
-      "avg_events": 4.62,
-      "avg_dur_min": 0.94,
-      "n_students": 16
+      "avg_events": 32.0,
+      "avg_dur_min": 116.26,
+      "n_students": 70
     },
     {
       "session_idx": 16,
-      "avg_events": 3.62,
-      "avg_dur_min": 0.62,
-      "n_students": 8
+      "avg_events": 27.64,
+      "avg_dur_min": 102.71,
+      "n_students": 98
     },
     {
       "session_idx": 17,
-      "avg_events": 2.38,
-      "avg_dur_min": 0.35,
-      "n_students": 8
+      "avg_events": 29.93,
+      "avg_dur_min": 126.87,
+      "n_students": 94
     },
     {
       "session_idx": 18,
-      "avg_events": 2.0,
-      "avg_dur_min": 0.11,
-      "n_students": 6
+      "avg_events": 65.76,
+      "avg_dur_min": 230.06,
+      "n_students": 63
     },
     {
       "session_idx": 19,
+      "avg_events": 31.16,
+      "avg_dur_min": 105.93,
+      "n_students": 102
+    },
+    {
+      "session_idx": 20,
+      "avg_events": 34.66,
+      "avg_dur_min": 117.32,
+      "n_students": 83
+    },
+    {
+      "session_idx": 21,
+      "avg_events": 33.43,
+      "avg_dur_min": 72.93,
+      "n_students": 74
+    },
+    {
+      "session_idx": 22,
+      "avg_events": 31.56,
+      "avg_dur_min": 118.99,
+      "n_students": 77
+    },
+    {
+      "session_idx": 23,
+      "avg_events": 27.37,
+      "avg_dur_min": 105.17,
+      "n_students": 57
+    },
+    {
+      "session_idx": 24,
+      "avg_events": 24.07,
+      "avg_dur_min": 92.38,
+      "n_students": 54
+    },
+    {
+      "session_idx": 25,
+      "avg_events": 26.52,
+      "avg_dur_min": 105.19,
+      "n_students": 64
+    },
+    {
+      "session_idx": 26,
+      "avg_events": 39.18,
+      "avg_dur_min": 148.46,
+      "n_students": 93
+    },
+    {
+      "session_idx": 27,
+      "avg_events": 46.38,
+      "avg_dur_min": 133.48,
+      "n_students": 61
+    },
+    {
+      "session_idx": 28,
+      "avg_events": 19.16,
+      "avg_dur_min": 96.56,
+      "n_students": 50
+    },
+    {
+      "session_idx": 29,
+      "avg_events": 43.88,
+      "avg_dur_min": 155.6,
+      "n_students": 103
+    },
+    {
+      "session_idx": 30,
+      "avg_events": 27.87,
+      "avg_dur_min": 86.4,
+      "n_students": 63
+    },
+    {
+      "session_idx": 31,
+      "avg_events": 14.05,
+      "avg_dur_min": 103.89,
+      "n_students": 65
+    },
+    {
+      "session_idx": 32,
+      "avg_events": 12.16,
+      "avg_dur_min": 59.66,
+      "n_students": 31
+    },
+    {
+      "session_idx": 33,
+      "avg_events": 28.96,
+      "avg_dur_min": 93.4,
+      "n_students": 56
+    },
+    {
+      "session_idx": 34,
+      "avg_events": 24.35,
+      "avg_dur_min": 110.83,
+      "n_students": 48
+    },
+    {
+      "session_idx": 35,
+      "avg_events": 36.26,
+      "avg_dur_min": 125.47,
+      "n_students": 82
+    },
+    {
+      "session_idx": 36,
+      "avg_events": 20.1,
+      "avg_dur_min": 111.72,
+      "n_students": 52
+    },
+    {
+      "session_idx": 37,
+      "avg_events": 42.84,
+      "avg_dur_min": 184.19,
+      "n_students": 38
+    },
+    {
+      "session_idx": 38,
+      "avg_events": 46.3,
+      "avg_dur_min": 167.53,
+      "n_students": 69
+    },
+    {
+      "session_idx": 39,
+      "avg_events": 46.62,
+      "avg_dur_min": 248.93,
+      "n_students": 89
+    },
+    {
+      "session_idx": 40,
+      "avg_events": 12.46,
+      "avg_dur_min": 82.19,
+      "n_students": 46
+    },
+    {
+      "session_idx": 41,
+      "avg_events": 24.55,
+      "avg_dur_min": 146.26,
+      "n_students": 40
+    },
+    {
+      "session_idx": 42,
+      "avg_events": 28.43,
+      "avg_dur_min": 124.1,
+      "n_students": 98
+    },
+    {
+      "session_idx": 43,
+      "avg_events": 17.06,
+      "avg_dur_min": 109.82,
+      "n_students": 65
+    },
+    {
+      "session_idx": 44,
+      "avg_events": 31.04,
+      "avg_dur_min": 156.26,
+      "n_students": 74
+    },
+    {
+      "session_idx": 45,
+      "avg_events": 28.97,
+      "avg_dur_min": 130.04,
+      "n_students": 29
+    },
+    {
+      "session_idx": 46,
+      "avg_events": 17.96,
+      "avg_dur_min": 133.69,
+      "n_students": 49
+    },
+    {
+      "session_idx": 47,
+      "avg_events": 19.58,
+      "avg_dur_min": 89.07,
+      "n_students": 64
+    },
+    {
+      "session_idx": 48,
+      "avg_events": 21.94,
+      "avg_dur_min": 123.74,
+      "n_students": 70
+    },
+    {
+      "session_idx": 49,
+      "avg_events": 19.04,
+      "avg_dur_min": 275.08,
+      "n_students": 52
+    },
+    {
+      "session_idx": 50,
+      "avg_events": 16.29,
+      "avg_dur_min": 109.26,
+      "n_students": 38
+    },
+    {
+      "session_idx": 51,
+      "avg_events": 16.95,
+      "avg_dur_min": 52.56,
+      "n_students": 40
+    },
+    {
+      "session_idx": 52,
+      "avg_events": 18.9,
+      "avg_dur_min": 115.14,
+      "n_students": 39
+    },
+    {
+      "session_idx": 53,
+      "avg_events": 12.62,
+      "avg_dur_min": 94.83,
+      "n_students": 56
+    },
+    {
+      "session_idx": 54,
+      "avg_events": 12.45,
+      "avg_dur_min": 74.8,
+      "n_students": 74
+    },
+    {
+      "session_idx": 55,
+      "avg_events": 8.89,
+      "avg_dur_min": 57.95,
+      "n_students": 35
+    },
+    {
+      "session_idx": 56,
+      "avg_events": 17.37,
+      "avg_dur_min": 72.79,
+      "n_students": 38
+    },
+    {
+      "session_idx": 57,
+      "avg_events": 21.61,
+      "avg_dur_min": 125.58,
+      "n_students": 61
+    },
+    {
+      "session_idx": 58,
+      "avg_events": 18.91,
+      "avg_dur_min": 126.24,
+      "n_students": 34
+    },
+    {
+      "session_idx": 59,
+      "avg_events": 17.02,
+      "avg_dur_min": 157.3,
+      "n_students": 50
+    },
+    {
+      "session_idx": 60,
+      "avg_events": 33.57,
+      "avg_dur_min": 237.68,
+      "n_students": 51
+    },
+    {
+      "session_idx": 61,
+      "avg_events": 67.94,
+      "avg_dur_min": 566.81,
+      "n_students": 49
+    },
+    {
+      "session_idx": 62,
+      "avg_events": 16.03,
+      "avg_dur_min": 173.21,
+      "n_students": 36
+    },
+    {
+      "session_idx": 63,
+      "avg_events": 16.91,
+      "avg_dur_min": 111.69,
+      "n_students": 23
+    },
+    {
+      "session_idx": 64,
+      "avg_events": 11.77,
+      "avg_dur_min": 112.25,
+      "n_students": 61
+    },
+    {
+      "session_idx": 65,
+      "avg_events": 19.94,
+      "avg_dur_min": 173.76,
+      "n_students": 31
+    },
+    {
+      "session_idx": 66,
+      "avg_events": 18.93,
+      "avg_dur_min": 181.3,
+      "n_students": 58
+    },
+    {
+      "session_idx": 67,
+      "avg_events": 29.16,
+      "avg_dur_min": 234.94,
+      "n_students": 81
+    },
+    {
+      "session_idx": 68,
+      "avg_events": 31.4,
+      "avg_dur_min": 270.44,
+      "n_students": 57
+    },
+    {
+      "session_idx": 69,
+      "avg_events": 15.46,
+      "avg_dur_min": 91.04,
+      "n_students": 35
+    },
+    {
+      "session_idx": 70,
+      "avg_events": 41.24,
+      "avg_dur_min": 98.88,
+      "n_students": 34
+    },
+    {
+      "session_idx": 71,
+      "avg_events": 9.58,
+      "avg_dur_min": 52.57,
+      "n_students": 36
+    },
+    {
+      "session_idx": 72,
+      "avg_events": 28.93,
+      "avg_dur_min": 278.85,
+      "n_students": 28
+    },
+    {
+      "session_idx": 73,
+      "avg_events": 19.35,
+      "avg_dur_min": 160.95,
+      "n_students": 40
+    },
+    {
+      "session_idx": 74,
+      "avg_events": 32.39,
+      "avg_dur_min": 285.69,
+      "n_students": 54
+    },
+    {
+      "session_idx": 75,
+      "avg_events": 28.73,
+      "avg_dur_min": 238.33,
+      "n_students": 30
+    },
+    {
+      "session_idx": 76,
+      "avg_events": 95.21,
+      "avg_dur_min": 580.83,
+      "n_students": 29
+    },
+    {
+      "session_idx": 77,
+      "avg_events": 49.42,
+      "avg_dur_min": 363.94,
+      "n_students": 33
+    },
+    {
+      "session_idx": 78,
+      "avg_events": 14.52,
+      "avg_dur_min": 144.84,
+      "n_students": 29
+    },
+    {
+      "session_idx": 79,
+      "avg_events": 17.24,
+      "avg_dur_min": 91.09,
+      "n_students": 45
+    },
+    {
+      "session_idx": 80,
+      "avg_events": 26.04,
+      "avg_dur_min": 204.15,
+      "n_students": 26
+    },
+    {
+      "session_idx": 81,
+      "avg_events": 17.33,
+      "avg_dur_min": 142.46,
+      "n_students": 49
+    },
+    {
+      "session_idx": 82,
+      "avg_events": 26.48,
+      "avg_dur_min": 182.13,
+      "n_students": 67
+    },
+    {
+      "session_idx": 83,
+      "avg_events": 38.34,
+      "avg_dur_min": 248.26,
+      "n_students": 64
+    },
+    {
+      "session_idx": 84,
+      "avg_events": 21.59,
+      "avg_dur_min": 276.16,
+      "n_students": 34
+    },
+    {
+      "session_idx": 85,
+      "avg_events": 12.04,
+      "avg_dur_min": 86.55,
+      "n_students": 24
+    },
+    {
+      "session_idx": 86,
+      "avg_events": 11.14,
+      "avg_dur_min": 74.76,
+      "n_students": 22
+    },
+    {
+      "session_idx": 87,
+      "avg_events": 46.29,
+      "avg_dur_min": 155.55,
+      "n_students": 21
+    },
+    {
+      "session_idx": 88,
+      "avg_events": 32.64,
+      "avg_dur_min": 141.29,
+      "n_students": 25
+    },
+    {
+      "session_idx": 89,
+      "avg_events": 19.05,
+      "avg_dur_min": 193.93,
+      "n_students": 22
+    },
+    {
+      "session_idx": 90,
+      "avg_events": 25.0,
+      "avg_dur_min": 162.39,
+      "n_students": 46
+    },
+    {
+      "session_idx": 91,
+      "avg_events": 26.25,
+      "avg_dur_min": 210.29,
+      "n_students": 12
+    },
+    {
+      "session_idx": 92,
+      "avg_events": 19.83,
+      "avg_dur_min": 92.1,
+      "n_students": 12
+    },
+    {
+      "session_idx": 93,
+      "avg_events": 33.88,
+      "avg_dur_min": 401.79,
+      "n_students": 26
+    },
+    {
+      "session_idx": 94,
+      "avg_events": 46.31,
+      "avg_dur_min": 274.52,
+      "n_students": 48
+    },
+    {
+      "session_idx": 95,
+      "avg_events": 28.2,
+      "avg_dur_min": 131.03,
+      "n_students": 15
+    },
+    {
+      "session_idx": 96,
+      "avg_events": 22.27,
+      "avg_dur_min": 72.01,
+      "n_students": 11
+    },
+    {
+      "session_idx": 97,
+      "avg_events": 21.27,
+      "avg_dur_min": 58.12,
+      "n_students": 11
+    },
+    {
+      "session_idx": 98,
+      "avg_events": 14.81,
+      "avg_dur_min": 127.01,
+      "n_students": 16
+    },
+    {
+      "session_idx": 99,
+      "avg_events": 20.37,
+      "avg_dur_min": 45.41,
+      "n_students": 19
+    },
+    {
+      "session_idx": 100,
+      "avg_events": 30.97,
+      "avg_dur_min": 166.63,
+      "n_students": 36
+    },
+    {
+      "session_idx": 101,
+      "avg_events": 54.7,
+      "avg_dur_min": 310.66,
+      "n_students": 44
+    },
+    {
+      "session_idx": 102,
+      "avg_events": 27.83,
+      "avg_dur_min": 175.57,
+      "n_students": 36
+    },
+    {
+      "session_idx": 103,
+      "avg_events": 47.67,
+      "avg_dur_min": 444.72,
+      "n_students": 48
+    },
+    {
+      "session_idx": 104,
+      "avg_events": 48.94,
+      "avg_dur_min": 184.52,
+      "n_students": 31
+    },
+    {
+      "session_idx": 105,
+      "avg_events": 19.07,
+      "avg_dur_min": 80.92,
+      "n_students": 14
+    },
+    {
+      "session_idx": 106,
+      "avg_events": 15.11,
+      "avg_dur_min": 108.02,
+      "n_students": 18
+    },
+    {
+      "session_idx": 107,
+      "avg_events": 48.0,
+      "avg_dur_min": 19.7,
+      "n_students": 2
+    },
+    {
+      "session_idx": 108,
+      "avg_events": 15.0,
+      "avg_dur_min": 40.33,
+      "n_students": 9
+    },
+    {
+      "session_idx": 109,
+      "avg_events": 26.0,
+      "avg_dur_min": 95.6,
+      "n_students": 7
+    },
+    {
+      "session_idx": 110,
+      "avg_events": 30.39,
+      "avg_dur_min": 167.89,
+      "n_students": 18
+    },
+    {
+      "session_idx": 111,
+      "avg_events": 12.78,
+      "avg_dur_min": 75.89,
+      "n_students": 9
+    },
+    {
+      "session_idx": 112,
+      "avg_events": 47.57,
+      "avg_dur_min": 199.75,
+      "n_students": 7
+    },
+    {
+      "session_idx": 113,
+      "avg_events": 12.33,
+      "avg_dur_min": 100.03,
+      "n_students": 3
+    },
+    {
+      "session_idx": 114,
+      "avg_events": 24.67,
+      "avg_dur_min": 95.07,
+      "n_students": 6
+    },
+    {
+      "session_idx": 115,
+      "avg_events": 18.71,
+      "avg_dur_min": 107.17,
+      "n_students": 7
+    },
+    {
+      "session_idx": 116,
+      "avg_events": 9.45,
+      "avg_dur_min": 86.1,
+      "n_students": 22
+    },
+    {
+      "session_idx": 117,
+      "avg_events": 26.4,
+      "avg_dur_min": 390.38,
+      "n_students": 10
+    },
+    {
+      "session_idx": 118,
+      "avg_events": 25.36,
+      "avg_dur_min": 378.66,
+      "n_students": 14
+    },
+    {
+      "session_idx": 119,
+      "avg_events": 23.85,
+      "avg_dur_min": 532.11,
+      "n_students": 20
+    },
+    {
+      "session_idx": 120,
+      "avg_events": 18.11,
+      "avg_dur_min": 96.6,
+      "n_students": 18
+    },
+    {
+      "session_idx": 121,
+      "avg_events": 25.14,
+      "avg_dur_min": 177.82,
+      "n_students": 7
+    },
+    {
+      "session_idx": 122,
+      "avg_events": 40.86,
+      "avg_dur_min": 310.29,
+      "n_students": 7
+    },
+    {
+      "session_idx": 123,
+      "avg_events": 17.46,
+      "avg_dur_min": 130.43,
+      "n_students": 13
+    },
+    {
+      "session_idx": 124,
+      "avg_events": 29.88,
+      "avg_dur_min": 98.65,
+      "n_students": 8
+    },
+    {
+      "session_idx": 125,
+      "avg_events": 20.33,
+      "avg_dur_min": 57.03,
+      "n_students": 3
+    },
+    {
+      "session_idx": 126,
+      "avg_events": 15.0,
+      "avg_dur_min": 61.95,
+      "n_students": 5
+    },
+    {
+      "session_idx": 127,
+      "avg_events": 96.5,
+      "avg_dur_min": 171.82,
+      "n_students": 4
+    },
+    {
+      "session_idx": 128,
+      "avg_events": 68.14,
+      "avg_dur_min": 313.96,
+      "n_students": 7
+    },
+    {
+      "session_idx": 129,
+      "avg_events": 38.35,
+      "avg_dur_min": 161.88,
+      "n_students": 17
+    },
+    {
+      "session_idx": 130,
+      "avg_events": 88.32,
+      "avg_dur_min": 695.13,
+      "n_students": 22
+    },
+    {
+      "session_idx": 131,
+      "avg_events": 140.36,
+      "avg_dur_min": 596.63,
+      "n_students": 14
+    },
+    {
+      "session_idx": 135,
       "avg_events": 1.0,
       "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 137,
+      "avg_events": 25.5,
+      "avg_dur_min": 57.56,
       "n_students": 2
+    },
+    {
+      "session_idx": 139,
+      "avg_events": 20.6,
+      "avg_dur_min": 39.46,
+      "n_students": 5
+    },
+    {
+      "session_idx": 141,
+      "avg_events": 2.0,
+      "avg_dur_min": 0.01,
+      "n_students": 2
+    },
+    {
+      "session_idx": 143,
+      "avg_events": 16.0,
+      "avg_dur_min": 132.48,
+      "n_students": 1
+    },
+    {
+      "session_idx": 145,
+      "avg_events": 6.0,
+      "avg_dur_min": 0.29,
+      "n_students": 1
+    },
+    {
+      "session_idx": 146,
+      "avg_events": 5.0,
+      "avg_dur_min": 15.94,
+      "n_students": 2
+    },
+    {
+      "session_idx": 147,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 148,
+      "avg_events": 3.67,
+      "avg_dur_min": 40.86,
+      "n_students": 3
+    },
+    {
+      "session_idx": 149,
+      "avg_events": 13.0,
+      "avg_dur_min": 47.51,
+      "n_students": 4
+    },
+    {
+      "session_idx": 150,
+      "avg_events": 9.5,
+      "avg_dur_min": 114.04,
+      "n_students": 2
+    },
+    {
+      "session_idx": 151,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 152,
+      "avg_events": 3.5,
+      "avg_dur_min": 99.19,
+      "n_students": 2
+    },
+    {
+      "session_idx": 153,
+      "avg_events": 38.0,
+      "avg_dur_min": 113.94,
+      "n_students": 1
+    },
+    {
+      "session_idx": 154,
+      "avg_events": 2.0,
+      "avg_dur_min": 48.32,
+      "n_students": 3
+    },
+    {
+      "session_idx": 155,
+      "avg_events": 9.0,
+      "avg_dur_min": 91.88,
+      "n_students": 1
+    },
+    {
+      "session_idx": 156,
+      "avg_events": 3.0,
+      "avg_dur_min": 128.92,
+      "n_students": 1
+    },
+    {
+      "session_idx": 157,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 158,
+      "avg_events": 10.5,
+      "avg_dur_min": 144.53,
+      "n_students": 4
+    },
+    {
+      "session_idx": 159,
+      "avg_events": 17.0,
+      "avg_dur_min": 55.32,
+      "n_students": 2
+    },
+    {
+      "session_idx": 160,
+      "avg_events": 2.0,
+      "avg_dur_min": 132.93,
+      "n_students": 1
+    },
+    {
+      "session_idx": 161,
+      "avg_events": 50.0,
+      "avg_dur_min": 144.74,
+      "n_students": 1
+    },
+    {
+      "session_idx": 162,
+      "avg_events": 3.5,
+      "avg_dur_min": 15.08,
+      "n_students": 2
+    },
+    {
+      "session_idx": 163,
+      "avg_events": 5.4,
+      "avg_dur_min": 140.92,
+      "n_students": 5
+    },
+    {
+      "session_idx": 164,
+      "avg_events": 3.5,
+      "avg_dur_min": 17.43,
+      "n_students": 2
+    },
+    {
+      "session_idx": 165,
+      "avg_events": 1.67,
+      "avg_dur_min": 49.76,
+      "n_students": 3
+    },
+    {
+      "session_idx": 166,
+      "avg_events": 15.5,
+      "avg_dur_min": 189.78,
+      "n_students": 2
+    },
+    {
+      "session_idx": 167,
+      "avg_events": 1.5,
+      "avg_dur_min": 48.8,
+      "n_students": 2
+    },
+    {
+      "session_idx": 168,
+      "avg_events": 53.5,
+      "avg_dur_min": 241.1,
+      "n_students": 2
+    },
+    {
+      "session_idx": 169,
+      "avg_events": 11.67,
+      "avg_dur_min": 128.49,
+      "n_students": 6
+    },
+    {
+      "session_idx": 170,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 171,
+      "avg_events": 26.5,
+      "avg_dur_min": 53.7,
+      "n_students": 2
+    },
+    {
+      "session_idx": 172,
+      "avg_events": 4.0,
+      "avg_dur_min": 5.94,
+      "n_students": 1
+    },
+    {
+      "session_idx": 173,
+      "avg_events": 25.0,
+      "avg_dur_min": 134.58,
+      "n_students": 1
+    },
+    {
+      "session_idx": 175,
+      "avg_events": 3.0,
+      "avg_dur_min": 2.33,
+      "n_students": 1
+    },
+    {
+      "session_idx": 176,
+      "avg_events": 30.0,
+      "avg_dur_min": 103.04,
+      "n_students": 1
+    },
+    {
+      "session_idx": 177,
+      "avg_events": 25.67,
+      "avg_dur_min": 101.87,
+      "n_students": 3
+    },
+    {
+      "session_idx": 178,
+      "avg_events": 14.25,
+      "avg_dur_min": 125.56,
+      "n_students": 4
+    },
+    {
+      "session_idx": 179,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 180,
+      "avg_events": 2.67,
+      "avg_dur_min": 37.64,
+      "n_students": 3
+    },
+    {
+      "session_idx": 181,
+      "avg_events": 1.5,
+      "avg_dur_min": 0.04,
+      "n_students": 2
+    },
+    {
+      "session_idx": 182,
+      "avg_events": 2.0,
+      "avg_dur_min": 46.59,
+      "n_students": 1
+    },
+    {
+      "session_idx": 183,
+      "avg_events": 4.0,
+      "avg_dur_min": 24.57,
+      "n_students": 1
+    },
+    {
+      "session_idx": 184,
+      "avg_events": 18.5,
+      "avg_dur_min": 35.88,
+      "n_students": 2
+    },
+    {
+      "session_idx": 185,
+      "avg_events": 5.5,
+      "avg_dur_min": 21.5,
+      "n_students": 2
+    },
+    {
+      "session_idx": 186,
+      "avg_events": 11.5,
+      "avg_dur_min": 122.74,
+      "n_students": 2
+    },
+    {
+      "session_idx": 187,
+      "avg_events": 3.0,
+      "avg_dur_min": 33.3,
+      "n_students": 1
+    },
+    {
+      "session_idx": 188,
+      "avg_events": 3.0,
+      "avg_dur_min": 18.05,
+      "n_students": 1
+    },
+    {
+      "session_idx": 189,
+      "avg_events": 3.0,
+      "avg_dur_min": 0.11,
+      "n_students": 1
+    },
+    {
+      "session_idx": 190,
+      "avg_events": 6.0,
+      "avg_dur_min": 85.01,
+      "n_students": 1
+    },
+    {
+      "session_idx": 192,
+      "avg_events": 3.0,
+      "avg_dur_min": 0.02,
+      "n_students": 1
+    },
+    {
+      "session_idx": 193,
+      "avg_events": 9.0,
+      "avg_dur_min": 4.75,
+      "n_students": 2
+    },
+    {
+      "session_idx": 194,
+      "avg_events": 8.0,
+      "avg_dur_min": 43.24,
+      "n_students": 3
+    },
+    {
+      "session_idx": 195,
+      "avg_events": 3.0,
+      "avg_dur_min": 244.13,
+      "n_students": 2
+    },
+    {
+      "session_idx": 196,
+      "avg_events": 3.0,
+      "avg_dur_min": 12.64,
+      "n_students": 2
+    },
+    {
+      "session_idx": 197,
+      "avg_events": 29.25,
+      "avg_dur_min": 216.0,
+      "n_students": 4
+    },
+    {
+      "session_idx": 198,
+      "avg_events": 72.5,
+      "avg_dur_min": 475.03,
+      "n_students": 4
+    },
+    {
+      "session_idx": 199,
+      "avg_events": 43.2,
+      "avg_dur_min": 473.44,
+      "n_students": 5
+    },
+    {
+      "session_idx": 200,
+      "avg_events": 4.0,
+      "avg_dur_min": 155.1,
+      "n_students": 1
+    },
+    {
+      "session_idx": 201,
+      "avg_events": 51.33,
+      "avg_dur_min": 173.46,
+      "n_students": 3
+    },
+    {
+      "session_idx": 202,
+      "avg_events": 25.67,
+      "avg_dur_min": 451.78,
+      "n_students": 3
+    },
+    {
+      "session_idx": 203,
+      "avg_events": 72.0,
+      "avg_dur_min": 516.48,
+      "n_students": 8
+    },
+    {
+      "session_idx": 205,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 207,
+      "avg_events": 40.0,
+      "avg_dur_min": 139.68,
+      "n_students": 1
+    },
+    {
+      "session_idx": 213,
+      "avg_events": 6.0,
+      "avg_dur_min": 8.14,
+      "n_students": 1
+    },
+    {
+      "session_idx": 217,
+      "avg_events": 3.0,
+      "avg_dur_min": 1.76,
+      "n_students": 1
+    }
+  ],
+  "disengaged": [
+    {
+      "session_idx": 1,
+      "avg_events": 20.94,
+      "avg_dur_min": 72.68,
+      "n_students": 189
+    },
+    {
+      "session_idx": 2,
+      "avg_events": 29.11,
+      "avg_dur_min": 65.9,
+      "n_students": 54
+    },
+    {
+      "session_idx": 3,
+      "avg_events": 25.83,
+      "avg_dur_min": 89.57,
+      "n_students": 36
+    },
+    {
+      "session_idx": 4,
+      "avg_events": 32.87,
+      "avg_dur_min": 81.28,
+      "n_students": 60
+    },
+    {
+      "session_idx": 5,
+      "avg_events": 54.71,
+      "avg_dur_min": 132.26,
+      "n_students": 52
+    },
+    {
+      "session_idx": 6,
+      "avg_events": 16.53,
+      "avg_dur_min": 78.53,
+      "n_students": 47
+    },
+    {
+      "session_idx": 7,
+      "avg_events": 31.29,
+      "avg_dur_min": 118.0,
+      "n_students": 41
+    },
+    {
+      "session_idx": 8,
+      "avg_events": 30.42,
+      "avg_dur_min": 136.85,
+      "n_students": 69
+    },
+    {
+      "session_idx": 9,
+      "avg_events": 26.4,
+      "avg_dur_min": 77.7,
+      "n_students": 63
+    },
+    {
+      "session_idx": 10,
+      "avg_events": 16.46,
+      "avg_dur_min": 78.28,
+      "n_students": 24
+    },
+    {
+      "session_idx": 11,
+      "avg_events": 31.68,
+      "avg_dur_min": 100.83,
+      "n_students": 95
+    },
+    {
+      "session_idx": 12,
+      "avg_events": 20.77,
+      "avg_dur_min": 88.56,
+      "n_students": 77
+    },
+    {
+      "session_idx": 13,
+      "avg_events": 32.75,
+      "avg_dur_min": 96.31,
+      "n_students": 59
+    },
+    {
+      "session_idx": 14,
+      "avg_events": 20.33,
+      "avg_dur_min": 72.21,
+      "n_students": 57
+    },
+    {
+      "session_idx": 15,
+      "avg_events": 16.96,
+      "avg_dur_min": 99.16,
+      "n_students": 53
+    },
+    {
+      "session_idx": 16,
+      "avg_events": 18.44,
+      "avg_dur_min": 72.31,
+      "n_students": 59
+    },
+    {
+      "session_idx": 17,
+      "avg_events": 19.79,
+      "avg_dur_min": 105.29,
+      "n_students": 58
+    },
+    {
+      "session_idx": 18,
+      "avg_events": 22.5,
+      "avg_dur_min": 87.49,
+      "n_students": 34
+    },
+    {
+      "session_idx": 19,
+      "avg_events": 17.9,
+      "avg_dur_min": 77.82,
+      "n_students": 67
+    },
+    {
+      "session_idx": 20,
+      "avg_events": 17.14,
+      "avg_dur_min": 76.94,
+      "n_students": 58
+    },
+    {
+      "session_idx": 21,
+      "avg_events": 34.04,
+      "avg_dur_min": 58.81,
+      "n_students": 48
+    },
+    {
+      "session_idx": 22,
+      "avg_events": 37.88,
+      "avg_dur_min": 124.92,
+      "n_students": 58
+    },
+    {
+      "session_idx": 23,
+      "avg_events": 17.53,
+      "avg_dur_min": 63.24,
+      "n_students": 49
+    },
+    {
+      "session_idx": 24,
+      "avg_events": 21.36,
+      "avg_dur_min": 77.23,
+      "n_students": 44
+    },
+    {
+      "session_idx": 25,
+      "avg_events": 17.31,
+      "avg_dur_min": 65.65,
+      "n_students": 32
+    },
+    {
+      "session_idx": 26,
+      "avg_events": 22.05,
+      "avg_dur_min": 74.44,
+      "n_students": 44
+    },
+    {
+      "session_idx": 27,
+      "avg_events": 30.25,
+      "avg_dur_min": 106.87,
+      "n_students": 53
+    },
+    {
+      "session_idx": 28,
+      "avg_events": 22.11,
+      "avg_dur_min": 107.87,
+      "n_students": 35
+    },
+    {
+      "session_idx": 29,
+      "avg_events": 30.34,
+      "avg_dur_min": 119.43,
+      "n_students": 87
+    },
+    {
+      "session_idx": 30,
+      "avg_events": 31.6,
+      "avg_dur_min": 98.14,
+      "n_students": 42
+    },
+    {
+      "session_idx": 31,
+      "avg_events": 21.79,
+      "avg_dur_min": 82.6,
+      "n_students": 47
+    },
+    {
+      "session_idx": 32,
+      "avg_events": 8.41,
+      "avg_dur_min": 91.83,
+      "n_students": 27
+    },
+    {
+      "session_idx": 33,
+      "avg_events": 10.97,
+      "avg_dur_min": 97.11,
+      "n_students": 30
+    },
+    {
+      "session_idx": 34,
+      "avg_events": 25.52,
+      "avg_dur_min": 76.74,
+      "n_students": 29
+    },
+    {
+      "session_idx": 35,
+      "avg_events": 38.17,
+      "avg_dur_min": 167.31,
+      "n_students": 66
+    },
+    {
+      "session_idx": 36,
+      "avg_events": 19.51,
+      "avg_dur_min": 87.22,
+      "n_students": 37
+    },
+    {
+      "session_idx": 37,
+      "avg_events": 36.74,
+      "avg_dur_min": 141.2,
+      "n_students": 27
+    },
+    {
+      "session_idx": 38,
+      "avg_events": 52.33,
+      "avg_dur_min": 186.92,
+      "n_students": 39
+    },
+    {
+      "session_idx": 39,
+      "avg_events": 50.59,
+      "avg_dur_min": 257.46,
+      "n_students": 44
+    },
+    {
+      "session_idx": 40,
+      "avg_events": 12.46,
+      "avg_dur_min": 82.2,
+      "n_students": 28
+    },
+    {
+      "session_idx": 41,
+      "avg_events": 35.69,
+      "avg_dur_min": 136.4,
+      "n_students": 35
+    },
+    {
+      "session_idx": 42,
+      "avg_events": 27.75,
+      "avg_dur_min": 110.42,
+      "n_students": 51
+    },
+    {
+      "session_idx": 43,
+      "avg_events": 15.12,
+      "avg_dur_min": 98.32,
+      "n_students": 43
+    },
+    {
+      "session_idx": 44,
+      "avg_events": 46.65,
+      "avg_dur_min": 147.29,
+      "n_students": 62
+    },
+    {
+      "session_idx": 45,
+      "avg_events": 24.28,
+      "avg_dur_min": 73.3,
+      "n_students": 25
+    },
+    {
+      "session_idx": 46,
+      "avg_events": 18.98,
+      "avg_dur_min": 169.17,
+      "n_students": 46
+    },
+    {
+      "session_idx": 47,
+      "avg_events": 22.68,
+      "avg_dur_min": 79.14,
+      "n_students": 40
+    },
+    {
+      "session_idx": 48,
+      "avg_events": 27.88,
+      "avg_dur_min": 116.08,
+      "n_students": 40
+    },
+    {
+      "session_idx": 49,
+      "avg_events": 41.22,
+      "avg_dur_min": 439.48,
+      "n_students": 51
+    },
+    {
+      "session_idx": 50,
+      "avg_events": 15.67,
+      "avg_dur_min": 73.9,
+      "n_students": 33
+    },
+    {
+      "session_idx": 51,
+      "avg_events": 18.64,
+      "avg_dur_min": 87.61,
+      "n_students": 28
+    },
+    {
+      "session_idx": 52,
+      "avg_events": 23.13,
+      "avg_dur_min": 100.71,
+      "n_students": 39
+    },
+    {
+      "session_idx": 53,
+      "avg_events": 13.5,
+      "avg_dur_min": 134.04,
+      "n_students": 34
+    },
+    {
+      "session_idx": 54,
+      "avg_events": 10.57,
+      "avg_dur_min": 111.3,
+      "n_students": 35
+    },
+    {
+      "session_idx": 55,
+      "avg_events": 9.91,
+      "avg_dur_min": 83.99,
+      "n_students": 22
+    },
+    {
+      "session_idx": 56,
+      "avg_events": 7.26,
+      "avg_dur_min": 50.42,
+      "n_students": 19
+    },
+    {
+      "session_idx": 57,
+      "avg_events": 20.9,
+      "avg_dur_min": 149.78,
+      "n_students": 30
+    },
+    {
+      "session_idx": 58,
+      "avg_events": 25.08,
+      "avg_dur_min": 106.62,
+      "n_students": 26
+    },
+    {
+      "session_idx": 59,
+      "avg_events": 38.79,
+      "avg_dur_min": 322.53,
+      "n_students": 33
+    },
+    {
+      "session_idx": 60,
+      "avg_events": 41.69,
+      "avg_dur_min": 420.03,
+      "n_students": 29
+    },
+    {
+      "session_idx": 61,
+      "avg_events": 31.7,
+      "avg_dur_min": 210.89,
+      "n_students": 40
+    },
+    {
+      "session_idx": 62,
+      "avg_events": 21.33,
+      "avg_dur_min": 260.73,
+      "n_students": 15
+    },
+    {
+      "session_idx": 63,
+      "avg_events": 29.4,
+      "avg_dur_min": 79.09,
+      "n_students": 10
+    },
+    {
+      "session_idx": 64,
+      "avg_events": 17.91,
+      "avg_dur_min": 119.76,
+      "n_students": 46
+    },
+    {
+      "session_idx": 65,
+      "avg_events": 19.71,
+      "avg_dur_min": 112.07,
+      "n_students": 17
+    },
+    {
+      "session_idx": 66,
+      "avg_events": 26.25,
+      "avg_dur_min": 170.18,
+      "n_students": 36
+    },
+    {
+      "session_idx": 67,
+      "avg_events": 35.89,
+      "avg_dur_min": 203.03,
+      "n_students": 47
+    },
+    {
+      "session_idx": 68,
+      "avg_events": 34.92,
+      "avg_dur_min": 311.09,
+      "n_students": 24
+    },
+    {
+      "session_idx": 69,
+      "avg_events": 11.61,
+      "avg_dur_min": 65.23,
+      "n_students": 18
+    },
+    {
+      "session_idx": 70,
+      "avg_events": 32.16,
+      "avg_dur_min": 79.3,
+      "n_students": 31
+    },
+    {
+      "session_idx": 71,
+      "avg_events": 14.07,
+      "avg_dur_min": 121.14,
+      "n_students": 15
+    },
+    {
+      "session_idx": 72,
+      "avg_events": 87.32,
+      "avg_dur_min": 552.91,
+      "n_students": 19
+    },
+    {
+      "session_idx": 73,
+      "avg_events": 31.23,
+      "avg_dur_min": 131.42,
+      "n_students": 22
+    },
+    {
+      "session_idx": 74,
+      "avg_events": 36.88,
+      "avg_dur_min": 210.76,
+      "n_students": 32
+    },
+    {
+      "session_idx": 75,
+      "avg_events": 51.57,
+      "avg_dur_min": 239.73,
+      "n_students": 23
+    },
+    {
+      "session_idx": 76,
+      "avg_events": 47.76,
+      "avg_dur_min": 361.37,
+      "n_students": 37
+    },
+    {
+      "session_idx": 77,
+      "avg_events": 48.84,
+      "avg_dur_min": 341.38,
+      "n_students": 32
+    },
+    {
+      "session_idx": 78,
+      "avg_events": 5.5,
+      "avg_dur_min": 74.67,
+      "n_students": 12
+    },
+    {
+      "session_idx": 79,
+      "avg_events": 14.27,
+      "avg_dur_min": 131.44,
+      "n_students": 15
+    },
+    {
+      "session_idx": 80,
+      "avg_events": 19.12,
+      "avg_dur_min": 254.37,
+      "n_students": 16
+    },
+    {
+      "session_idx": 81,
+      "avg_events": 19.63,
+      "avg_dur_min": 124.66,
+      "n_students": 27
+    },
+    {
+      "session_idx": 82,
+      "avg_events": 21.09,
+      "avg_dur_min": 253.85,
+      "n_students": 33
+    },
+    {
+      "session_idx": 83,
+      "avg_events": 30.63,
+      "avg_dur_min": 390.71,
+      "n_students": 41
+    },
+    {
+      "session_idx": 84,
+      "avg_events": 20.21,
+      "avg_dur_min": 248.42,
+      "n_students": 34
+    },
+    {
+      "session_idx": 85,
+      "avg_events": 5.9,
+      "avg_dur_min": 43.49,
+      "n_students": 10
+    },
+    {
+      "session_idx": 86,
+      "avg_events": 17.73,
+      "avg_dur_min": 106.0,
+      "n_students": 11
+    },
+    {
+      "session_idx": 87,
+      "avg_events": 24.36,
+      "avg_dur_min": 140.99,
+      "n_students": 11
+    },
+    {
+      "session_idx": 88,
+      "avg_events": 11.6,
+      "avg_dur_min": 41.08,
+      "n_students": 20
+    },
+    {
+      "session_idx": 89,
+      "avg_events": 6.59,
+      "avg_dur_min": 169.61,
+      "n_students": 22
+    },
+    {
+      "session_idx": 90,
+      "avg_events": 19.0,
+      "avg_dur_min": 129.78,
+      "n_students": 20
+    },
+    {
+      "session_idx": 91,
+      "avg_events": 9.77,
+      "avg_dur_min": 151.64,
+      "n_students": 13
+    },
+    {
+      "session_idx": 92,
+      "avg_events": 12.75,
+      "avg_dur_min": 58.08,
+      "n_students": 4
+    },
+    {
+      "session_idx": 93,
+      "avg_events": 30.24,
+      "avg_dur_min": 502.69,
+      "n_students": 17
+    },
+    {
+      "session_idx": 94,
+      "avg_events": 34.76,
+      "avg_dur_min": 245.27,
+      "n_students": 37
+    },
+    {
+      "session_idx": 95,
+      "avg_events": 12.18,
+      "avg_dur_min": 84.95,
+      "n_students": 11
+    },
+    {
+      "session_idx": 96,
+      "avg_events": 16.0,
+      "avg_dur_min": 39.35,
+      "n_students": 8
+    },
+    {
+      "session_idx": 97,
+      "avg_events": 19.2,
+      "avg_dur_min": 105.48,
+      "n_students": 5
+    },
+    {
+      "session_idx": 98,
+      "avg_events": 25.5,
+      "avg_dur_min": 105.58,
+      "n_students": 6
+    },
+    {
+      "session_idx": 99,
+      "avg_events": 38.55,
+      "avg_dur_min": 143.68,
+      "n_students": 11
+    },
+    {
+      "session_idx": 100,
+      "avg_events": 35.88,
+      "avg_dur_min": 203.78,
+      "n_students": 8
+    },
+    {
+      "session_idx": 101,
+      "avg_events": 34.77,
+      "avg_dur_min": 158.58,
+      "n_students": 26
+    },
+    {
+      "session_idx": 102,
+      "avg_events": 34.95,
+      "avg_dur_min": 222.2,
+      "n_students": 21
+    },
+    {
+      "session_idx": 103,
+      "avg_events": 89.95,
+      "avg_dur_min": 385.79,
+      "n_students": 39
+    },
+    {
+      "session_idx": 104,
+      "avg_events": 95.42,
+      "avg_dur_min": 185.81,
+      "n_students": 12
+    },
+    {
+      "session_idx": 105,
+      "avg_events": 13.5,
+      "avg_dur_min": 37.58,
+      "n_students": 10
+    },
+    {
+      "session_idx": 106,
+      "avg_events": 19.29,
+      "avg_dur_min": 81.25,
+      "n_students": 7
+    },
+    {
+      "session_idx": 107,
+      "avg_events": 45.5,
+      "avg_dur_min": 123.41,
+      "n_students": 2
+    },
+    {
+      "session_idx": 108,
+      "avg_events": 8.0,
+      "avg_dur_min": 2.15,
+      "n_students": 2
+    },
+    {
+      "session_idx": 109,
+      "avg_events": 17.0,
+      "avg_dur_min": 45.77,
+      "n_students": 5
+    },
+    {
+      "session_idx": 110,
+      "avg_events": 16.45,
+      "avg_dur_min": 82.0,
+      "n_students": 11
+    },
+    {
+      "session_idx": 111,
+      "avg_events": 2.33,
+      "avg_dur_min": 33.69,
+      "n_students": 3
+    },
+    {
+      "session_idx": 112,
+      "avg_events": 18.33,
+      "avg_dur_min": 51.86,
+      "n_students": 3
+    },
+    {
+      "session_idx": 113,
+      "avg_events": 5.33,
+      "avg_dur_min": 26.91,
+      "n_students": 3
+    },
+    {
+      "session_idx": 114,
+      "avg_events": 8.0,
+      "avg_dur_min": 53.79,
+      "n_students": 8
+    },
+    {
+      "session_idx": 115,
+      "avg_events": 33.75,
+      "avg_dur_min": 51.62,
+      "n_students": 4
+    },
+    {
+      "session_idx": 116,
+      "avg_events": 21.57,
+      "avg_dur_min": 87.55,
+      "n_students": 14
+    },
+    {
+      "session_idx": 117,
+      "avg_events": 35.18,
+      "avg_dur_min": 241.87,
+      "n_students": 11
+    },
+    {
+      "session_idx": 118,
+      "avg_events": 22.92,
+      "avg_dur_min": 370.24,
+      "n_students": 13
+    },
+    {
+      "session_idx": 119,
+      "avg_events": 22.11,
+      "avg_dur_min": 350.96,
+      "n_students": 18
+    },
+    {
+      "session_idx": 120,
+      "avg_events": 24.33,
+      "avg_dur_min": 105.62,
+      "n_students": 6
+    },
+    {
+      "session_idx": 121,
+      "avg_events": 63.5,
+      "avg_dur_min": 254.4,
+      "n_students": 2
+    },
+    {
+      "session_idx": 122,
+      "avg_events": 133.17,
+      "avg_dur_min": 308.75,
+      "n_students": 6
+    },
+    {
+      "session_idx": 123,
+      "avg_events": 38.54,
+      "avg_dur_min": 112.7,
+      "n_students": 13
+    },
+    {
+      "session_idx": 124,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 125,
+      "avg_events": 33.0,
+      "avg_dur_min": 98.35,
+      "n_students": 1
+    },
+    {
+      "session_idx": 126,
+      "avg_events": 29.0,
+      "avg_dur_min": 94.91,
+      "n_students": 1
+    },
+    {
+      "session_idx": 127,
+      "avg_events": 42.5,
+      "avg_dur_min": 189.23,
+      "n_students": 2
+    },
+    {
+      "session_idx": 128,
+      "avg_events": 33.83,
+      "avg_dur_min": 258.09,
+      "n_students": 6
+    },
+    {
+      "session_idx": 129,
+      "avg_events": 94.67,
+      "avg_dur_min": 258.16,
+      "n_students": 3
+    },
+    {
+      "session_idx": 130,
+      "avg_events": 114.0,
+      "avg_dur_min": 698.1,
+      "n_students": 11
+    },
+    {
+      "session_idx": 131,
+      "avg_events": 131.57,
+      "avg_dur_min": 487.01,
+      "n_students": 7
+    },
+    {
+      "session_idx": 132,
+      "avg_events": 71.0,
+      "avg_dur_min": 155.24,
+      "n_students": 1
+    },
+    {
+      "session_idx": 133,
+      "avg_events": 83.5,
+      "avg_dur_min": 130.84,
+      "n_students": 2
+    },
+    {
+      "session_idx": 134,
+      "avg_events": 153.0,
+      "avg_dur_min": 170.21,
+      "n_students": 1
+    },
+    {
+      "session_idx": 135,
+      "avg_events": 3.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 136,
+      "avg_events": 37.0,
+      "avg_dur_min": 138.88,
+      "n_students": 2
+    },
+    {
+      "session_idx": 137,
+      "avg_events": 34.0,
+      "avg_dur_min": 61.08,
+      "n_students": 5
+    },
+    {
+      "session_idx": 138,
+      "avg_events": 2.67,
+      "avg_dur_min": 0.0,
+      "n_students": 3
+    },
+    {
+      "session_idx": 139,
+      "avg_events": 15.4,
+      "avg_dur_min": 29.76,
+      "n_students": 5
+    },
+    {
+      "session_idx": 142,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 143,
+      "avg_events": 22.0,
+      "avg_dur_min": 114.31,
+      "n_students": 1
+    },
+    {
+      "session_idx": 144,
+      "avg_events": 7.0,
+      "avg_dur_min": 0.64,
+      "n_students": 1
+    },
+    {
+      "session_idx": 145,
+      "avg_events": 3.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 149,
+      "avg_events": 2.8,
+      "avg_dur_min": 8.92,
+      "n_students": 5
+    },
+    {
+      "session_idx": 150,
+      "avg_events": 21.0,
+      "avg_dur_min": 138.17,
+      "n_students": 1
+    },
+    {
+      "session_idx": 151,
+      "avg_events": 2.0,
+      "avg_dur_min": 0.0,
+      "n_students": 2
+    },
+    {
+      "session_idx": 158,
+      "avg_events": 7.0,
+      "avg_dur_min": 147.98,
+      "n_students": 1
+    },
+    {
+      "session_idx": 161,
+      "avg_events": 47.0,
+      "avg_dur_min": 118.71,
+      "n_students": 1
+    },
+    {
+      "session_idx": 162,
+      "avg_events": 15.0,
+      "avg_dur_min": 10.47,
+      "n_students": 1
+    },
+    {
+      "session_idx": 164,
+      "avg_events": 5.0,
+      "avg_dur_min": 54.38,
+      "n_students": 1
+    },
+    {
+      "session_idx": 165,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 167,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 168,
+      "avg_events": 47.5,
+      "avg_dur_min": 243.31,
+      "n_students": 2
+    },
+    {
+      "session_idx": 169,
+      "avg_events": 22.5,
+      "avg_dur_min": 89.59,
+      "n_students": 4
+    },
+    {
+      "session_idx": 176,
+      "avg_events": 3.0,
+      "avg_dur_min": 13.09,
+      "n_students": 1
+    },
+    {
+      "session_idx": 177,
+      "avg_events": 4.0,
+      "avg_dur_min": 52.66,
+      "n_students": 1
+    },
+    {
+      "session_idx": 180,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 183,
+      "avg_events": 16.0,
+      "avg_dur_min": 20.87,
+      "n_students": 1
+    },
+    {
+      "session_idx": 184,
+      "avg_events": 6.0,
+      "avg_dur_min": 15.44,
+      "n_students": 1
+    },
+    {
+      "session_idx": 190,
+      "avg_events": 35.0,
+      "avg_dur_min": 94.64,
+      "n_students": 1
+    },
+    {
+      "session_idx": 191,
+      "avg_events": 60.0,
+      "avg_dur_min": 401.37,
+      "n_students": 1
+    },
+    {
+      "session_idx": 192,
+      "avg_events": 6.0,
+      "avg_dur_min": 5.94,
+      "n_students": 1
+    },
+    {
+      "session_idx": 194,
+      "avg_events": 45.0,
+      "avg_dur_min": 75.61,
+      "n_students": 3
+    },
+    {
+      "session_idx": 195,
+      "avg_events": 44.38,
+      "avg_dur_min": 394.11,
+      "n_students": 8
+    },
+    {
+      "session_idx": 196,
+      "avg_events": 28.75,
+      "avg_dur_min": 306.81,
+      "n_students": 8
+    },
+    {
+      "session_idx": 197,
+      "avg_events": 38.86,
+      "avg_dur_min": 338.51,
+      "n_students": 7
+    },
+    {
+      "session_idx": 198,
+      "avg_events": 53.17,
+      "avg_dur_min": 507.47,
+      "n_students": 6
+    },
+    {
+      "session_idx": 199,
+      "avg_events": 54.38,
+      "avg_dur_min": 717.2,
+      "n_students": 8
+    },
+    {
+      "session_idx": 200,
+      "avg_events": 16.12,
+      "avg_dur_min": 64.01,
+      "n_students": 8
+    },
+    {
+      "session_idx": 201,
+      "avg_events": 48.25,
+      "avg_dur_min": 197.71,
+      "n_students": 4
+    },
+    {
+      "session_idx": 202,
+      "avg_events": 42.0,
+      "avg_dur_min": 370.37,
+      "n_students": 10
+    },
+    {
+      "session_idx": 203,
+      "avg_events": 56.09,
+      "avg_dur_min": 460.76,
+      "n_students": 11
+    },
+    {
+      "session_idx": 204,
+      "avg_events": 3.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 205,
+      "avg_events": 2.0,
+      "avg_dur_min": 0.34,
+      "n_students": 1
     }
   ],
   "moderate": [
     {
       "session_idx": 1,
-      "avg_events": 10.96,
-      "avg_dur_min": 6.12,
-      "n_students": 76
+      "avg_events": 35.71,
+      "avg_dur_min": 104.09,
+      "n_students": 285
     },
     {
       "session_idx": 2,
-      "avg_events": 10.97,
-      "avg_dur_min": 7.12,
-      "n_students": 74
+      "avg_events": 35.62,
+      "avg_dur_min": 82.03,
+      "n_students": 76
     },
     {
       "session_idx": 3,
-      "avg_events": 6.63,
-      "avg_dur_min": 4.29,
-      "n_students": 83
+      "avg_events": 46.79,
+      "avg_dur_min": 100.29,
+      "n_students": 87
     },
     {
       "session_idx": 4,
-      "avg_events": 5.42,
-      "avg_dur_min": 1.35,
-      "n_students": 76
+      "avg_events": 46.14,
+      "avg_dur_min": 97.83,
+      "n_students": 81
     },
     {
       "session_idx": 5,
-      "avg_events": 9.35,
-      "avg_dur_min": 5.87,
-      "n_students": 93
+      "avg_events": 60.14,
+      "avg_dur_min": 132.28,
+      "n_students": 86
     },
     {
       "session_idx": 6,
-      "avg_events": 9.53,
-      "avg_dur_min": 10.06,
-      "n_students": 84
+      "avg_events": 33.87,
+      "avg_dur_min": 107.27,
+      "n_students": 103
     },
     {
       "session_idx": 7,
-      "avg_events": 6.94,
-      "avg_dur_min": 4.36,
-      "n_students": 76
+      "avg_events": 46.79,
+      "avg_dur_min": 100.16,
+      "n_students": 63
     },
     {
       "session_idx": 8,
-      "avg_events": 6.92,
-      "avg_dur_min": 3.36,
-      "n_students": 75
+      "avg_events": 47.71,
+      "avg_dur_min": 165.34,
+      "n_students": 130
     },
     {
       "session_idx": 9,
-      "avg_events": 7.49,
-      "avg_dur_min": 3.8,
-      "n_students": 64
+      "avg_events": 29.57,
+      "avg_dur_min": 89.59,
+      "n_students": 77
     },
     {
       "session_idx": 10,
-      "avg_events": 4.68,
-      "avg_dur_min": 2.0,
-      "n_students": 71
+      "avg_events": 29.11,
+      "avg_dur_min": 88.58,
+      "n_students": 80
     },
     {
       "session_idx": 11,
-      "avg_events": 9.28,
-      "avg_dur_min": 6.47,
-      "n_students": 69
+      "avg_events": 44.31,
+      "avg_dur_min": 157.26,
+      "n_students": 146
     },
     {
       "session_idx": 12,
-      "avg_events": 7.75,
-      "avg_dur_min": 2.56,
-      "n_students": 53
+      "avg_events": 45.58,
+      "avg_dur_min": 112.23,
+      "n_students": 142
     },
     {
       "session_idx": 13,
-      "avg_events": 6.64,
-      "avg_dur_min": 2.31,
-      "n_students": 42
+      "avg_events": 25.17,
+      "avg_dur_min": 91.73,
+      "n_students": 100
     },
     {
       "session_idx": 14,
-      "avg_events": 6.34,
-      "avg_dur_min": 1.55,
-      "n_students": 32
+      "avg_events": 23.75,
+      "avg_dur_min": 103.79,
+      "n_students": 91
     },
     {
       "session_idx": 15,
-      "avg_events": 5.5,
-      "avg_dur_min": 2.78,
-      "n_students": 14
+      "avg_events": 35.74,
+      "avg_dur_min": 121.29,
+      "n_students": 101
     },
     {
       "session_idx": 16,
-      "avg_events": 8.71,
-      "avg_dur_min": 3.1,
-      "n_students": 7
+      "avg_events": 39.47,
+      "avg_dur_min": 127.22,
+      "n_students": 124
     },
     {
       "session_idx": 17,
-      "avg_events": 4.5,
-      "avg_dur_min": 0.34,
-      "n_students": 10
+      "avg_events": 30.77,
+      "avg_dur_min": 142.42,
+      "n_students": 100
     },
     {
       "session_idx": 18,
-      "avg_events": 4.62,
-      "avg_dur_min": 1.41,
-      "n_students": 13
+      "avg_events": 44.77,
+      "avg_dur_min": 198.67,
+      "n_students": 90
     },
     {
       "session_idx": 19,
-      "avg_events": 18.5,
-      "avg_dur_min": 9.64,
+      "avg_events": 32.31,
+      "avg_dur_min": 142.25,
+      "n_students": 118
+    },
+    {
+      "session_idx": 20,
+      "avg_events": 25.25,
+      "avg_dur_min": 122.4,
+      "n_students": 105
+    },
+    {
+      "session_idx": 21,
+      "avg_events": 25.98,
+      "avg_dur_min": 84.32,
+      "n_students": 90
+    },
+    {
+      "session_idx": 22,
+      "avg_events": 37.75,
+      "avg_dur_min": 102.74,
+      "n_students": 109
+    },
+    {
+      "session_idx": 23,
+      "avg_events": 11.1,
+      "avg_dur_min": 63.44,
+      "n_students": 71
+    },
+    {
+      "session_idx": 24,
+      "avg_events": 33.09,
+      "avg_dur_min": 118.98,
+      "n_students": 55
+    },
+    {
+      "session_idx": 25,
+      "avg_events": 26.93,
+      "avg_dur_min": 131.89,
+      "n_students": 89
+    },
+    {
+      "session_idx": 26,
+      "avg_events": 35.61,
+      "avg_dur_min": 155.13,
+      "n_students": 123
+    },
+    {
+      "session_idx": 27,
+      "avg_events": 59.16,
+      "avg_dur_min": 250.62,
+      "n_students": 89
+    },
+    {
+      "session_idx": 28,
+      "avg_events": 19.05,
+      "avg_dur_min": 118.66,
+      "n_students": 75
+    },
+    {
+      "session_idx": 29,
+      "avg_events": 41.65,
+      "avg_dur_min": 171.7,
+      "n_students": 109
+    },
+    {
+      "session_idx": 30,
+      "avg_events": 21.4,
+      "avg_dur_min": 89.08,
+      "n_students": 82
+    },
+    {
+      "session_idx": 31,
+      "avg_events": 22.06,
+      "avg_dur_min": 120.31,
+      "n_students": 89
+    },
+    {
+      "session_idx": 32,
+      "avg_events": 13.66,
+      "avg_dur_min": 86.22,
+      "n_students": 50
+    },
+    {
+      "session_idx": 33,
+      "avg_events": 24.53,
+      "avg_dur_min": 141.51,
+      "n_students": 66
+    },
+    {
+      "session_idx": 34,
+      "avg_events": 22.94,
+      "avg_dur_min": 94.55,
+      "n_students": 67
+    },
+    {
+      "session_idx": 35,
+      "avg_events": 42.78,
+      "avg_dur_min": 155.79,
+      "n_students": 87
+    },
+    {
+      "session_idx": 36,
+      "avg_events": 21.85,
+      "avg_dur_min": 114.74,
+      "n_students": 62
+    },
+    {
+      "session_idx": 37,
+      "avg_events": 25.4,
+      "avg_dur_min": 136.33,
+      "n_students": 40
+    },
+    {
+      "session_idx": 38,
+      "avg_events": 33.08,
+      "avg_dur_min": 182.14,
+      "n_students": 84
+    },
+    {
+      "session_idx": 39,
+      "avg_events": 36.06,
+      "avg_dur_min": 194.82,
+      "n_students": 94
+    },
+    {
+      "session_idx": 40,
+      "avg_events": 25.17,
+      "avg_dur_min": 119.64,
+      "n_students": 75
+    },
+    {
+      "session_idx": 41,
+      "avg_events": 41.16,
+      "avg_dur_min": 169.95,
+      "n_students": 79
+    },
+    {
+      "session_idx": 42,
+      "avg_events": 26.75,
+      "avg_dur_min": 154.76,
+      "n_students": 116
+    },
+    {
+      "session_idx": 43,
+      "avg_events": 19.58,
+      "avg_dur_min": 109.44,
+      "n_students": 69
+    },
+    {
+      "session_idx": 44,
+      "avg_events": 34.76,
+      "avg_dur_min": 170.72,
+      "n_students": 86
+    },
+    {
+      "session_idx": 45,
+      "avg_events": 25.48,
+      "avg_dur_min": 98.88,
+      "n_students": 54
+    },
+    {
+      "session_idx": 46,
+      "avg_events": 20.06,
+      "avg_dur_min": 131.6,
+      "n_students": 66
+    },
+    {
+      "session_idx": 47,
+      "avg_events": 23.95,
+      "avg_dur_min": 106.38,
+      "n_students": 64
+    },
+    {
+      "session_idx": 48,
+      "avg_events": 23.22,
+      "avg_dur_min": 105.63,
+      "n_students": 90
+    },
+    {
+      "session_idx": 49,
+      "avg_events": 27.44,
+      "avg_dur_min": 253.96,
+      "n_students": 64
+    },
+    {
+      "session_idx": 50,
+      "avg_events": 21.58,
+      "avg_dur_min": 99.62,
+      "n_students": 55
+    },
+    {
+      "session_idx": 51,
+      "avg_events": 15.14,
+      "avg_dur_min": 64.54,
+      "n_students": 56
+    },
+    {
+      "session_idx": 52,
+      "avg_events": 15.11,
+      "avg_dur_min": 118.23,
+      "n_students": 61
+    },
+    {
+      "session_idx": 53,
+      "avg_events": 18.71,
+      "avg_dur_min": 123.09,
+      "n_students": 86
+    },
+    {
+      "session_idx": 54,
+      "avg_events": 16.8,
+      "avg_dur_min": 132.56,
+      "n_students": 66
+    },
+    {
+      "session_idx": 55,
+      "avg_events": 13.73,
+      "avg_dur_min": 79.97,
+      "n_students": 41
+    },
+    {
+      "session_idx": 56,
+      "avg_events": 16.09,
+      "avg_dur_min": 75.37,
+      "n_students": 44
+    },
+    {
+      "session_idx": 57,
+      "avg_events": 25.61,
+      "avg_dur_min": 179.69,
+      "n_students": 62
+    },
+    {
+      "session_idx": 58,
+      "avg_events": 16.06,
+      "avg_dur_min": 99.27,
+      "n_students": 48
+    },
+    {
+      "session_idx": 59,
+      "avg_events": 33.22,
+      "avg_dur_min": 169.99,
+      "n_students": 51
+    },
+    {
+      "session_idx": 60,
+      "avg_events": 24.05,
+      "avg_dur_min": 197.4,
+      "n_students": 58
+    },
+    {
+      "session_idx": 61,
+      "avg_events": 53.34,
+      "avg_dur_min": 443.08,
+      "n_students": 58
+    },
+    {
+      "session_idx": 62,
+      "avg_events": 22.04,
+      "avg_dur_min": 138.74,
+      "n_students": 56
+    },
+    {
+      "session_idx": 63,
+      "avg_events": 31.5,
+      "avg_dur_min": 130.1,
+      "n_students": 32
+    },
+    {
+      "session_idx": 64,
+      "avg_events": 17.43,
+      "avg_dur_min": 93.23,
+      "n_students": 76
+    },
+    {
+      "session_idx": 65,
+      "avg_events": 22.14,
+      "avg_dur_min": 156.47,
+      "n_students": 42
+    },
+    {
+      "session_idx": 66,
+      "avg_events": 23.28,
+      "avg_dur_min": 244.07,
+      "n_students": 67
+    },
+    {
+      "session_idx": 67,
+      "avg_events": 23.65,
+      "avg_dur_min": 265.19,
+      "n_students": 77
+    },
+    {
+      "session_idx": 68,
+      "avg_events": 29.48,
+      "avg_dur_min": 232.19,
+      "n_students": 63
+    },
+    {
+      "session_idx": 69,
+      "avg_events": 15.08,
+      "avg_dur_min": 64.85,
+      "n_students": 48
+    },
+    {
+      "session_idx": 70,
+      "avg_events": 25.48,
+      "avg_dur_min": 92.66,
+      "n_students": 40
+    },
+    {
+      "session_idx": 71,
+      "avg_events": 11.53,
+      "avg_dur_min": 61.29,
+      "n_students": 32
+    },
+    {
+      "session_idx": 72,
+      "avg_events": 40.13,
+      "avg_dur_min": 548.46,
+      "n_students": 38
+    },
+    {
+      "session_idx": 73,
+      "avg_events": 28.05,
+      "avg_dur_min": 133.78,
+      "n_students": 42
+    },
+    {
+      "session_idx": 74,
+      "avg_events": 33.59,
+      "avg_dur_min": 230.15,
+      "n_students": 69
+    },
+    {
+      "session_idx": 75,
+      "avg_events": 35.05,
+      "avg_dur_min": 312.0,
+      "n_students": 42
+    },
+    {
+      "session_idx": 76,
+      "avg_events": 56.48,
+      "avg_dur_min": 422.35,
+      "n_students": 56
+    },
+    {
+      "session_idx": 77,
+      "avg_events": 39.22,
+      "avg_dur_min": 429.91,
+      "n_students": 54
+    },
+    {
+      "session_idx": 78,
+      "avg_events": 29.71,
+      "avg_dur_min": 215.4,
+      "n_students": 48
+    },
+    {
+      "session_idx": 79,
+      "avg_events": 30.07,
+      "avg_dur_min": 221.74,
+      "n_students": 60
+    },
+    {
+      "session_idx": 80,
+      "avg_events": 27.91,
+      "avg_dur_min": 263.68,
+      "n_students": 43
+    },
+    {
+      "session_idx": 81,
+      "avg_events": 33.54,
+      "avg_dur_min": 210.58,
+      "n_students": 69
+    },
+    {
+      "session_idx": 82,
+      "avg_events": 36.68,
+      "avg_dur_min": 249.33,
+      "n_students": 74
+    },
+    {
+      "session_idx": 83,
+      "avg_events": 30.65,
+      "avg_dur_min": 167.98,
+      "n_students": 57
+    },
+    {
+      "session_idx": 84,
+      "avg_events": 23.42,
+      "avg_dur_min": 268.4,
+      "n_students": 26
+    },
+    {
+      "session_idx": 85,
+      "avg_events": 19.3,
+      "avg_dur_min": 127.1,
+      "n_students": 27
+    },
+    {
+      "session_idx": 86,
+      "avg_events": 27.19,
+      "avg_dur_min": 131.19,
+      "n_students": 26
+    },
+    {
+      "session_idx": 87,
+      "avg_events": 34.79,
+      "avg_dur_min": 171.42,
+      "n_students": 19
+    },
+    {
+      "session_idx": 88,
+      "avg_events": 10.73,
+      "avg_dur_min": 88.06,
+      "n_students": 41
+    },
+    {
+      "session_idx": 89,
+      "avg_events": 16.77,
+      "avg_dur_min": 181.17,
+      "n_students": 39
+    },
+    {
+      "session_idx": 90,
+      "avg_events": 28.84,
+      "avg_dur_min": 160.07,
+      "n_students": 43
+    },
+    {
+      "session_idx": 91,
+      "avg_events": 12.5,
+      "avg_dur_min": 78.89,
+      "n_students": 20
+    },
+    {
+      "session_idx": 92,
+      "avg_events": 9.29,
+      "avg_dur_min": 58.56,
+      "n_students": 21
+    },
+    {
+      "session_idx": 93,
+      "avg_events": 25.76,
+      "avg_dur_min": 378.51,
+      "n_students": 34
+    },
+    {
+      "session_idx": 94,
+      "avg_events": 24.97,
+      "avg_dur_min": 253.99,
+      "n_students": 39
+    },
+    {
+      "session_idx": 95,
+      "avg_events": 15.38,
+      "avg_dur_min": 85.42,
+      "n_students": 24
+    },
+    {
+      "session_idx": 96,
+      "avg_events": 9.05,
+      "avg_dur_min": 58.81,
+      "n_students": 21
+    },
+    {
+      "session_idx": 97,
+      "avg_events": 12.12,
+      "avg_dur_min": 46.18,
+      "n_students": 17
+    },
+    {
+      "session_idx": 98,
+      "avg_events": 28.27,
+      "avg_dur_min": 131.96,
+      "n_students": 15
+    },
+    {
+      "session_idx": 99,
+      "avg_events": 19.22,
+      "avg_dur_min": 83.65,
+      "n_students": 27
+    },
+    {
+      "session_idx": 100,
+      "avg_events": 34.38,
+      "avg_dur_min": 198.13,
+      "n_students": 37
+    },
+    {
+      "session_idx": 101,
+      "avg_events": 40.07,
+      "avg_dur_min": 248.43,
+      "n_students": 46
+    },
+    {
+      "session_idx": 102,
+      "avg_events": 31.72,
+      "avg_dur_min": 224.84,
+      "n_students": 36
+    },
+    {
+      "session_idx": 103,
+      "avg_events": 60.83,
+      "avg_dur_min": 498.34,
+      "n_students": 35
+    },
+    {
+      "session_idx": 104,
+      "avg_events": 63.26,
+      "avg_dur_min": 238.35,
+      "n_students": 23
+    },
+    {
+      "session_idx": 105,
+      "avg_events": 27.92,
+      "avg_dur_min": 127.17,
+      "n_students": 13
+    },
+    {
+      "session_idx": 106,
+      "avg_events": 14.11,
+      "avg_dur_min": 102.5,
+      "n_students": 19
+    },
+    {
+      "session_idx": 107,
+      "avg_events": 12.25,
+      "avg_dur_min": 55.64,
+      "n_students": 4
+    },
+    {
+      "session_idx": 108,
+      "avg_events": 17.6,
+      "avg_dur_min": 45.42,
+      "n_students": 5
+    },
+    {
+      "session_idx": 109,
+      "avg_events": 10.71,
+      "avg_dur_min": 52.54,
+      "n_students": 7
+    },
+    {
+      "session_idx": 110,
+      "avg_events": 14.79,
+      "avg_dur_min": 139.25,
+      "n_students": 19
+    },
+    {
+      "session_idx": 111,
+      "avg_events": 33.38,
+      "avg_dur_min": 61.52,
+      "n_students": 8
+    },
+    {
+      "session_idx": 112,
+      "avg_events": 19.18,
+      "avg_dur_min": 71.26,
+      "n_students": 11
+    },
+    {
+      "session_idx": 113,
+      "avg_events": 14.0,
+      "avg_dur_min": 45.58,
+      "n_students": 11
+    },
+    {
+      "session_idx": 114,
+      "avg_events": 15.0,
+      "avg_dur_min": 117.08,
+      "n_students": 9
+    },
+    {
+      "session_idx": 115,
+      "avg_events": 33.5,
+      "avg_dur_min": 110.32,
+      "n_students": 10
+    },
+    {
+      "session_idx": 116,
+      "avg_events": 17.6,
+      "avg_dur_min": 144.47,
+      "n_students": 25
+    },
+    {
+      "session_idx": 117,
+      "avg_events": 25.68,
+      "avg_dur_min": 334.38,
+      "n_students": 19
+    },
+    {
+      "session_idx": 118,
+      "avg_events": 35.96,
+      "avg_dur_min": 455.56,
+      "n_students": 25
+    },
+    {
+      "session_idx": 119,
+      "avg_events": 58.9,
+      "avg_dur_min": 495.17,
+      "n_students": 31
+    },
+    {
+      "session_idx": 120,
+      "avg_events": 9.63,
+      "avg_dur_min": 71.92,
+      "n_students": 19
+    },
+    {
+      "session_idx": 121,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 122,
+      "avg_events": 34.2,
+      "avg_dur_min": 197.61,
+      "n_students": 5
+    },
+    {
+      "session_idx": 123,
+      "avg_events": 15.45,
+      "avg_dur_min": 161.58,
+      "n_students": 11
+    },
+    {
+      "session_idx": 124,
+      "avg_events": 3.4,
+      "avg_dur_min": 10.35,
+      "n_students": 5
+    },
+    {
+      "session_idx": 125,
+      "avg_events": 2.8,
+      "avg_dur_min": 65.1,
+      "n_students": 5
+    },
+    {
+      "session_idx": 126,
+      "avg_events": 4.0,
+      "avg_dur_min": 70.32,
+      "n_students": 2
+    },
+    {
+      "session_idx": 127,
+      "avg_events": 10.75,
+      "avg_dur_min": 61.59,
+      "n_students": 4
+    },
+    {
+      "session_idx": 128,
+      "avg_events": 63.29,
+      "avg_dur_min": 294.25,
+      "n_students": 7
+    },
+    {
+      "session_idx": 129,
+      "avg_events": 18.27,
+      "avg_dur_min": 358.66,
+      "n_students": 11
+    },
+    {
+      "session_idx": 130,
+      "avg_events": 68.42,
+      "avg_dur_min": 555.15,
+      "n_students": 26
+    },
+    {
+      "session_idx": 131,
+      "avg_events": 58.23,
+      "avg_dur_min": 450.73,
+      "n_students": 13
+    },
+    {
+      "session_idx": 132,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 133,
+      "avg_events": 18.0,
+      "avg_dur_min": 45.49,
+      "n_students": 1
+    },
+    {
+      "session_idx": 134,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 135,
+      "avg_events": 2.0,
+      "avg_dur_min": 49.44,
+      "n_students": 1
+    },
+    {
+      "session_idx": 136,
+      "avg_events": 29.5,
+      "avg_dur_min": 100.78,
+      "n_students": 2
+    },
+    {
+      "session_idx": 137,
+      "avg_events": 6.0,
+      "avg_dur_min": 104.65,
+      "n_students": 1
+    },
+    {
+      "session_idx": 138,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 139,
+      "avg_events": 4.33,
+      "avg_dur_min": 20.64,
+      "n_students": 3
+    },
+    {
+      "session_idx": 143,
+      "avg_events": 8.0,
+      "avg_dur_min": 48.72,
+      "n_students": 1
+    },
+    {
+      "session_idx": 144,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 145,
+      "avg_events": 3.0,
+      "avg_dur_min": 0.05,
+      "n_students": 1
+    },
+    {
+      "session_idx": 146,
+      "avg_events": 17.5,
+      "avg_dur_min": 73.25,
+      "n_students": 2
+    },
+    {
+      "session_idx": 149,
+      "avg_events": 2.0,
+      "avg_dur_min": 30.99,
+      "n_students": 1
+    },
+    {
+      "session_idx": 153,
+      "avg_events": 3.0,
+      "avg_dur_min": 160.37,
+      "n_students": 1
+    },
+    {
+      "session_idx": 154,
+      "avg_events": 17.2,
+      "avg_dur_min": 81.33,
+      "n_students": 5
+    },
+    {
+      "session_idx": 155,
+      "avg_events": 14.0,
+      "avg_dur_min": 94.44,
+      "n_students": 1
+    },
+    {
+      "session_idx": 156,
+      "avg_events": 9.0,
+      "avg_dur_min": 81.22,
+      "n_students": 1
+    },
+    {
+      "session_idx": 157,
+      "avg_events": 4.0,
+      "avg_dur_min": 77.17,
+      "n_students": 2
+    },
+    {
+      "session_idx": 158,
+      "avg_events": 4.0,
+      "avg_dur_min": 0.07,
+      "n_students": 2
+    },
+    {
+      "session_idx": 161,
+      "avg_events": 4.0,
+      "avg_dur_min": 24.0,
+      "n_students": 2
+    },
+    {
+      "session_idx": 162,
+      "avg_events": 13.0,
+      "avg_dur_min": 78.16,
+      "n_students": 1
+    },
+    {
+      "session_idx": 164,
+      "avg_events": 14.33,
+      "avg_dur_min": 137.91,
+      "n_students": 3
+    },
+    {
+      "session_idx": 166,
+      "avg_events": 87.0,
+      "avg_dur_min": 428.37,
+      "n_students": 1
+    },
+    {
+      "session_idx": 168,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 169,
+      "avg_events": 10.5,
+      "avg_dur_min": 324.98,
+      "n_students": 2
+    },
+    {
+      "session_idx": 172,
+      "avg_events": 19.0,
+      "avg_dur_min": 45.92,
+      "n_students": 1
+    },
+    {
+      "session_idx": 174,
+      "avg_events": 50.5,
+      "avg_dur_min": 152.52,
+      "n_students": 2
+    },
+    {
+      "session_idx": 175,
+      "avg_events": 41.5,
+      "avg_dur_min": 138.69,
+      "n_students": 2
+    },
+    {
+      "session_idx": 176,
+      "avg_events": 3.0,
+      "avg_dur_min": 60.15,
+      "n_students": 2
+    },
+    {
+      "session_idx": 177,
+      "avg_events": 77.0,
+      "avg_dur_min": 153.65,
+      "n_students": 1
+    },
+    {
+      "session_idx": 178,
+      "avg_events": 65.0,
+      "avg_dur_min": 426.5,
+      "n_students": 2
+    },
+    {
+      "session_idx": 179,
+      "avg_events": 38.0,
+      "avg_dur_min": 200.08,
+      "n_students": 4
+    },
+    {
+      "session_idx": 180,
+      "avg_events": 19.83,
+      "avg_dur_min": 79.56,
+      "n_students": 6
+    },
+    {
+      "session_idx": 181,
+      "avg_events": 41.17,
+      "avg_dur_min": 34.42,
+      "n_students": 6
+    },
+    {
+      "session_idx": 182,
+      "avg_events": 2.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 183,
+      "avg_events": 20.0,
+      "avg_dur_min": 39.89,
+      "n_students": 1
+    },
+    {
+      "session_idx": 184,
+      "avg_events": 20.5,
+      "avg_dur_min": 251.86,
+      "n_students": 2
+    },
+    {
+      "session_idx": 185,
+      "avg_events": 26.0,
+      "avg_dur_min": 1.57,
+      "n_students": 1
+    },
+    {
+      "session_idx": 186,
+      "avg_events": 49.0,
+      "avg_dur_min": 127.14,
+      "n_students": 1
+    },
+    {
+      "session_idx": 187,
+      "avg_events": 2.0,
+      "avg_dur_min": 52.72,
+      "n_students": 2
+    },
+    {
+      "session_idx": 188,
+      "avg_events": 87.0,
+      "avg_dur_min": 140.9,
+      "n_students": 1
+    },
+    {
+      "session_idx": 189,
+      "avg_events": 62.0,
+      "avg_dur_min": 193.75,
+      "n_students": 1
+    },
+    {
+      "session_idx": 190,
+      "avg_events": 29.0,
+      "avg_dur_min": 20.84,
+      "n_students": 1
+    },
+    {
+      "session_idx": 191,
+      "avg_events": 28.0,
+      "avg_dur_min": 229.75,
+      "n_students": 2
+    },
+    {
+      "session_idx": 193,
+      "avg_events": 27.67,
+      "avg_dur_min": 72.85,
+      "n_students": 3
+    },
+    {
+      "session_idx": 194,
+      "avg_events": 43.0,
+      "avg_dur_min": 221.98,
+      "n_students": 3
+    },
+    {
+      "session_idx": 195,
+      "avg_events": 44.5,
+      "avg_dur_min": 509.75,
+      "n_students": 2
+    },
+    {
+      "session_idx": 196,
+      "avg_events": 4.5,
+      "avg_dur_min": 44.6,
+      "n_students": 2
+    },
+    {
+      "session_idx": 197,
+      "avg_events": 88.5,
+      "avg_dur_min": 518.29,
+      "n_students": 4
+    },
+    {
+      "session_idx": 198,
+      "avg_events": 53.5,
+      "avg_dur_min": 517.73,
+      "n_students": 4
+    },
+    {
+      "session_idx": 199,
+      "avg_events": 24.38,
+      "avg_dur_min": 468.06,
+      "n_students": 8
+    },
+    {
+      "session_idx": 201,
+      "avg_events": 3.0,
+      "avg_dur_min": 109.17,
+      "n_students": 1
+    },
+    {
+      "session_idx": 202,
+      "avg_events": 32.67,
+      "avg_dur_min": 344.0,
+      "n_students": 3
+    },
+    {
+      "session_idx": 203,
+      "avg_events": 17.75,
+      "avg_dur_min": 711.99,
+      "n_students": 4
+    }
+  ],
+  "high": [
+    {
+      "session_idx": 1,
+      "avg_events": 46.01,
+      "avg_dur_min": 127.5,
+      "n_students": 173
+    },
+    {
+      "session_idx": 2,
+      "avg_events": 30.77,
+      "avg_dur_min": 86.41,
+      "n_students": 73
+    },
+    {
+      "session_idx": 3,
+      "avg_events": 39.22,
+      "avg_dur_min": 100.12,
+      "n_students": 72
+    },
+    {
+      "session_idx": 4,
+      "avg_events": 37.34,
+      "avg_dur_min": 116.59,
+      "n_students": 68
+    },
+    {
+      "session_idx": 5,
+      "avg_events": 58.55,
+      "avg_dur_min": 153.32,
+      "n_students": 71
+    },
+    {
+      "session_idx": 6,
+      "avg_events": 34.6,
+      "avg_dur_min": 130.5,
+      "n_students": 77
+    },
+    {
+      "session_idx": 7,
+      "avg_events": 43.83,
+      "avg_dur_min": 105.43,
+      "n_students": 64
+    },
+    {
+      "session_idx": 8,
+      "avg_events": 45.32,
+      "avg_dur_min": 194.11,
+      "n_students": 88
+    },
+    {
+      "session_idx": 9,
+      "avg_events": 32.97,
+      "avg_dur_min": 97.53,
+      "n_students": 73
+    },
+    {
+      "session_idx": 10,
+      "avg_events": 26.7,
+      "avg_dur_min": 136.14,
+      "n_students": 73
+    },
+    {
+      "session_idx": 11,
+      "avg_events": 53.61,
+      "avg_dur_min": 204.16,
+      "n_students": 100
+    },
+    {
+      "session_idx": 12,
+      "avg_events": 44.06,
+      "avg_dur_min": 109.36,
+      "n_students": 94
+    },
+    {
+      "session_idx": 13,
+      "avg_events": 34.24,
+      "avg_dur_min": 111.32,
+      "n_students": 67
+    },
+    {
+      "session_idx": 14,
+      "avg_events": 42.2,
+      "avg_dur_min": 117.52,
+      "n_students": 71
+    },
+    {
+      "session_idx": 15,
+      "avg_events": 45.2,
+      "avg_dur_min": 139.61,
+      "n_students": 71
+    },
+    {
+      "session_idx": 16,
+      "avg_events": 44.01,
+      "avg_dur_min": 158.88,
+      "n_students": 77
+    },
+    {
+      "session_idx": 17,
+      "avg_events": 41.26,
+      "avg_dur_min": 146.27,
+      "n_students": 74
+    },
+    {
+      "session_idx": 18,
+      "avg_events": 47.15,
+      "avg_dur_min": 201.9,
+      "n_students": 61
+    },
+    {
+      "session_idx": 19,
+      "avg_events": 35.8,
+      "avg_dur_min": 134.85,
+      "n_students": 82
+    },
+    {
+      "session_idx": 20,
+      "avg_events": 34.5,
+      "avg_dur_min": 126.27,
+      "n_students": 72
+    },
+    {
+      "session_idx": 21,
+      "avg_events": 40.93,
+      "avg_dur_min": 102.32,
+      "n_students": 82
+    },
+    {
+      "session_idx": 22,
+      "avg_events": 39.82,
+      "avg_dur_min": 129.35,
+      "n_students": 76
+    },
+    {
+      "session_idx": 23,
+      "avg_events": 21.59,
+      "avg_dur_min": 109.95,
+      "n_students": 63
+    },
+    {
+      "session_idx": 24,
+      "avg_events": 44.19,
+      "avg_dur_min": 131.39,
+      "n_students": 59
+    },
+    {
+      "session_idx": 25,
+      "avg_events": 30.71,
+      "avg_dur_min": 136.6,
+      "n_students": 72
+    },
+    {
+      "session_idx": 26,
+      "avg_events": 38.2,
+      "avg_dur_min": 204.66,
+      "n_students": 75
+    },
+    {
+      "session_idx": 27,
+      "avg_events": 41.67,
+      "avg_dur_min": 161.93,
+      "n_students": 60
+    },
+    {
+      "session_idx": 28,
+      "avg_events": 25.13,
+      "avg_dur_min": 117.54,
+      "n_students": 60
+    },
+    {
+      "session_idx": 29,
+      "avg_events": 45.53,
+      "avg_dur_min": 226.46,
+      "n_students": 83
+    },
+    {
+      "session_idx": 30,
+      "avg_events": 35.24,
+      "avg_dur_min": 118.62,
+      "n_students": 54
+    },
+    {
+      "session_idx": 31,
+      "avg_events": 25.82,
+      "avg_dur_min": 138.46,
+      "n_students": 66
+    },
+    {
+      "session_idx": 32,
+      "avg_events": 17.64,
+      "avg_dur_min": 96.74,
+      "n_students": 56
+    },
+    {
+      "session_idx": 33,
+      "avg_events": 24.36,
+      "avg_dur_min": 151.45,
+      "n_students": 59
+    },
+    {
+      "session_idx": 34,
+      "avg_events": 43.04,
+      "avg_dur_min": 192.48,
+      "n_students": 51
+    },
+    {
+      "session_idx": 35,
+      "avg_events": 45.02,
+      "avg_dur_min": 204.63,
+      "n_students": 62
+    },
+    {
+      "session_idx": 36,
+      "avg_events": 30.06,
+      "avg_dur_min": 168.94,
+      "n_students": 53
+    },
+    {
+      "session_idx": 37,
+      "avg_events": 39.59,
+      "avg_dur_min": 102.57,
+      "n_students": 51
+    },
+    {
+      "session_idx": 38,
+      "avg_events": 27.72,
+      "avg_dur_min": 160.85,
+      "n_students": 57
+    },
+    {
+      "session_idx": 39,
+      "avg_events": 34.43,
+      "avg_dur_min": 176.37,
+      "n_students": 63
+    },
+    {
+      "session_idx": 40,
+      "avg_events": 21.57,
+      "avg_dur_min": 167.83,
+      "n_students": 51
+    },
+    {
+      "session_idx": 41,
+      "avg_events": 22.53,
+      "avg_dur_min": 196.71,
+      "n_students": 57
+    },
+    {
+      "session_idx": 42,
+      "avg_events": 33.03,
+      "avg_dur_min": 196.2,
+      "n_students": 79
+    },
+    {
+      "session_idx": 43,
+      "avg_events": 18.63,
+      "avg_dur_min": 174.85,
+      "n_students": 59
+    },
+    {
+      "session_idx": 44,
+      "avg_events": 27.57,
+      "avg_dur_min": 129.95,
+      "n_students": 61
+    },
+    {
+      "session_idx": 45,
+      "avg_events": 33.77,
+      "avg_dur_min": 139.21,
+      "n_students": 52
+    },
+    {
+      "session_idx": 46,
+      "avg_events": 33.88,
+      "avg_dur_min": 205.49,
+      "n_students": 58
+    },
+    {
+      "session_idx": 47,
+      "avg_events": 27.03,
+      "avg_dur_min": 172.6,
+      "n_students": 68
+    },
+    {
+      "session_idx": 48,
+      "avg_events": 30.9,
+      "avg_dur_min": 165.31,
+      "n_students": 63
+    },
+    {
+      "session_idx": 49,
+      "avg_events": 20.61,
+      "avg_dur_min": 249.3,
+      "n_students": 51
+    },
+    {
+      "session_idx": 50,
+      "avg_events": 13.0,
+      "avg_dur_min": 93.32,
+      "n_students": 43
+    },
+    {
+      "session_idx": 51,
+      "avg_events": 17.31,
+      "avg_dur_min": 68.88,
+      "n_students": 39
+    },
+    {
+      "session_idx": 52,
+      "avg_events": 13.22,
+      "avg_dur_min": 124.45,
+      "n_students": 40
+    },
+    {
+      "session_idx": 53,
+      "avg_events": 16.48,
+      "avg_dur_min": 116.52,
+      "n_students": 63
+    },
+    {
+      "session_idx": 54,
+      "avg_events": 17.82,
+      "avg_dur_min": 134.47,
+      "n_students": 57
+    },
+    {
+      "session_idx": 55,
+      "avg_events": 13.88,
+      "avg_dur_min": 83.92,
+      "n_students": 32
+    },
+    {
+      "session_idx": 56,
+      "avg_events": 18.38,
+      "avg_dur_min": 77.92,
+      "n_students": 42
+    },
+    {
+      "session_idx": 57,
+      "avg_events": 19.7,
+      "avg_dur_min": 142.43,
+      "n_students": 46
+    },
+    {
+      "session_idx": 58,
+      "avg_events": 17.69,
+      "avg_dur_min": 125.84,
+      "n_students": 32
+    },
+    {
+      "session_idx": 59,
+      "avg_events": 34.02,
+      "avg_dur_min": 243.11,
+      "n_students": 45
+    },
+    {
+      "session_idx": 60,
+      "avg_events": 33.33,
+      "avg_dur_min": 196.28,
+      "n_students": 46
+    },
+    {
+      "session_idx": 61,
+      "avg_events": 46.65,
+      "avg_dur_min": 464.51,
+      "n_students": 51
+    },
+    {
+      "session_idx": 62,
+      "avg_events": 22.08,
+      "avg_dur_min": 177.76,
+      "n_students": 36
+    },
+    {
+      "session_idx": 63,
+      "avg_events": 30.48,
+      "avg_dur_min": 161.51,
+      "n_students": 29
+    },
+    {
+      "session_idx": 64,
+      "avg_events": 25.29,
+      "avg_dur_min": 137.0,
+      "n_students": 62
+    },
+    {
+      "session_idx": 65,
+      "avg_events": 18.54,
+      "avg_dur_min": 104.3,
+      "n_students": 35
+    },
+    {
+      "session_idx": 66,
+      "avg_events": 25.61,
+      "avg_dur_min": 197.92,
+      "n_students": 38
+    },
+    {
+      "session_idx": 67,
+      "avg_events": 33.71,
+      "avg_dur_min": 218.57,
+      "n_students": 45
+    },
+    {
+      "session_idx": 68,
+      "avg_events": 26.62,
+      "avg_dur_min": 224.0,
+      "n_students": 34
+    },
+    {
+      "session_idx": 69,
+      "avg_events": 14.84,
+      "avg_dur_min": 57.95,
+      "n_students": 37
+    },
+    {
+      "session_idx": 70,
+      "avg_events": 33.8,
+      "avg_dur_min": 81.09,
+      "n_students": 35
+    },
+    {
+      "session_idx": 71,
+      "avg_events": 17.92,
+      "avg_dur_min": 68.55,
+      "n_students": 24
+    },
+    {
+      "session_idx": 72,
+      "avg_events": 28.17,
+      "avg_dur_min": 428.88,
+      "n_students": 29
+    },
+    {
+      "session_idx": 73,
+      "avg_events": 20.87,
+      "avg_dur_min": 142.91,
+      "n_students": 39
+    },
+    {
+      "session_idx": 74,
+      "avg_events": 34.02,
+      "avg_dur_min": 326.07,
+      "n_students": 42
+    },
+    {
+      "session_idx": 75,
+      "avg_events": 30.33,
+      "avg_dur_min": 248.36,
+      "n_students": 27
+    },
+    {
+      "session_idx": 76,
+      "avg_events": 63.24,
+      "avg_dur_min": 484.27,
+      "n_students": 37
+    },
+    {
+      "session_idx": 77,
+      "avg_events": 36.57,
+      "avg_dur_min": 327.76,
+      "n_students": 37
+    },
+    {
+      "session_idx": 78,
+      "avg_events": 17.65,
+      "avg_dur_min": 168.46,
+      "n_students": 40
+    },
+    {
+      "session_idx": 79,
+      "avg_events": 22.45,
+      "avg_dur_min": 244.17,
+      "n_students": 40
+    },
+    {
+      "session_idx": 80,
+      "avg_events": 29.41,
+      "avg_dur_min": 315.98,
+      "n_students": 39
+    },
+    {
+      "session_idx": 81,
+      "avg_events": 21.69,
+      "avg_dur_min": 205.76,
+      "n_students": 48
+    },
+    {
+      "session_idx": 82,
+      "avg_events": 31.92,
+      "avg_dur_min": 282.08,
+      "n_students": 53
+    },
+    {
+      "session_idx": 83,
+      "avg_events": 29.59,
+      "avg_dur_min": 295.61,
+      "n_students": 44
+    },
+    {
+      "session_idx": 84,
+      "avg_events": 21.21,
+      "avg_dur_min": 265.61,
+      "n_students": 28
+    },
+    {
+      "session_idx": 85,
+      "avg_events": 10.63,
+      "avg_dur_min": 110.36,
+      "n_students": 27
+    },
+    {
+      "session_idx": 86,
+      "avg_events": 13.93,
+      "avg_dur_min": 181.3,
+      "n_students": 15
+    },
+    {
+      "session_idx": 87,
+      "avg_events": 10.07,
+      "avg_dur_min": 123.49,
+      "n_students": 15
+    },
+    {
+      "session_idx": 88,
+      "avg_events": 24.28,
+      "avg_dur_min": 162.04,
+      "n_students": 18
+    },
+    {
+      "session_idx": 89,
+      "avg_events": 50.87,
+      "avg_dur_min": 293.66,
+      "n_students": 15
+    },
+    {
+      "session_idx": 90,
+      "avg_events": 28.54,
+      "avg_dur_min": 217.51,
+      "n_students": 26
+    },
+    {
+      "session_idx": 91,
+      "avg_events": 23.61,
+      "avg_dur_min": 235.91,
+      "n_students": 18
+    },
+    {
+      "session_idx": 92,
+      "avg_events": 14.3,
+      "avg_dur_min": 60.47,
+      "n_students": 10
+    },
+    {
+      "session_idx": 93,
+      "avg_events": 44.5,
+      "avg_dur_min": 601.59,
+      "n_students": 24
+    },
+    {
+      "session_idx": 94,
+      "avg_events": 46.38,
+      "avg_dur_min": 426.96,
+      "n_students": 29
+    },
+    {
+      "session_idx": 95,
+      "avg_events": 18.32,
+      "avg_dur_min": 84.28,
+      "n_students": 19
+    },
+    {
+      "session_idx": 96,
+      "avg_events": 9.46,
+      "avg_dur_min": 64.61,
+      "n_students": 13
+    },
+    {
+      "session_idx": 97,
+      "avg_events": 6.17,
+      "avg_dur_min": 75.88,
+      "n_students": 6
+    },
+    {
+      "session_idx": 98,
+      "avg_events": 27.86,
+      "avg_dur_min": 163.26,
+      "n_students": 14
+    },
+    {
+      "session_idx": 99,
+      "avg_events": 10.76,
+      "avg_dur_min": 80.32,
+      "n_students": 21
+    },
+    {
+      "session_idx": 100,
+      "avg_events": 49.53,
+      "avg_dur_min": 327.15,
+      "n_students": 19
+    },
+    {
+      "session_idx": 101,
+      "avg_events": 37.54,
+      "avg_dur_min": 292.21,
+      "n_students": 35
+    },
+    {
+      "session_idx": 102,
+      "avg_events": 13.28,
+      "avg_dur_min": 189.49,
+      "n_students": 18
+    },
+    {
+      "session_idx": 103,
+      "avg_events": 62.0,
+      "avg_dur_min": 412.86,
+      "n_students": 22
+    },
+    {
+      "session_idx": 104,
+      "avg_events": 36.08,
+      "avg_dur_min": 146.86,
+      "n_students": 13
+    },
+    {
+      "session_idx": 105,
+      "avg_events": 22.25,
+      "avg_dur_min": 81.95,
+      "n_students": 4
+    },
+    {
+      "session_idx": 106,
+      "avg_events": 14.46,
+      "avg_dur_min": 99.74,
+      "n_students": 13
+    },
+    {
+      "session_idx": 107,
+      "avg_events": 37.2,
+      "avg_dur_min": 124.66,
+      "n_students": 10
+    },
+    {
+      "session_idx": 108,
+      "avg_events": 12.8,
+      "avg_dur_min": 58.14,
+      "n_students": 5
+    },
+    {
+      "session_idx": 109,
+      "avg_events": 8.75,
+      "avg_dur_min": 53.22,
+      "n_students": 8
+    },
+    {
+      "session_idx": 110,
+      "avg_events": 2.25,
+      "avg_dur_min": 32.74,
+      "n_students": 8
+    },
+    {
+      "session_idx": 111,
+      "avg_events": 13.1,
+      "avg_dur_min": 80.44,
+      "n_students": 10
+    },
+    {
+      "session_idx": 112,
+      "avg_events": 94.33,
+      "avg_dur_min": 243.18,
+      "n_students": 3
+    },
+    {
+      "session_idx": 113,
+      "avg_events": 10.57,
+      "avg_dur_min": 68.84,
+      "n_students": 7
+    },
+    {
+      "session_idx": 114,
+      "avg_events": 26.12,
+      "avg_dur_min": 93.01,
+      "n_students": 8
+    },
+    {
+      "session_idx": 115,
+      "avg_events": 22.75,
+      "avg_dur_min": 54.56,
+      "n_students": 4
+    },
+    {
+      "session_idx": 116,
+      "avg_events": 3.67,
+      "avg_dur_min": 54.79,
+      "n_students": 3
+    },
+    {
+      "session_idx": 117,
+      "avg_events": 19.67,
+      "avg_dur_min": 106.72,
+      "n_students": 6
+    },
+    {
+      "session_idx": 118,
+      "avg_events": 26.2,
+      "avg_dur_min": 316.42,
+      "n_students": 10
+    },
+    {
+      "session_idx": 119,
+      "avg_events": 31.87,
+      "avg_dur_min": 420.54,
+      "n_students": 15
+    },
+    {
+      "session_idx": 120,
+      "avg_events": 11.82,
+      "avg_dur_min": 138.63,
+      "n_students": 11
+    },
+    {
+      "session_idx": 121,
+      "avg_events": 2.33,
+      "avg_dur_min": 31.95,
+      "n_students": 3
+    },
+    {
+      "session_idx": 122,
+      "avg_events": 27.14,
+      "avg_dur_min": 219.12,
+      "n_students": 7
+    },
+    {
+      "session_idx": 123,
+      "avg_events": 20.17,
+      "avg_dur_min": 253.14,
+      "n_students": 6
+    },
+    {
+      "session_idx": 124,
+      "avg_events": 11.67,
+      "avg_dur_min": 192.7,
+      "n_students": 3
+    },
+    {
+      "session_idx": 125,
+      "avg_events": 19.0,
+      "avg_dur_min": 74.25,
+      "n_students": 2
+    },
+    {
+      "session_idx": 126,
+      "avg_events": 2.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 127,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 128,
+      "avg_events": 5.0,
+      "avg_dur_min": 581.11,
+      "n_students": 2
+    },
+    {
+      "session_idx": 129,
+      "avg_events": 11.6,
+      "avg_dur_min": 93.64,
+      "n_students": 5
+    },
+    {
+      "session_idx": 130,
+      "avg_events": 125.44,
+      "avg_dur_min": 618.36,
+      "n_students": 16
+    },
+    {
+      "session_idx": 131,
+      "avg_events": 28.14,
+      "avg_dur_min": 257.83,
+      "n_students": 7
+    },
+    {
+      "session_idx": 133,
+      "avg_events": 11.0,
+      "avg_dur_min": 84.57,
+      "n_students": 1
+    },
+    {
+      "session_idx": 134,
+      "avg_events": 15.0,
+      "avg_dur_min": 240.01,
+      "n_students": 2
+    },
+    {
+      "session_idx": 136,
+      "avg_events": 6.0,
+      "avg_dur_min": 130.94,
+      "n_students": 1
+    },
+    {
+      "session_idx": 137,
+      "avg_events": 2.33,
+      "avg_dur_min": 33.41,
+      "n_students": 3
+    },
+    {
+      "session_idx": 139,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 142,
+      "avg_events": 36.0,
+      "avg_dur_min": 120.89,
+      "n_students": 1
+    },
+    {
+      "session_idx": 146,
+      "avg_events": 6.0,
+      "avg_dur_min": 59.94,
+      "n_students": 3
+    },
+    {
+      "session_idx": 149,
+      "avg_events": 4.0,
+      "avg_dur_min": 98.41,
+      "n_students": 2
+    },
+    {
+      "session_idx": 154,
+      "avg_events": 16.67,
+      "avg_dur_min": 145.85,
+      "n_students": 3
+    },
+    {
+      "session_idx": 155,
+      "avg_events": 24.5,
+      "avg_dur_min": 176.88,
+      "n_students": 2
+    },
+    {
+      "session_idx": 156,
+      "avg_events": 17.0,
+      "avg_dur_min": 61.46,
+      "n_students": 1
+    },
+    {
+      "session_idx": 157,
+      "avg_events": 2.5,
+      "avg_dur_min": 10.88,
+      "n_students": 2
+    },
+    {
+      "session_idx": 160,
+      "avg_events": 3.5,
+      "avg_dur_min": 112.12,
+      "n_students": 2
+    },
+    {
+      "session_idx": 164,
+      "avg_events": 8.5,
+      "avg_dur_min": 83.1,
+      "n_students": 2
+    },
+    {
+      "session_idx": 165,
+      "avg_events": 4.0,
+      "avg_dur_min": 62.03,
+      "n_students": 1
+    },
+    {
+      "session_idx": 166,
+      "avg_events": 7.0,
+      "avg_dur_min": 0.01,
+      "n_students": 1
+    },
+    {
+      "session_idx": 167,
+      "avg_events": 36.0,
+      "avg_dur_min": 184.56,
+      "n_students": 1
+    },
+    {
+      "session_idx": 168,
+      "avg_events": 4.5,
+      "avg_dur_min": 74.31,
+      "n_students": 2
+    },
+    {
+      "session_idx": 169,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 170,
+      "avg_events": 2.0,
+      "avg_dur_min": 30.57,
+      "n_students": 1
+    },
+    {
+      "session_idx": 173,
+      "avg_events": 2.0,
+      "avg_dur_min": 80.92,
+      "n_students": 1
+    },
+    {
+      "session_idx": 174,
+      "avg_events": 5.0,
+      "avg_dur_min": 0.0,
+      "n_students": 2
+    },
+    {
+      "session_idx": 175,
+      "avg_events": 2.0,
+      "avg_dur_min": 38.86,
+      "n_students": 1
+    },
+    {
+      "session_idx": 178,
+      "avg_events": 3.0,
+      "avg_dur_min": 207.45,
+      "n_students": 2
+    },
+    {
+      "session_idx": 179,
+      "avg_events": 2.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 181,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 182,
+      "avg_events": 2.0,
+      "avg_dur_min": 0.14,
+      "n_students": 1
+    },
+    {
+      "session_idx": 183,
+      "avg_events": 6.0,
+      "avg_dur_min": 49.8,
+      "n_students": 1
+    },
+    {
+      "session_idx": 191,
+      "avg_events": 56.5,
+      "avg_dur_min": 224.82,
+      "n_students": 2
+    },
+    {
+      "session_idx": 192,
+      "avg_events": 1.0,
+      "avg_dur_min": 0.0,
+      "n_students": 1
+    },
+    {
+      "session_idx": 194,
+      "avg_events": 4.5,
+      "avg_dur_min": 277.07,
+      "n_students": 2
+    },
+    {
+      "session_idx": 195,
+      "avg_events": 116.0,
+      "avg_dur_min": 541.56,
+      "n_students": 2
+    },
+    {
+      "session_idx": 196,
+      "avg_events": 22.4,
+      "avg_dur_min": 213.05,
+      "n_students": 5
+    },
+    {
+      "session_idx": 197,
+      "avg_events": 10.5,
+      "avg_dur_min": 385.19,
+      "n_students": 4
+    },
+    {
+      "session_idx": 198,
+      "avg_events": 7.0,
+      "avg_dur_min": 416.62,
+      "n_students": 2
+    },
+    {
+      "session_idx": 199,
+      "avg_events": 40.0,
+      "avg_dur_min": 388.75,
+      "n_students": 3
+    },
+    {
+      "session_idx": 200,
+      "avg_events": 64.0,
+      "avg_dur_min": 165.62,
+      "n_students": 1
+    },
+    {
+      "session_idx": 201,
+      "avg_events": 60.0,
+      "avg_dur_min": 187.59,
+      "n_students": 3
+    },
+    {
+      "session_idx": 202,
+      "avg_events": 57.0,
+      "avg_dur_min": 803.17,
+      "n_students": 2
+    },
+    {
+      "session_idx": 203,
+      "avg_events": 292.5,
+      "avg_dur_min": 944.96,
       "n_students": 2
     }
   ]

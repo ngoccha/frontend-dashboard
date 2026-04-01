@@ -6,13 +6,23 @@ import { TierBadge, type TierLevel } from "@/components/dashboard/tier-badge"
 import { Progress } from "@/components/ui/progress"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import {
+  Check,
+  ChevronsUpDown,
   User,
   BookOpen,
   Clock,
@@ -74,6 +84,11 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
   const [studentsData, setStudentsData] = useState<StudentRecord[] | null>(null)
   const [loading, setLoading] = useState(true)
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
+  const [isSwitching, setIsSwitching] = useState(false)
+  const [roomFilter, setRoomFilter] = useState<string>("All")
+  
+  const [openRoom, setOpenRoom] = useState(false)
+  const [openStudent, setOpenStudent] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -97,6 +112,17 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
       .finally(() => setLoading(false))
   }, [propStudentId])
 
+  const availableRooms = useMemo(() => {
+    if (!shapData) return []
+    return Array.from(new Set(shapData.map((s) => s.room_id))).sort()
+  }, [shapData])
+
+  const filteredShap = useMemo(() => {
+    if (!shapData) return []
+    if (roomFilter === "All") return shapData
+    return shapData.filter((s) => s.room_id === roomFilter)
+  }, [shapData, roomFilter])
+
   const currentShap = useMemo(() => {
     if (!shapData || !selectedKey) return null
     const [sid, rid] = selectedKey.split("|")
@@ -112,10 +138,29 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
     )
   }, [studentsData, currentShap])
 
-  const sessionTimeline = useMemo(() => {
+  const getSessionEntries = () => {
     if (!sessionsData || !selectedKey) return []
-    const entries = sessionsData[selectedKey]
-    if (!entries) return []
+    if (sessionsData[selectedKey]) return sessionsData[selectedKey]
+    
+    // Fallback 1: Strip the _c* suffix if present (V7 pipeline compatibility)
+    const [studentId, courseId] = selectedKey.split("|")
+    if (courseId && courseId.includes("_c")) {
+      const baseRoomId = courseId.split("_c")[0]
+      const fallbackKey = `${studentId}|${baseRoomId}`
+      if (sessionsData[fallbackKey]) return sessionsData[fallbackKey]
+    }
+
+    // Fallback 2: Just return ANY session data for this student ID 
+    // (since V7 pipeline might have changed the room_id entirely)
+    const anyStudentKey = Object.keys(sessionsData).find(k => k.startsWith(`${studentId}|`))
+    if (anyStudentKey) return sessionsData[anyStudentKey]
+
+    return []
+  }
+
+  const sessionTimeline = useMemo(() => {
+    const entries = getSessionEntries()
+    if (!entries.length) return []
     return entries.map((e) => ({
       session: `S${e.session_idx}`,
       events: e.n_events,
@@ -124,9 +169,8 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
   }, [sessionsData, selectedKey])
 
   const activityBreakdown = useMemo(() => {
-    if (!sessionsData || !selectedKey) return []
-    const entries = sessionsData[selectedKey]
-    if (!entries) return []
+    const entries = getSessionEntries()
+    if (!entries.length) return []
     const totals: Record<string, number> = {}
     for (const session of entries) {
       for (const [action, count] of Object.entries(session.actions)) {
@@ -182,28 +226,164 @@ export function StudentDetail({ studentId: propStudentId }: StudentDetailProps) 
         </p>
       </div>
 
-      {/* Student Selector */}
-      <Select value={selectedKey ?? undefined} onValueChange={setSelectedKey}>
-        <SelectTrigger className="w-[360px]">
-          <SelectValue placeholder="Select a student" />
-        </SelectTrigger>
-        <SelectContent>
-          {shapData.map((s) => {
-            const key = `${s.student_id}|${s.room_id}`
-            return (
-              <SelectItem key={key} value={key}>
-                {s.student_name} — {s.room_id} ({capitalizeTier(s.predicted_tier)})
-              </SelectItem>
-            )
-          })}
-        </SelectContent>
-      </Select>
+      {/* Selectors */}
+      <div className="flex items-center gap-4">
+        {/* Room Searchable Combobox */}
+        <Popover open={openRoom} onOpenChange={setOpenRoom}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={openRoom}
+              className="w-[200px] justify-between"
+            >
+              {roomFilter === "All" ? "All Rooms" : roomFilter}
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-[200px] p-0" align="start">
+            <Command>
+              <CommandInput placeholder="Search room..." />
+              <CommandList>
+                <CommandEmpty>No room found.</CommandEmpty>
+                <CommandGroup>
+                  <CommandItem
+                    value="All Rooms"
+                    onSelect={() => {
+                      if (roomFilter !== "All") {
+                        setRoomFilter("All")
+                        setIsSwitching(true)
+                        setTimeout(() => setIsSwitching(false), 600)
+                        
+                        const newFiltered = shapData
+                        if (newFiltered && newFiltered.length > 0) {
+                          setSelectedKey(`${newFiltered[0].student_id}|${newFiltered[0].room_id}`)
+                        } else {
+                          setSelectedKey(null)
+                        }
+                      }
+                      setOpenRoom(false)
+                    }}
+                  >
+                    <Check
+                      className={cn(
+                        "mr-2 h-4 w-4",
+                        roomFilter === "All" ? "opacity-100" : "opacity-0"
+                      )}
+                    />
+                    All Rooms
+                  </CommandItem>
+                  {availableRooms.map((room) => (
+                    <CommandItem
+                      key={room}
+                      value={room}
+                      onSelect={(currentValue) => {
+                        // The combobox lowers the case of the value.
+                        // However, we just map it back to the exact array item since room ids might be case sensitive.
+                        // Actually, cmdk lowercase values, so let's use exact match from array
+                        const exactRoom = availableRooms.find(r => r.toLowerCase() === currentValue) ?? room
+                        
+                        if (roomFilter !== exactRoom) {
+                          setRoomFilter(exactRoom)
+                          setIsSwitching(true)
+                          setTimeout(() => setIsSwitching(false), 600)
+                          
+                          const newFiltered = shapData?.filter(s => s.room_id === exactRoom)
+                          if (newFiltered && newFiltered.length > 0) {
+                            setSelectedKey(`${newFiltered[0].student_id}|${newFiltered[0].room_id}`)
+                          } else {
+                            setSelectedKey(null)
+                          }
+                        }
+                        setOpenRoom(false)
+                      }}
+                    >
+                      <Check
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          roomFilter === room ? "opacity-100" : "opacity-0"
+                        )}
+                      />
+                      {room}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+
+        {/* Student Searchable Combobox */}
+        <Popover open={openStudent} onOpenChange={setOpenStudent}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={openStudent}
+              className="w-[360px] justify-between font-normal"
+            >
+              {currentShap
+                ? `${currentShap.student_name} — ${currentShap.room_id}`
+                : "Select a student..."}
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-[360px] p-0" align="start">
+            <Command>
+              <CommandInput placeholder="Search student name or ID..." />
+              <CommandList>
+                <CommandEmpty>No student found.</CommandEmpty>
+                <CommandGroup>
+                  {filteredShap.map((s) => {
+                    const key = `${s.student_id}|${s.room_id}`
+                    const isSelected = selectedKey === key
+                    // We need search text to include name, ID, room for better searching
+                    return (
+                      <CommandItem
+                        key={key}
+                        value={`${s.student_name} ${s.student_id} ${s.room_id} ${key}`}
+                        onSelect={() => {
+                          if (selectedKey !== key) {
+                            setSelectedKey(key)
+                            setIsSwitching(true)
+                            setTimeout(() => setIsSwitching(false), 600)
+                          }
+                          setOpenStudent(false)
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4 shrink-0",
+                            isSelected ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        <div className="flex flex-col text-left w-full overflow-hidden">
+                          <span className="truncate font-medium">{s.student_name}</span>
+                          <span className="text-xs text-muted-foreground truncate">
+                            {s.room_id} • {s.student_id.slice(0, 8)}... • Tier: {capitalizeTier(s.predicted_tier)}
+                          </span>
+                        </div>
+                      </CommandItem>
+                    )
+                  })}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+      </div>
 
       {!currentShap ? (
         <Card className="p-12 text-center">
           <AlertCircle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
           <p className="text-muted-foreground">Select a student to view details.</p>
         </Card>
+      ) : isSwitching ? (
+        <div className="grid grid-cols-3 gap-6">
+          <Skeleton className="h-[600px] w-full" />
+          <Skeleton className="h-[600px] w-full" />
+          <Skeleton className="h-[600px] w-full" />
+        </div>
       ) : (
         <div className="grid grid-cols-3 gap-6">
           {/* Left Panel - Student Info */}

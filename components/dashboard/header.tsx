@@ -1,9 +1,8 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { Search, ChevronDown } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,7 +29,7 @@ export function Header({ selectedRoom, onRoomChange, rooms }: HeaderProps) {
   )
 
   return (
-    <header className="h-16 bg-card border-b border-border flex items-center justify-between px-6">
+    <header className="h-16 bg-card border-b border-border flex items-center px-6">
       <div className="flex items-center gap-4">
         <DropdownMenu onOpenChange={(open) => { if (!open) setRoomSearch("") }}>
           <DropdownMenuTrigger asChild>
@@ -64,31 +63,6 @@ export function Header({ selectedRoom, onRoomChange, rooms }: HeaderProps) {
             </div>
           </DropdownMenuContent>
         </DropdownMenu>
-
-        <span className="text-sm text-muted-foreground font-medium">
-          Spring 2026
-        </span>
-
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input
-            placeholder="Search Student ID / Name..."
-            className="w-64 pl-9"
-          />
-        </div>
-      </div>
-
-      <div className="flex items-center gap-3">
-        <div className="text-right">
-          <p className="text-sm font-medium text-foreground">Nguyen Thi A</p>
-          <p className="text-xs text-muted-foreground">Instructor</p>
-        </div>
-        <Avatar className="w-9 h-9">
-          <AvatarImage src="/placeholder-avatar.jpg" alt="Instructor" />
-          <AvatarFallback className="bg-primary text-primary-foreground text-sm">
-            NA
-          </AvatarFallback>
-        </Avatar>
       </div>
     </header>
   )

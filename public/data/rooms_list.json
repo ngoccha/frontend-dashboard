@@ -1,212 +1,453 @@
 [
   {
-    "room_id": "2wpTye",
-    "n_students": 23,
+    "course_id": "2EVgQ2_c1",
+    "room_id": "",
+    "room_type": "weekly",
+    "n_students": 19,
     "tier_counts": {
-      "disengaged": 7,
-      "high": 6,
       "low": 5,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 11,
-      "moderate": 6,
-      "high": 4,
-      "low": 2
-    }
-  },
-  {
-    "room_id": "414QeC",
-    "n_students": 24,
-    "tier_counts": {
-      "high": 6,
-      "disengaged": 6,
-      "moderate": 6,
-      "low": 6
-    },
-    "predicted_tier_counts": {
-      "low": 12,
-      "high": 7,
-      "moderate": 3,
-      "disengaged": 2
-    }
-  },
-  {
-    "room_id": "45XzqN",
-    "n_students": 15,
-    "tier_counts": {
-      "low": 4,
-      "disengaged": 4,
-      "high": 4,
-      "moderate": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 7,
       "high": 5,
+      "disengaged": 5,
+      "moderate": 4
+    },
+    "pred_counts": {
+      "moderate": 7,
+      "high": 6,
+      "disengaged": 6
+    }
+  },
+  {
+    "course_id": "2UfirR_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 65,
+    "tier_counts": {
+      "disengaged": 17,
+      "low": 16,
+      "high": 16,
+      "moderate": 16
+    },
+    "pred_counts": {
+      "disengaged": 54,
+      "high": 5,
+      "moderate": 3,
       "low": 3
     }
   },
   {
-    "room_id": "49Dfs4",
-    "n_students": 19,
+    "course_id": "41UYEv_c1",
+    "room_id": "",
+    "room_type": "weekly",
+    "n_students": 22,
     "tier_counts": {
-      "disengaged": 5,
+      "disengaged": 6,
+      "high": 6,
       "low": 5,
-      "high": 5,
-      "moderate": 4
+      "moderate": 5
     },
-    "predicted_tier_counts": {
-      "disengaged": 12,
-      "moderate": 5,
-      "high": 1,
-      "low": 1
+    "pred_counts": {
+      "disengaged": 9,
+      "high": 6,
+      "moderate": 4,
+      "low": 3
     }
   },
   {
-    "room_id": "7Igy2h",
+    "course_id": "4YtuXh_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
     "n_students": 17,
     "tier_counts": {
       "disengaged": 5,
-      "high": 4,
+      "moderate": 4,
       "low": 4,
-      "moderate": 4
+      "high": 4
     },
-    "predicted_tier_counts": {
-      "disengaged": 8,
-      "high": 5,
-      "low": 4
-    }
-  },
-  {
-    "room_id": "8QBzCp",
-    "n_students": 49,
-    "tier_counts": {
-      "disengaged": 13,
-      "low": 12,
-      "high": 12,
-      "moderate": 12
-    },
-    "predicted_tier_counts": {
-      "disengaged": 20,
-      "high": 13,
-      "moderate": 10,
-      "low": 6
-    }
-  },
-  {
-    "room_id": "A1Fbqn",
-    "n_students": 14,
-    "tier_counts": {
-      "disengaged": 4,
-      "high": 4,
-      "moderate": 3,
-      "low": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 6,
-      "high": 4,
-      "moderate": 3,
-      "low": 1
-    }
-  },
-  {
-    "room_id": "AV77R9",
-    "n_students": 20,
-    "tier_counts": {
-      "high": 5,
-      "disengaged": 5,
-      "low": 5,
-      "moderate": 5
-    },
-    "predicted_tier_counts": {
-      "high": 8,
-      "low": 6,
-      "disengaged": 5,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "JxKtNV",
-    "n_students": 13,
-    "tier_counts": {
-      "disengaged": 4,
-      "low": 3,
-      "high": 3,
-      "moderate": 3
-    },
-    "predicted_tier_counts": {
-      "disengaged": 8,
-      "high": 3,
-      "moderate": 1,
-      "low": 1
-    }
-  },
-  {
-    "room_id": "KHDL_CQ_225_02",
-    "n_students": 20,
-    "tier_counts": {
-      "moderate": 5,
-      "low": 5,
-      "disengaged": 5,
-      "high": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 9,
-      "low": 6,
-      "high": 4,
-      "moderate": 1
-    }
-  },
-  {
-    "room_id": "KP2Mjm",
-    "n_students": 21,
-    "tier_counts": {
-      "disengaged": 6,
-      "low": 5,
-      "moderate": 5,
-      "high": 5
-    },
-    "predicted_tier_counts": {
-      "disengaged": 8,
-      "high": 8,
-      "low": 3,
-      "moderate": 2
-    }
-  },
-  {
-    "room_id": "LASjJe",
-    "n_students": 39,
-    "tier_counts": {
-      "high": 10,
+    "pred_counts": {
       "disengaged": 10,
-      "low": 10,
-      "moderate": 9
-    },
-    "predicted_tier_counts": {
-      "high": 13,
-      "low": 10,
-      "disengaged": 8,
-      "moderate": 8
+      "low": 3,
+      "high": 3,
+      "moderate": 1
     }
   },
   {
-    "room_id": "Mp4tdy",
-    "n_students": 51,
+    "course_id": "6FYLTw_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 50,
     "tier_counts": {
+      "high": 13,
+      "disengaged": 13,
+      "moderate": 12,
+      "low": 12
+    },
+    "pred_counts": {
+      "disengaged": 16,
+      "low": 12,
+      "high": 11,
+      "moderate": 11
+    }
+  },
+  {
+    "course_id": "6mMFmm_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 52,
+    "tier_counts": {
+      "disengaged": 14,
+      "high": 13,
+      "moderate": 13,
+      "low": 12
+    },
+    "pred_counts": {
+      "high": 15,
       "low": 14,
       "disengaged": 13,
-      "high": 13,
-      "moderate": 11
-    },
-    "predicted_tier_counts": {
-      "high": 16,
-      "disengaged": 14,
-      "low": 11,
       "moderate": 10
     }
   },
   {
-    "room_id": "NFzXSI",
+    "course_id": "8iGXPZ_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 68,
+    "tier_counts": {
+      "moderate": 17,
+      "disengaged": 17,
+      "low": 17,
+      "high": 17
+    },
+    "pred_counts": {
+      "high": 20,
+      "moderate": 20,
+      "disengaged": 17,
+      "low": 11
+    }
+  },
+  {
+    "course_id": "Cg9m2X_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 48,
+    "tier_counts": {
+      "moderate": 12,
+      "high": 12,
+      "disengaged": 12,
+      "low": 12
+    },
+    "pred_counts": {
+      "low": 16,
+      "disengaged": 15,
+      "moderate": 14,
+      "high": 3
+    }
+  },
+  {
+    "course_id": "CjdMTD_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 58,
+    "tier_counts": {
+      "high": 15,
+      "disengaged": 15,
+      "moderate": 14,
+      "low": 14
+    },
+    "pred_counts": {
+      "disengaged": 21,
+      "high": 18,
+      "low": 10,
+      "moderate": 9
+    }
+  },
+  {
+    "course_id": "HejzPI_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 45,
+    "tier_counts": {
+      "disengaged": 12,
+      "high": 11,
+      "low": 11,
+      "moderate": 11
+    },
+    "pred_counts": {
+      "high": 15,
+      "disengaged": 14,
+      "low": 13,
+      "moderate": 3
+    }
+  },
+  {
+    "course_id": "IgUGHH_c2",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 14,
+    "tier_counts": {
+      "disengaged": 4,
+      "high": 4,
+      "moderate": 3,
+      "low": 3
+    },
+    "pred_counts": {
+      "disengaged": 7,
+      "low": 5,
+      "moderate": 1,
+      "high": 1
+    }
+  },
+  {
+    "course_id": "Le2MmM_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 28,
+    "tier_counts": {
+      "high": 7,
+      "disengaged": 7,
+      "moderate": 7,
+      "low": 7
+    },
+    "pred_counts": {
+      "disengaged": 17,
+      "high": 6,
+      "moderate": 4,
+      "low": 1
+    }
+  },
+  {
+    "course_id": "MEJqLC_c1",
+    "room_id": "",
+    "room_type": "weekly",
+    "n_students": 44,
+    "tier_counts": {
+      "moderate": 23,
+      "disengaged": 11,
+      "high": 10
+    },
+    "pred_counts": {
+      "moderate": 34,
+      "disengaged": 7,
+      "high": 3
+    }
+  },
+  {
+    "course_id": "PWYPd3_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 48,
+    "tier_counts": {
+      "moderate": 12,
+      "disengaged": 12,
+      "high": 12,
+      "low": 12
+    },
+    "pred_counts": {
+      "disengaged": 23,
+      "high": 11,
+      "moderate": 8,
+      "low": 6
+    }
+  },
+  {
+    "course_id": "QLGK35_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 52,
+    "tier_counts": {
+      "disengaged": 13,
+      "low": 13,
+      "moderate": 13,
+      "high": 13
+    },
+    "pred_counts": {
+      "disengaged": 18,
+      "low": 13,
+      "high": 11,
+      "moderate": 10
+    }
+  },
+  {
+    "course_id": "R4HEBu_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 40,
+    "tier_counts": {
+      "moderate": 10,
+      "disengaged": 10,
+      "low": 10,
+      "high": 10
+    },
+    "pred_counts": {
+      "disengaged": 25,
+      "high": 7,
+      "moderate": 6,
+      "low": 2
+    }
+  },
+  {
+    "course_id": "TDfwyC_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 13,
+    "tier_counts": {
+      "disengaged": 4,
+      "high": 3,
+      "moderate": 3,
+      "low": 3
+    },
+    "pred_counts": {
+      "disengaged": 7,
+      "low": 3,
+      "high": 2,
+      "moderate": 1
+    }
+  },
+  {
+    "course_id": "TYpykB_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 79,
+    "tier_counts": {
+      "low": 20,
+      "disengaged": 20,
+      "high": 20,
+      "moderate": 19
+    },
+    "pred_counts": {
+      "disengaged": 43,
+      "moderate": 17,
+      "high": 12,
+      "low": 7
+    }
+  },
+  {
+    "course_id": "Top9VF_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 52,
+    "tier_counts": {
+      "moderate": 13,
+      "high": 13,
+      "low": 13,
+      "disengaged": 13
+    },
+    "pred_counts": {
+      "disengaged": 15,
+      "high": 14,
+      "low": 12,
+      "moderate": 11
+    }
+  },
+  {
+    "course_id": "U3sqcq_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 47,
+    "tier_counts": {
+      "disengaged": 12,
+      "low": 12,
+      "high": 12,
+      "moderate": 11
+    },
+    "pred_counts": {
+      "moderate": 22,
+      "disengaged": 17,
+      "high": 6,
+      "low": 2
+    }
+  },
+  {
+    "course_id": "U7pYCQ_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 58,
+    "tier_counts": {
+      "disengaged": 15,
+      "high": 15,
+      "low": 14,
+      "moderate": 14
+    },
+    "pred_counts": {
+      "low": 19,
+      "high": 18,
+      "disengaged": 11,
+      "moderate": 10
+    }
+  },
+  {
+    "course_id": "ZrIavJ_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 42,
+    "tier_counts": {
+      "high": 11,
+      "disengaged": 11,
+      "low": 10,
+      "moderate": 10
+    },
+    "pred_counts": {
+      "disengaged": 20,
+      "high": 11,
+      "moderate": 6,
+      "low": 5
+    }
+  },
+  {
+    "course_id": "ZsHmDc_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 32,
+    "tier_counts": {
+      "low": 8,
+      "high": 8,
+      "moderate": 8,
+      "disengaged": 8
+    },
+    "pred_counts": {
+      "disengaged": 22,
+      "moderate": 7,
+      "low": 3
+    }
+  },
+  {
+    "course_id": "bAmGhf_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 25,
+    "tier_counts": {
+      "disengaged": 7,
+      "moderate": 6,
+      "high": 6,
+      "low": 6
+    },
+    "pred_counts": {
+      "disengaged": 13,
+      "moderate": 6,
+      "high": 6
+    }
+  },
+  {
+    "course_id": "bBu7zx_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 57,
+    "tier_counts": {
+      "disengaged": 15,
+      "low": 14,
+      "moderate": 14,
+      "high": 14
+    },
+    "pred_counts": {
+      "disengaged": 28,
+      "high": 13,
+      "low": 12,
+      "moderate": 4
+    }
+  },
+  {
+    "course_id": "fVx47e_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
     "n_students": 14,
     "tier_counts": {
       "high": 4,
@@ -214,138 +455,131 @@
       "low": 3,
       "moderate": 3
     },
-    "predicted_tier_counts": {
-      "disengaged": 8,
-      "moderate": 5,
-      "low": 1
+    "pred_counts": {
+      "disengaged": 10,
+      "high": 4
     }
   },
   {
-    "room_id": "cG43T1",
-    "n_students": 10,
+    "course_id": "jOkz1q_c2",
+    "room_id": "",
+    "room_type": "weekly",
+    "n_students": 9,
     "tier_counts": {
-      "high": 3,
-      "disengaged": 3,
-      "low": 2,
-      "moderate": 2
+      "disengaged": 5,
+      "moderate": 3,
+      "high": 1
     },
-    "predicted_tier_counts": {
-      "disengaged": 4,
-      "high": 3,
-      "moderate": 2,
-      "low": 1
+    "pred_counts": {
+      "disengaged": 8,
+      "high": 1
     }
   },
   {
-    "room_id": "iWIr3z",
-    "n_students": 35,
+    "course_id": "jvrDy8_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 34,
     "tier_counts": {
-      "low": 9,
-      "disengaged": 9,
       "high": 9,
+      "disengaged": 9,
+      "low": 8,
       "moderate": 8
     },
-    "predicted_tier_counts": {
-      "high": 11,
-      "disengaged": 10,
-      "low": 9,
-      "moderate": 5
-    }
-  },
-  {
-    "room_id": "myeJCp",
-    "n_students": 30,
-    "tier_counts": {
+    "pred_counts": {
+      "disengaged": 22,
       "high": 8,
-      "disengaged": 8,
-      "low": 7,
-      "moderate": 7
-    },
-    "predicted_tier_counts": {
-      "high": 11,
-      "disengaged": 11,
-      "low": 4,
       "moderate": 4
     }
   },
   {
-    "room_id": "pU0xvo",
-    "n_students": 39,
+    "course_id": "oNwkHP_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 56,
     "tier_counts": {
-      "low": 10,
-      "disengaged": 10,
-      "high": 10,
-      "moderate": 9
+      "moderate": 14,
+      "disengaged": 14,
+      "high": 14,
+      "low": 14
     },
-    "predicted_tier_counts": {
+    "pred_counts": {
+      "disengaged": 23,
       "high": 15,
-      "moderate": 12,
-      "disengaged": 11,
-      "low": 1
+      "moderate": 15,
+      "low": 3
     }
   },
   {
-    "room_id": "pnEnLc",
-    "n_students": 19,
+    "course_id": "r8dmAv_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 76,
     "tier_counts": {
-      "high": 5,
-      "disengaged": 5,
-      "low": 5,
-      "moderate": 4
+      "high": 19,
+      "moderate": 19,
+      "disengaged": 19,
+      "low": 19
     },
-    "predicted_tier_counts": {
-      "high": 9,
-      "disengaged": 7,
-      "moderate": 2,
-      "low": 1
+    "pred_counts": {
+      "high": 24,
+      "moderate": 22,
+      "disengaged": 21,
+      "low": 9
     }
   },
   {
-    "room_id": "qUzgza",
+    "course_id": "sUrQmH_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 60,
+    "tier_counts": {
+      "disengaged": 15,
+      "moderate": 15,
+      "high": 15,
+      "low": 15
+    },
+    "pred_counts": {
+      "low": 18,
+      "high": 18,
+      "moderate": 14,
+      "disengaged": 10
+    }
+  },
+  {
+    "course_id": "uwfSug_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
     "n_students": 39,
     "tier_counts": {
-      "high": 10,
       "low": 10,
       "disengaged": 10,
+      "high": 10,
       "moderate": 9
     },
-    "predicted_tier_counts": {
-      "disengaged": 17,
-      "high": 10,
-      "moderate": 8,
-      "low": 4
+    "pred_counts": {
+      "disengaged": 27,
+      "high": 7,
+      "moderate": 4,
+      "low": 1
     }
   },
   {
-    "room_id": "tQaXjT",
-    "n_students": 21,
+    "course_id": "yw6EcK_c1",
+    "room_id": "",
+    "room_type": "selfpaced",
+    "n_students": 13,
     "tier_counts": {
-      "disengaged": 6,
-      "moderate": 5,
-      "low": 5,
-      "high": 5
+      "disengaged": 4,
+      "high": 3,
+      "low": 3,
+      "moderate": 3
     },
-    "predicted_tier_counts": {
-      "high": 9,
-      "low": 7,
-      "moderate": 3,
-      "disengaged": 2
-    }
-  },
-  {
-    "room_id": "uhKG4o",
-    "n_students": 81,
-    "tier_counts": {
-      "disengaged": 21,
-      "low": 20,
-      "high": 20,
-      "moderate": 20
-    },
-    "predicted_tier_counts": {
-      "disengaged": 28,
-      "high": 25,
-      "moderate": 16,
-      "low": 12
+    "pred_counts": {
+      "disengaged": 5,
+      "low": 4,
+      "high": 2,
+      "moderate": 2
     }
   }
 ]

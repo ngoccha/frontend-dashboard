@@ -1,30 +1,18 @@
 {
-  "binary": [
-    {
-      "feature_set": "With normalization (full)",
-      "n_features": 22,
-      "auc_binary": 0.897,
-      "macro_f1_binary": 0.7909
-    },
-    {
-      "feature_set": "Without normalization (raw)",
-      "n_features": 18,
-      "auc_binary": 0.8661,
-      "macro_f1_binary": 0.8242
-    }
-  ],
-  "multiclass": [
-    {
-      "feature_set": "With normalization (full)",
-      "n_features": 22,
-      "auc_ovr": 0.6998,
-      "macro_f1_mc": 0.4184
-    },
-    {
-      "feature_set": "Without normalization (raw)",
-      "n_features": 18,
-      "auc_ovr": 0.6723,
-      "macro_f1_mc": 0.3403
-    }
-  ]
+  "1. Counts Only": {
+    "auc": 0.8586,
+    "std": 0.0459
+  },
+  "2. + Ratios": {
+    "auc": 0.8727,
+    "std": 0.0316
+  },
+  "3. + Temporal": {
+    "auc": 0.8721,
+    "std": 0.0311
+  },
+  "4. + Normalized (ALL)": {
+    "auc": 0.9249,
+    "std": 0.0187
+  }
 }

@@ -22,6 +22,9 @@ import {
 import {
   LineChart,
   Line,
+  BarChart,
+  Bar,
+  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -35,12 +38,14 @@ import {
   fetchConfusionMatrices,
   fetchRocData,
   fetchOverview,
+  fetchAblation,
 } from "@/lib/fetch-data"
 import type {
   ModelMetric,
   ConfusionMatrices,
   RocData,
   OverviewData,
+  AblationData,
 } from "@/lib/types"
 
 const MODEL_COLORS: Record<string, string> = {
@@ -103,6 +108,7 @@ export function ModelMetrics() {
   const [matrices, setMatrices] = useState<ConfusionMatrices | null>(null)
   const [rocData, setRocData] = useState<RocData | null>(null)
   const [overview, setOverview] = useState<OverviewData | null>(null)
+  const [ablation, setAblation] = useState<AblationData | null>(null)
   const [selectedMatrix, setSelectedMatrix] = useState<string>("")
   const [loading, setLoading] = useState(true)
 
@@ -112,18 +118,23 @@ export function ModelMetrics() {
       fetchConfusionMatrices(),
       fetchRocData(),
       fetchOverview(),
+      fetchAblation(),
     ])
-      .then(([modelsData, matricesData, rocDataResult, overviewData]) => {
+      .then(([modelsData, matricesData, rocDataResult, overviewData, ablationData]) => {
         setModels(modelsData)
         setMatrices(matricesData)
         setRocData(rocDataResult)
         setOverview(overviewData)
+        setAblation(ablationData)
         setSelectedMatrix(overviewData.best_model)
+      })
+      .catch((e) => {
+        console.error(e)
       })
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading || !models || !matrices || !rocData || !overview) {
+  if (loading || !models || !matrices || !rocData || !overview || !ablation) {
     return (
       <div className="space-y-6">
         <div>
@@ -240,7 +251,7 @@ export function ModelMetrics() {
           </Badge>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           <div className="flex items-center gap-3">
             <GitBranch className="w-5 h-5 text-muted-foreground" />
             <div>
@@ -255,17 +266,25 @@ export function ModelMetrics() {
             <div>
               <p className="text-xs text-muted-foreground">Features</p>
               <p className="text-sm font-medium text-foreground">
-                {overview.n_features} input features
+                {overview.n_features ?? overview.features_used?.length ?? 0} input features
               </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <TrendingUp className="w-5 h-5 text-muted-foreground" />
             <div>
-              <p className="text-xs text-muted-foreground">Accuracy / AUC</p>
+              <p className="text-xs text-muted-foreground">Accuracy (Two-Stage)</p>
               <p className="text-sm font-medium text-foreground">
-                {Number((bestModelData?.accuracy ?? 0) * 100).toFixed(1)}% /{" "}
-                {Number(bestModelData?.auc ?? 0).toFixed(3)}
+                {Number((overview?.metrics?.accuracy ?? 0) * 100).toFixed(1)}%
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3" title="Quadratic Weighted Kappa - Chỉ số đánh giá độ tin cậy phân loại cấp bậc">
+            <Brain className="w-5 h-5 text-muted-foreground" />
+            <div>
+              <p className="text-xs text-muted-foreground">QWK Score</p>
+              <p className="text-sm font-medium text-foreground">
+                {Number(overview?.metrics?.qwk ?? 0).toFixed(4)}
               </p>
             </div>
           </div>
@@ -526,6 +545,66 @@ export function ModelMetrics() {
                 />
               ))}
             </LineChart>
+          </ResponsiveContainer>
+        </Card>
+        {/* Ablation Study Chart */}
+        <Card className="p-5 lg:col-span-2">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">
+                Feature Engineering Ablation Study
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Đánh giá mức độ hiệu quả (AUC) khi thêm các nhóm features
+              </p>
+            </div>
+          </div>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={Object.entries(ablation).map(([name, stats]) => ({
+                name,
+                auc: Number(stats.auc.toFixed(4)),
+              }))}
+              margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" className="opacity-30" vertical={false} />
+              <XAxis
+                dataKey="name"
+                className="text-xs font-medium"
+                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tickLine={false}
+                axisLine={false}
+              />
+              <YAxis
+                domain={[0.8, 1.0]}
+                className="text-xs"
+                tick={{ fill: "hsl(var(--muted-foreground))" }}
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(val) => Number(val).toFixed(2)}
+              />
+              <Tooltip
+                cursor={{ fill: "hsl(var(--muted)/0.3)" }}
+                contentStyle={{
+                  backgroundColor: "hsl(var(--card))",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "8px",
+                  fontSize: "12px",
+                }}
+              />
+              <Bar dataKey="auc" radius={[4, 4, 0, 0]} maxBarSize={60}>
+                {Object.keys(ablation).map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={
+                      index === Object.keys(ablation).length - 1
+                        ? "hsl(var(--primary))"
+                        : "hsl(var(--primary)/0.5)"
+                    }
+                  />
+                ))}
+              </Bar>
+            </BarChart>
           </ResponsiveContainer>
         </Card>
       </div>

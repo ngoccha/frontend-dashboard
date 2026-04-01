@@ -1,10 +1,17 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Card } from "@/components/ui/card"
 import { KpiCard } from "@/components/dashboard/kpi-card"
 import { TierBadge, type TierLevel } from "@/components/dashboard/tier-badge"
 import { Skeleton } from "@/components/ui/skeleton"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import {
   TrendingUp,
   AlertTriangle,
@@ -17,6 +24,8 @@ import {
   Filter,
   Info,
   Shuffle,
+  Users,
+  BookOpen,
 } from "lucide-react"
 import {
   BarChart,
@@ -109,12 +118,18 @@ function RoomsSkeleton() {
 
 /* ── Main component ────────────────────────────────────── */
 
+export function formatNumber(num: number | undefined | null): string {
+  if (num === undefined || num === null) return "0"; 
+  return num.toLocaleString("en-US");
+}
+
 export function Overview() {
   const [overview, setOverview] = useState<OverviewData | null>(null)
   const [rooms, setRooms] = useState<RoomInfo[] | null>(null)
   const [transition, setTransition] = useState<TransitionMatrix | null>(null)
   const [students, setStudents] = useState<StudentRecord[] | null>(null)
   const [loading, setLoading] = useState(true)
+  const [selectedRoomId, setSelectedRoomId] = useState<string>("All")
 
   useEffect(() => {
     Promise.all([
@@ -134,7 +149,12 @@ export function Overview() {
 
   /* ── Derived data ── */
 
-  const tierCounts = overview?.tier_counts ?? {}
+  const selectedRoomData = useMemo(() => {
+    if (selectedRoomId === "All" || !rooms) return null
+    return rooms.find(r => r.room_id === selectedRoomId) ?? null
+  }, [selectedRoomId, rooms])
+
+  const tierCounts = selectedRoomId === "All" ? (overview?.tier_counts ?? {}) : (selectedRoomData?.tier_counts ?? {})
   const tierOrder =
     (Array.isArray(overview?.config?.TIER_NAMES)
       ? (overview?.config?.TIER_NAMES as string[])
@@ -158,7 +178,11 @@ export function Overview() {
       : []
 
   const predictionCount = students
-    ? students.filter((s) => hasPrediction(s)).length
+    ? students.filter((s) => {
+        const studentRoomId = s.course_id || s.room_id
+        if (selectedRoomId !== "All" && studentRoomId !== selectedRoomId) return false
+        return hasPrediction(s)
+      }).length
     : 0
 
   const labelStability = transition ? transition.stability : 0
@@ -187,106 +211,75 @@ export function Overview() {
 
   /* ── Render ── */
 
+  const displayStudentCount = selectedRoomId === "All" 
+    ? overview?.cohort_students 
+    : selectedRoomData?.n_students
+
   return (
     <div className="space-y-6">
-      {/* Page Title */}
-      <div>
-        <h2 className="text-2xl font-bold text-foreground">Overview</h2>
-        <p className="text-muted-foreground">
-          Data pipeline summary, engagement tiers, and model performance
-        </p>
+      {/* Page Title & Room Filter */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-foreground">Overview</h2>
+          <p className="text-muted-foreground">
+            Data pipeline summary, engagement tiers, and model performance
+          </p>
+        </div>
+        {!loading && rooms && (
+          <Select value={selectedRoomId} onValueChange={setSelectedRoomId}>
+            <SelectTrigger className="w-[200px]">
+              <SelectValue placeholder="All Rooms" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="All">All Rooms</SelectItem>
+              {rooms.map((r) => (
+                <SelectItem key={r.room_id} value={r.room_id}>
+                  {r.room_id}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
       </div>
 
-      {/* ────────── 1. DATA PIPELINE FUNNEL ────────── */}
+      {/* ────────── 1. MAIN KPIs (Redesigned) ────────── */}
       {loading ? (
-        <FunnelSkeleton />
+        <div className="grid grid-cols-3 gap-6">
+          <KpiSkeleton />
+          <KpiSkeleton />
+          <KpiSkeleton />
+        </div>
       ) : (
-        <Card className="p-5">
-          <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-            <Filter className="w-5 h-5 text-primary" />
-            Data Pipeline
-          </h3>
-          <div className="flex items-stretch gap-2">
-            {/* Step 1 — Raw */}
-            <div className="flex-1 p-4 rounded-lg bg-secondary/30 border border-border/50 text-center">
-              <Database className="w-6 h-6 text-primary mx-auto mb-2" />
-              <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
-                Raw Data
-              </p>
-              <p className="text-2xl font-bold text-foreground mt-1">
-                {overview?.total_students_raw.toLocaleString()}
-              </p>
-              <p className="text-xs text-muted-foreground">students</p>
-              <div className="mt-2 space-y-0.5 text-xs text-muted-foreground">
-                <p>{overview?.total_rooms_raw} rooms</p>
-                <p>{overview?.total_events_raw.toLocaleString()} events</p>
-              </div>
-            </div>
-
-            {/* Arrow 1 */}
-            <div className="flex flex-col items-center justify-center gap-1 shrink-0 px-1">
-              <ArrowRight className="w-5 h-5 text-muted-foreground" />
-              <p className="text-[9px] text-muted-foreground leading-tight text-center w-16">
-                ≥{overview?.config.MIN_SESSIONS} sessions, ≥
-                {overview?.config.MIN_ROOM_SIZE} stu/room
-              </p>
-            </div>
-
-            {/* Step 2 — Cohort */}
-            <div className="flex-1 p-4 rounded-lg bg-secondary/30 border border-border/50 text-center">
-              <Filter className="w-6 h-6 text-primary mx-auto mb-2" />
-              <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
-                Filtered Cohort
-              </p>
-              <p className="text-2xl font-bold text-foreground mt-1">
-                {overview?.cohort_students.toLocaleString()}
-              </p>
-              <p className="text-xs text-muted-foreground">students</p>
-              <div className="mt-2 space-y-0.5 text-xs text-muted-foreground">
-                <p>{overview?.cohort_rooms} rooms</p>
-                <p>
-                  {overview?.cohort_courses.toLocaleString()} course enrollments
-                </p>
-              </div>
-            </div>
-
-            {/* Arrow 2 */}
-            <div className="flex flex-col items-center justify-center gap-1 shrink-0 px-1">
-              <ArrowRight className="w-5 h-5 text-muted-foreground" />
-              <p className="text-[9px] text-muted-foreground leading-tight text-center w-16">
-                tier diversity filter
-              </p>
-            </div>
-
-            {/* Step 3 — Predictions */}
-            <div className="flex-1 p-4 rounded-lg bg-secondary/30 border border-border/50 text-center">
-              <Brain className="w-6 h-6 text-primary mx-auto mb-2" />
-              <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
-                Model Predictions
-              </p>
-              <p className="text-2xl font-bold text-foreground mt-1">
-                {predictionCount}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                students with predictions
-              </p>
-              <div className="mt-2 space-y-0.5 text-xs text-muted-foreground">
-                <p>{overview?.best_model} model</p>
-                <p>AUC {Number(overview?.best_auc ?? 0).toFixed(3)}</p>
-              </div>
-            </div>
-          </div>
-        </Card>
+        <div className="grid grid-cols-3 gap-6">
+          <KpiCard
+            title="Valid Students"
+            value={formatNumber(displayStudentCount)}
+            subtitle={selectedRoomId === "All" ? "Total students after filtering" : `Students in ${selectedRoomId}`}
+            icon={Users}
+          />
+          <KpiCard
+            title="Courses Analyzed"
+            value={selectedRoomId === "All" ? formatNumber(overview?.cohort_courses) : "1"}
+            subtitle={selectedRoomId === "All" ? "Number of course enrollments" : "Room corresponds to 1 course"}
+            icon={BookOpen}
+          />
+          <KpiCard
+            title="AI Engine"
+            value={overview?.best_model ?? "N/A"}
+            subtitle="Current architecture"
+            icon={Brain}
+          />
+        </div>
       )}
 
       {/* ────────── 2. KEY INSIGHT CARDS ────────── */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-5 gap-4">
         {loading ? (
-          Array.from({ length: 4 }).map((_, i) => <KpiSkeleton key={i} />)
+          Array.from({ length: 5 }).map((_, i) => <KpiSkeleton key={i} />)
         ) : (
           <>
             <KpiCard
-              title="Middle Tiers Dominance"
+              title="Middle Tiers"
               value={`${(() => {
                 const totalMiddle = tierData
                   .filter((t) => t.key !== "high" && t.key !== "disengaged")
@@ -295,27 +288,35 @@ export function Overview() {
                   ? Number(totalMiddle).toFixed(1)
                   : "0.0"
               })()}%`}
-              subtitle="Model's main job: separating extremes from the middle tiers"
+              subtitle="Separating extremes from middle tiers"
               icon={Layers}
             />
             <KpiCard
               title="Label Stability"
               value={`${Number(labelStability * 100).toFixed(1)}%`}
-              subtitle="Keep same tier between early → full period"
+              subtitle="Same tier from early → full period"
               icon={Shuffle}
             />
             <KpiCard
-              title="Predictions Made"
+              title="Predictions"
               value={predictionCount}
-              subtitle={`Of ${overview?.cohort_students ?? 0} cohort students`}
+              subtitle={selectedRoomId === "All" ? `Of ${overview?.cohort_students ?? 0} students` : `Of ${selectedRoomData?.n_students ?? 0} students`}
               icon={Target}
             />
             <KpiCard
-              title="Model AUC"
-              value={Number(overview?.best_auc ?? 0).toFixed(2)}
-              subtitle={`${overview?.best_model} — moderate discriminative power`}
+              title="Model Accuracy"
+              value={`${Number((overview?.metrics?.accuracy ?? 0) * 100).toFixed(1)}%`}
+              subtitle="Two-Stage Hierarchical Model"
               icon={Brain}
             />
+            <div title="Quadratic Weighted Kappa - Chỉ số đánh giá độ tin cậy phân loại cấp bậc">
+              <KpiCard
+                title="QWK Score"
+                value={Number(overview?.metrics?.qwk ?? 0).toFixed(4)}
+                subtitle="Agreement with actual tiers"
+                icon={Brain}
+              />
+            </div>
           </>
         )}
       </div>
@@ -412,10 +413,10 @@ export function Overview() {
         )}
       </div>
 
-      {/* ────────── 4. ROOM OVERVIEW ────────── */}
+      {/* ────────── 4. ROOM OVERVIEW (Only show if "All" is selected) ────────── */}
       {loading ? (
         <RoomsSkeleton />
-      ) : (
+      ) : selectedRoomId === "All" && (
         <div className="grid grid-cols-3 gap-6">
           {/* Top 10 rooms grid */}
           <Card className="col-span-2 p-5">
@@ -454,6 +455,15 @@ export function Overview() {
                         <Activity className="w-3.5 h-3.5 text-tier-mid shrink-0" />
                       )}
                     </div>
+                    {room.room_type && (
+                      <span className={`inline-block text-[10px] px-1.5 py-0.5 rounded-full font-medium mb-1 ${
+                        room.room_type === "weekly"
+                          ? "bg-blue-500/15 text-blue-400 border border-blue-500/30"
+                          : "bg-purple-500/15 text-purple-400 border border-purple-500/30"
+                      }`}>
+                        {room.room_type === "weekly" ? "Weekly" : "Self-paced"}
+                      </span>
+                    )}
                     <p className="text-2xl font-bold text-foreground">
                       {room.n_students}
                     </p>

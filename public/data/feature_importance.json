@@ -1,0 +1,94 @@
+[
+  {
+    "feature": "n_active_early_pct",
+    "mean_abs_shap": 1.249903702222196
+  },
+  {
+    "feature": "n_sessions_early_pct",
+    "mean_abs_shap": 0.7760823932377339
+  },
+  {
+    "feature": "total_dur_early_pct",
+    "mean_abs_shap": 0.716992995449345
+  },
+  {
+    "feature": "action_diversity_early",
+    "mean_abs_shap": 0.3930334021173129
+  },
+  {
+    "feature": "n_sessions_early",
+    "mean_abs_shap": 0.3646338600517964
+  },
+  {
+    "feature": "n_total_events_early",
+    "mean_abs_shap": 0.342826295944779
+  },
+  {
+    "feature": "total_dur_early",
+    "mean_abs_shap": 0.32822773450587284
+  },
+  {
+    "feature": "events_per_session_early",
+    "mean_abs_shap": 0.3247296629494323
+  },
+  {
+    "feature": "mean_dur_early",
+    "mean_abs_shap": 0.27071794832857615
+  },
+  {
+    "feature": "n_codesubmit_early",
+    "mean_abs_shap": 0.2635100256279878
+  },
+  {
+    "feature": "n_active_early",
+    "mean_abs_shap": 0.2557146877502225
+  },
+  {
+    "feature": "n_code_early",
+    "mean_abs_shap": 0.22080711355462568
+  },
+  {
+    "feature": "n_step_early",
+    "mean_abs_shap": 0.2005946280975202
+  },
+  {
+    "feature": "active_frac_early",
+    "mean_abs_shap": 0.15489958579185692
+  },
+  {
+    "feature": "sess_consistency",
+    "mean_abs_shap": 0.10796548425498866
+  },
+  {
+    "feature": "n_quiz_early",
+    "mean_abs_shap": 0.0829845958953272
+  },
+  {
+    "feature": "n_aitutorchat_early",
+    "mean_abs_shap": 0.06536552654619746
+  },
+  {
+    "feature": "code_step_ratio_early",
+    "mean_abs_shap": 0.06502441591306674
+  },
+  {
+    "feature": "help_rate_early",
+    "mean_abs_shap": 0.03792900298594823
+  },
+  {
+    "feature": "attend_frac_early",
+    "mean_abs_shap": 0.03505723171257363
+  },
+  {
+    "feature": "n_raisehand_early",
+    "mean_abs_shap": 0.02146383220783933
+  },
+  {
+    "feature": "events_trend_early",
+    "mean_abs_shap": 0.014071772455574214
+  },
+  {
+    "feature": "n_help_early",
+    "mean_abs_shap": 0.012985861331564257
+  }
+]
